@@ -47,3 +47,4 @@ Red Team is trained to find:
     Unsafe defaults
 
 You are not “being evil.” You are being useful.
+#
