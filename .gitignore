@@ -53,3 +53,4 @@ rpm_packages/
 *.zip
 
 venv/
+.DS_Store
