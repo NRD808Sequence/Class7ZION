@@ -59,7 +59,7 @@ resource "aws_cloudfront_distribution" "chewbacca_cf01" {
     for_each = local.phase3_active ? [1] : []
     content {
       origin_id   = "saopaulo-alb"
-      domain_name = local.resolved_sp_alb_dns
+      domain_name = local.resolved_sp_origin_fqdn != "" ? local.resolved_sp_origin_fqdn : local.resolved_sp_alb_dns
 
       custom_origin_config {
         http_port              = 80

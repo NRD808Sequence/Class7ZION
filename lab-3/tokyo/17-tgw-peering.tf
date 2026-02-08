@@ -14,6 +14,20 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "shinjuku_accept_
   })
 }
 
+# Associate peering attachment with Tokyo's TGW route table
+# Peering attachments do NOT auto-associate like VPC attachments —
+# without this, incoming cross-region traffic is blackholed silently
+resource "aws_ec2_transit_gateway_route_table_association" "shinjuku_peering_rt_assoc" {
+  count = local.phase3_active ? 1 : 0
+
+  transit_gateway_attachment_id  = local.resolved_sp_peering_id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.shinjuku_rt01.id
+
+  depends_on = [
+    aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01
+  ]
+}
+
 # Static route to São Paulo via peering
 resource "aws_ec2_transit_gateway_route" "shinjuku_to_saopaulo_static" {
   count = local.phase3_active ? 1 : 0
