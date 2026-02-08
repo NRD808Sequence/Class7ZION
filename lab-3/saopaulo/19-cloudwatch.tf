@@ -93,3 +93,21 @@ resource "aws_cloudwatch_metric_alarm" "liberdade_db_conn_alarm" {
     Name = "${local.saopaulo_prefix}-alarm-db-fail"
   })
 }
+
+#-----------------------------------------------------------------------------
+# WAF Logging
+#-----------------------------------------------------------------------------
+
+resource "aws_cloudwatch_log_group" "liberdade_waf_logs" {
+  name              = "aws-waf-logs-${local.saopaulo_prefix}-sp-webacl"
+  retention_in_days = var.waf_log_retention_days
+
+  tags = merge(local.saopaulo_tags, {
+    Name = "${local.saopaulo_prefix}-waf-logs"
+  })
+}
+
+resource "aws_wafv2_web_acl_logging_configuration" "liberdade_sp_waf_logging" {
+  log_destination_configs = [aws_cloudwatch_log_group.liberdade_waf_logs.arn]
+  resource_arn            = aws_wafv2_web_acl.liberdade_sp_waf01.arn
+}

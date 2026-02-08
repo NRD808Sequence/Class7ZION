@@ -103,6 +103,126 @@ resource "aws_wafv2_web_acl" "liberdade_sp_waf01" {
     }
   }
 
+  # Rule 5: Block WordPress path probes (custom)
+  # This is a Flask app — any /wp-admin, /wordpress, /wp-login, /xmlrpc request is hostile
+  rule {
+    name     = "BlockWordPressProbes"
+    priority = 5
+
+    action {
+      block {}
+    }
+
+    statement {
+      or_statement {
+        statement {
+          byte_match_statement {
+            search_string         = "/wp-admin/"
+            positional_constraint = "STARTS_WITH"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string         = "/wordpress/"
+            positional_constraint = "STARTS_WITH"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string         = "/wp-login.php"
+            positional_constraint = "STARTS_WITH"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string         = "/xmlrpc.php"
+            positional_constraint = "STARTS_WITH"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "${local.saopaulo_prefix}-sp-wp-block"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Rule 6: Rate limiting — 300 requests per 5 minutes per IP
+  rule {
+    name     = "RateLimitPerIP"
+    priority = 6
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = 300
+        aggregate_key_type = "IP"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "${local.saopaulo_prefix}-sp-rate-limit"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Rule 7: AWS WordPress managed rule group (defense in depth)
+  rule {
+    name     = "AWS-AWSManagedRulesWordPressRuleSet"
+    priority = 7
+
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesWordPressRuleSet"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "${local.saopaulo_prefix}-sp-wordpress-rules"
+      sampled_requests_enabled   = true
+    }
+  }
+
   visibility_config {
     cloudwatch_metrics_enabled = true
     metric_name                = "${local.saopaulo_prefix}-sp-waf"

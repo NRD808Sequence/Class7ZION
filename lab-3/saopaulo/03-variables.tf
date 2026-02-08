@@ -98,3 +98,9 @@ variable "alb_logs_retention_days" {
   type        = number
   default     = 90
 }
+
+variable "waf_log_retention_days" {
+  description = "Retention in days for WAF CloudWatch log group"
+  type        = number
+  default     = 30
+}
