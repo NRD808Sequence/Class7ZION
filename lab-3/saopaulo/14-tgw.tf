@@ -29,23 +29,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "liberdade_attach_sp_vpc01" {
   })
 }
 
-# TGW Route Table for São Paulo
-resource "aws_ec2_transit_gateway_route_table" "liberdade_rt01" {
-  transit_gateway_id = aws_ec2_transit_gateway.liberdade_tgw01.id
-
-  tags = merge(local.saopaulo_tags, {
-    Name = "${local.saopaulo_tgw_prefix}-rt01"
-  })
-}
-
-# Associate São Paulo VPC attachment with route table
-resource "aws_ec2_transit_gateway_route_table_association" "liberdade_sp_vpc_assoc" {
-  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.liberdade_rt01.id
-}
-
-# Propagate São Paulo VPC routes
-resource "aws_ec2_transit_gateway_route_table_propagation" "liberdade_sp_vpc_prop" {
-  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.liberdade_rt01.id
-}
+# Note: Using the default route table (default_route_table_association = "enable")
+# The VPC attachment auto-associates and auto-propagates to the default RT.
+# Custom route table, explicit association, and propagation removed to avoid
+# conflict with the default RT auto-association.
