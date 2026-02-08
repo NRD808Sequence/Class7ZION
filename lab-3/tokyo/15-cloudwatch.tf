@@ -175,3 +175,25 @@ resource "aws_wafv2_web_acl_logging_configuration" "chewbacca_tokyo_waf_logging"
   log_destination_configs = [aws_cloudwatch_log_group.chewbacca_waf_logs.arn]
   resource_arn            = aws_wafv2_web_acl.chewbacca_tokyo_waf01.arn
 }
+
+#-----------------------------------------------------------------------------
+# CloudFront WAF Logging (must be in us-east-1 for CLOUDFRONT scope WAFs)
+#-----------------------------------------------------------------------------
+
+resource "aws_cloudwatch_log_group" "chewbacca_cf_waf_logs" {
+  provider = aws.useast1
+
+  name              = "aws-waf-logs-${local.tokyo_prefix}-cf-webacl"
+  retention_in_days = var.waf_log_retention_days
+
+  tags = merge(local.common_tags, {
+    Name = "${local.tokyo_prefix}-cf-waf-logs"
+  })
+}
+
+resource "aws_wafv2_web_acl_logging_configuration" "chewbacca_cf_waf_logging" {
+  provider = aws.useast1
+
+  log_destination_configs = [aws_cloudwatch_log_group.chewbacca_cf_waf_logs.arn]
+  resource_arn            = aws_wafv2_web_acl.chewbacca_cf_waf01.arn
+}

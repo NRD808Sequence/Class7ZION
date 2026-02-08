@@ -717,7 +717,7 @@ aws ec2 describe-security-groups \
             "UserIdGroupPairs": [
                 {
                     "Description": "Rule to allow connections from EC2 instances with sg-0264ae211b9f1f161 attached",
-                    "UserId": "***REDACTED_ACCOUNT_ID***",
+                    "UserId": "<ACCOUNT_ID>",
                     "GroupId": "sg-0264ae211b9f1f161"
                 }
             ],
@@ -744,8 +744,8 @@ aws sts get-caller-identity
 ❯ aws sts get-caller-identity
 {
     "UserId": "AIDATDDDPJRGILF32Z4NV",
-    "Account": "***REDACTED_ACCOUNT_ID***",
-    "Arn": "arn:aws:iam::***REDACTED_ACCOUNT_ID***:user/AWSCLI"
+    "Account": "<ACCOUNT_ID>",
+    "Arn": "arn:aws:iam::<ACCOUNT_ID>:user/AWSCLI"
 }
 ```
 
@@ -766,7 +766,7 @@ aws secretsmanager describe-secret \
   --secret-id  lab/rds/mysql \
   --region us-east-1
 {
-    "ARN": "arn:aws:secretsmanager:us-east-1:***REDACTED_ACCOUNT_ID***:secret:lab/rds/mysql-9PmKb9",
+    "ARN": "arn:aws:secretsmanager:us-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql-9PmKb9",
     "Name": "lab/rds/mysql",
     "LastChangedDate": "2026-01-11T01:15:16.425000-07:00",
     "Tags": [],

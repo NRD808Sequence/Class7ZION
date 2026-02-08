@@ -26,11 +26,11 @@ ec2_ami_id = "ami-0532be01f26a3de55"  # ← Replace with your AMI ID!
 
 # Your IP address for SSH access (find it at https://whatismyip.com)
 # Format: "YOUR.IP.ADDRESS/32" (the /32 means just your single IP)
-my_ip = "***REDACTED_IP***/32"  # ← Replace with "YOUR.IP.HERE/32" for security!
+my_ip = "REPLACE_WITH_YOUR_IP/32"  # ← Replace with "YOUR.IP.HERE/32" for security!
 
 # Database password - minimum 8 characters
 # Use a strong password! Example: "VandelayRocks2024!"
-db_password = "***REDACTED_PASSWORD***"  # ← Replace with your password!
+db_password = "REPLACE_WITH_STRONG_PASSWORD"  # ← Replace with your password! Use TF_VAR_db_password instead.
 
 # Your email for CloudWatch alerts
 sns_email_endpoint = "gaijinmzungu@gmail.com"  # ← Replace with your email!

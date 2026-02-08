@@ -1,7 +1,7 @@
 # Lab 3 — Malgus Evidence Report (Sao Paulo / MacMini)
 
 > **Generated**: 2026-02-08 ~11:15 UTC
-> **Account**: `***REDACTED_ACCOUNT_ID***`
+> **Account**: `<ACCOUNT_ID>`
 > **Region**: `sa-east-1` (Sao Paulo)
 > **Domain**: `keepuneat.click`
 > **Branch**: `nikrdf-armageddon-branch`
@@ -244,7 +244,7 @@
 | RDS in SP | sa-east-1 | None (APPI compliant) |
 | Origin DNS | sa-east-1 | `origin-saopaulo.keepuneat.click` -> SP ALB |
 | SNS Topic | sa-east-1 | `liberdade-alb-incidents` (email confirmed) |
-| ALB Logs | sa-east-1 | `s3://liberdade-alb-logs-***REDACTED_ACCOUNT_ID***` |
+| ALB Logs | sa-east-1 | `s3://liberdade-alb-logs-<ACCOUNT_ID>` |
 | WAF Logs | sa-east-1 | `aws-waf-logs-liberdade-sp-webacl` (30-day retention) |
 
 ### CloudWatch Alarms

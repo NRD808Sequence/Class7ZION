@@ -58,7 +58,7 @@ Before running `terraform apply` in `lab-3/saopaulo/`:
 | DynamoDB lock table exists | `aws dynamodb describe-table --table-name lab3-saopaulo-tf-locks --region sa-east-1` |
 | Route53 zone `keepuneat.click` exists | `aws route53 list-hosted-zones --query 'HostedZones[?Name==\`keepuneat.click.\`]'` |
 | `terraform.tfvars` exists locally | `ls lab-3/saopaulo/terraform.tfvars` (NOT in git) |
-| AWS credentials configured | `aws sts get-caller-identity` (Account: ***REDACTED_ACCOUNT_ID***) |
+| AWS credentials configured | `aws sts get-caller-identity` (Account: <ACCOUNT_ID>) |
 
 ---
 
@@ -121,7 +121,7 @@ aws wafv2 list-web-acls --region sa-east-1 --scope REGIONAL \
   --query 'WebACLs[?Name==`liberdade-sp-waf01`].{Name:Name,ARN:ARN}' --output table
 
 # 5. ALB logs bucket exists
-aws s3 ls s3://liberdade-alb-logs-***REDACTED_ACCOUNT_ID***/ 2>&1 && echo "BUCKET EXISTS" || echo "MISSING"
+aws s3 ls s3://liberdade-alb-logs-<ACCOUNT_ID>/ 2>&1 && echo "BUCKET EXISTS" || echo "MISSING"
 
 # 6. Origin DNS resolves
 dig +short origin-saopaulo.keepuneat.click
@@ -133,7 +133,7 @@ aws rds describe-db-instances --region sa-east-1 \
 
 # 8. SNS subscription confirmed
 aws sns list-subscriptions-by-topic --region sa-east-1 \
-  --topic-arn "arn:aws:sns:sa-east-1:***REDACTED_ACCOUNT_ID***:liberdade-alb-incidents" \
+  --topic-arn "arn:aws:sns:sa-east-1:<ACCOUNT_ID>:liberdade-alb-incidents" \
   --query 'Subscriptions[].{Endpoint:Endpoint,Status:SubscriptionArn}' --output table
 
 # 9. CloudWatch alarms exist
@@ -296,8 +296,8 @@ terraform state rm 'aws_s3_bucket.liberdade_alb_logs'
 terraform destroy
 
 # Step 3: Empty and delete the bucket manually (if desired)
-aws s3 rm s3://liberdade-alb-logs-***REDACTED_ACCOUNT_ID*** --recursive --region sa-east-1
-aws s3 rb s3://liberdade-alb-logs-***REDACTED_ACCOUNT_ID*** --region sa-east-1
+aws s3 rm s3://liberdade-alb-logs-<ACCOUNT_ID> --recursive --region sa-east-1
+aws s3 rb s3://liberdade-alb-logs-<ACCOUNT_ID> --region sa-east-1
 ```
 
 **WARNING:** Do NOT run `terraform destroy` without Step 1. It will fail on the
@@ -378,7 +378,7 @@ protected bucket and leave the state in a partial-destroy mess.
 ### Storage (6 resources)
 | Resource | Name |
 |---|---|
-| S3 Bucket | `liberdade-alb-logs-***REDACTED_ACCOUNT_ID***` (prevent_destroy) |
+| S3 Bucket | `liberdade-alb-logs-<ACCOUNT_ID>` (prevent_destroy) |
 | Bucket Policy | ELB account 507241528517 write access |
 | Encryption | AES256 SSE |
 | Versioning | Enabled |
