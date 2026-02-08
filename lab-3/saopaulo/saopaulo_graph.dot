@@ -1,0 +1,305 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_acm_certificate.liberdade_sp_cert (expand)" [label = "aws_acm_certificate.liberdade_sp_cert", shape = "box"]
+		"[root] aws_acm_certificate_validation.liberdade_sp_cert_validated (expand)" [label = "aws_acm_certificate_validation.liberdade_sp_cert_validated", shape = "box"]
+		"[root] aws_cloudwatch_log_group.liberdade_waf_logs (expand)" [label = "aws_cloudwatch_log_group.liberdade_waf_logs", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_5xx_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.liberdade_alb_5xx_alarm", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_unhealthy_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.liberdade_alb_unhealthy_alarm", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.liberdade_db_conn_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.liberdade_db_conn_alarm", shape = "box"]
+		"[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)" [label = "aws_ec2_transit_gateway.liberdade_tgw01", shape = "box"]
+		"[root] aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01 (expand)" [label = "aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01", shape = "box"]
+		"[root] aws_ec2_transit_gateway_route.liberdade_to_tokyo_static (expand)" [label = "aws_ec2_transit_gateway_route.liberdade_to_tokyo_static", shape = "box"]
+		"[root] aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01 (expand)" [label = "aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01", shape = "box"]
+		"[root] aws_eip.liberdade_nat_eip01 (expand)" [label = "aws_eip.liberdade_nat_eip01", shape = "box"]
+		"[root] aws_iam_instance_profile.liberdade_instance_profile01 (expand)" [label = "aws_iam_instance_profile.liberdade_instance_profile01", shape = "box"]
+		"[root] aws_iam_role.liberdade_ec2_role01 (expand)" [label = "aws_iam_role.liberdade_ec2_role01", shape = "box"]
+		"[root] aws_iam_role_policy.liberdade_ec2_read_secret (expand)" [label = "aws_iam_role_policy.liberdade_ec2_read_secret", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.liberdade_ec2_cw_attach (expand)" [label = "aws_iam_role_policy_attachment.liberdade_ec2_cw_attach", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.liberdade_ec2_ssm_attach (expand)" [label = "aws_iam_role_policy_attachment.liberdade_ec2_ssm_attach", shape = "box"]
+		"[root] aws_instance.liberdade_ec201 (expand)" [label = "aws_instance.liberdade_ec201", shape = "box"]
+		"[root] aws_internet_gateway.liberdade_igw01 (expand)" [label = "aws_internet_gateway.liberdade_igw01", shape = "box"]
+		"[root] aws_lb.liberdade_alb01 (expand)" [label = "aws_lb.liberdade_alb01", shape = "box"]
+		"[root] aws_lb_listener.liberdade_http_listener01 (expand)" [label = "aws_lb_listener.liberdade_http_listener01", shape = "box"]
+		"[root] aws_lb_listener.liberdade_https_listener01 (expand)" [label = "aws_lb_listener.liberdade_https_listener01", shape = "box"]
+		"[root] aws_lb_listener_rule.liberdade_default_block01 (expand)" [label = "aws_lb_listener_rule.liberdade_default_block01", shape = "box"]
+		"[root] aws_lb_listener_rule.liberdade_require_origin_header01 (expand)" [label = "aws_lb_listener_rule.liberdade_require_origin_header01", shape = "box"]
+		"[root] aws_lb_target_group.liberdade_tg01 (expand)" [label = "aws_lb_target_group.liberdade_tg01", shape = "box"]
+		"[root] aws_lb_target_group_attachment.liberdade_tg_attachment01 (expand)" [label = "aws_lb_target_group_attachment.liberdade_tg_attachment01", shape = "box"]
+		"[root] aws_nat_gateway.liberdade_nat01 (expand)" [label = "aws_nat_gateway.liberdade_nat01", shape = "box"]
+		"[root] aws_route.liberdade_private_default_route (expand)" [label = "aws_route.liberdade_private_default_route", shape = "box"]
+		"[root] aws_route.liberdade_public_default_route (expand)" [label = "aws_route.liberdade_public_default_route", shape = "box"]
+		"[root] aws_route.liberdade_to_tokyo_route01 (expand)" [label = "aws_route.liberdade_to_tokyo_route01", shape = "box"]
+		"[root] aws_route53_record.liberdade_cert_validation (expand)" [label = "aws_route53_record.liberdade_cert_validation", shape = "box"]
+		"[root] aws_route53_record.liberdade_origin_dns (expand)" [label = "aws_route53_record.liberdade_origin_dns", shape = "box"]
+		"[root] aws_route_table.liberdade_private_rt01 (expand)" [label = "aws_route_table.liberdade_private_rt01", shape = "box"]
+		"[root] aws_route_table.liberdade_public_rt01 (expand)" [label = "aws_route_table.liberdade_public_rt01", shape = "box"]
+		"[root] aws_route_table_association.liberdade_private_rta01 (expand)" [label = "aws_route_table_association.liberdade_private_rta01", shape = "box"]
+		"[root] aws_route_table_association.liberdade_private_rta02 (expand)" [label = "aws_route_table_association.liberdade_private_rta02", shape = "box"]
+		"[root] aws_route_table_association.liberdade_public_rta01 (expand)" [label = "aws_route_table_association.liberdade_public_rta01", shape = "box"]
+		"[root] aws_route_table_association.liberdade_public_rta02 (expand)" [label = "aws_route_table_association.liberdade_public_rta02", shape = "box"]
+		"[root] aws_s3_bucket.liberdade_alb_logs (expand)" [label = "aws_s3_bucket.liberdade_alb_logs", shape = "box"]
+		"[root] aws_s3_bucket_lifecycle_configuration.liberdade_alb_logs_lifecycle (expand)" [label = "aws_s3_bucket_lifecycle_configuration.liberdade_alb_logs_lifecycle", shape = "box"]
+		"[root] aws_s3_bucket_ownership_controls.liberdade_alb_logs_owner (expand)" [label = "aws_s3_bucket_ownership_controls.liberdade_alb_logs_owner", shape = "box"]
+		"[root] aws_s3_bucket_policy.liberdade_alb_logs_policy (expand)" [label = "aws_s3_bucket_policy.liberdade_alb_logs_policy", shape = "box"]
+		"[root] aws_s3_bucket_public_access_block.liberdade_alb_logs_pab (expand)" [label = "aws_s3_bucket_public_access_block.liberdade_alb_logs_pab", shape = "box"]
+		"[root] aws_s3_bucket_server_side_encryption_configuration.liberdade_alb_logs_sse (expand)" [label = "aws_s3_bucket_server_side_encryption_configuration.liberdade_alb_logs_sse", shape = "box"]
+		"[root] aws_s3_bucket_versioning.liberdade_alb_logs_versioning (expand)" [label = "aws_s3_bucket_versioning.liberdade_alb_logs_versioning", shape = "box"]
+		"[root] aws_security_group.liberdade_alb_sg01 (expand)" [label = "aws_security_group.liberdade_alb_sg01", shape = "box"]
+		"[root] aws_security_group.liberdade_ec2_sg01 (expand)" [label = "aws_security_group.liberdade_ec2_sg01", shape = "box"]
+		"[root] aws_security_group.liberdade_vpce_sg01 (expand)" [label = "aws_security_group.liberdade_vpce_sg01", shape = "box"]
+		"[root] aws_security_group_rule.liberdade_alb_ingress_cf443 (expand)" [label = "aws_security_group_rule.liberdade_alb_ingress_cf443", shape = "box"]
+		"[root] aws_sns_topic.liberdade_sns_topic01 (expand)" [label = "aws_sns_topic.liberdade_sns_topic01", shape = "box"]
+		"[root] aws_sns_topic_subscription.liberdade_sns_sub01 (expand)" [label = "aws_sns_topic_subscription.liberdade_sns_sub01", shape = "box"]
+		"[root] aws_subnet.liberdade_private_subnet01 (expand)" [label = "aws_subnet.liberdade_private_subnet01", shape = "box"]
+		"[root] aws_subnet.liberdade_private_subnet02 (expand)" [label = "aws_subnet.liberdade_private_subnet02", shape = "box"]
+		"[root] aws_subnet.liberdade_public_subnet01 (expand)" [label = "aws_subnet.liberdade_public_subnet01", shape = "box"]
+		"[root] aws_subnet.liberdade_public_subnet02 (expand)" [label = "aws_subnet.liberdade_public_subnet02", shape = "box"]
+		"[root] aws_vpc.liberdade_vpc01 (expand)" [label = "aws_vpc.liberdade_vpc01", shape = "box"]
+		"[root] aws_vpc_endpoint.liberdade_vpce_ec2messages01 (expand)" [label = "aws_vpc_endpoint.liberdade_vpce_ec2messages01", shape = "box"]
+		"[root] aws_vpc_endpoint.liberdade_vpce_logs01 (expand)" [label = "aws_vpc_endpoint.liberdade_vpce_logs01", shape = "box"]
+		"[root] aws_vpc_endpoint.liberdade_vpce_monitoring01 (expand)" [label = "aws_vpc_endpoint.liberdade_vpce_monitoring01", shape = "box"]
+		"[root] aws_vpc_endpoint.liberdade_vpce_s3_gw01 (expand)" [label = "aws_vpc_endpoint.liberdade_vpce_s3_gw01", shape = "box"]
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssm01 (expand)" [label = "aws_vpc_endpoint.liberdade_vpce_ssm01", shape = "box"]
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssmmessages01 (expand)" [label = "aws_vpc_endpoint.liberdade_vpce_ssmmessages01", shape = "box"]
+		"[root] aws_wafv2_web_acl.liberdade_sp_waf01 (expand)" [label = "aws_wafv2_web_acl.liberdade_sp_waf01", shape = "box"]
+		"[root] aws_wafv2_web_acl_association.liberdade_sp_waf_alb_assoc (expand)" [label = "aws_wafv2_web_acl_association.liberdade_sp_waf_alb_assoc", shape = "box"]
+		"[root] aws_wafv2_web_acl_logging_configuration.liberdade_sp_waf_logging (expand)" [label = "aws_wafv2_web_acl_logging_configuration.liberdade_sp_waf_logging", shape = "box"]
+		"[root] data.aws_caller_identity.current (expand)" [label = "data.aws_caller_identity.current", shape = "box"]
+		"[root] data.aws_ec2_managed_prefix_list.liberdade_cf_origin_facing01 (expand)" [label = "data.aws_ec2_managed_prefix_list.liberdade_cf_origin_facing01", shape = "box"]
+		"[root] data.aws_region.current (expand)" [label = "data.aws_region.current", shape = "box"]
+		"[root] data.aws_route53_zone.chewbacca_zone (expand)" [label = "data.aws_route53_zone.chewbacca_zone", shape = "box"]
+		"[root] data.terraform_remote_state.tokyo (expand)" [label = "data.terraform_remote_state.tokyo", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"terraform.io/builtin/terraform\"]" [label = "provider[\"terraform.io/builtin/terraform\"]", shape = "diamond"]
+		"[root] var.alb_access_logs_prefix" [label = "var.alb_access_logs_prefix", shape = "note"]
+		"[root] var.alb_logs_retention_days" [label = "var.alb_logs_retention_days", shape = "note"]
+		"[root] var.app_subdomain" [label = "var.app_subdomain", shape = "note"]
+		"[root] var.domain_name" [label = "var.domain_name", shape = "note"]
+		"[root] var.ec2_instance_type" [label = "var.ec2_instance_type", shape = "note"]
+		"[root] var.project_name" [label = "var.project_name", shape = "note"]
+		"[root] var.saopaulo_azs" [label = "var.saopaulo_azs", shape = "note"]
+		"[root] var.saopaulo_ec2_ami_id" [label = "var.saopaulo_ec2_ami_id", shape = "note"]
+		"[root] var.saopaulo_private_subnet_cidrs" [label = "var.saopaulo_private_subnet_cidrs", shape = "note"]
+		"[root] var.saopaulo_public_subnet_cidrs" [label = "var.saopaulo_public_subnet_cidrs", shape = "note"]
+		"[root] var.saopaulo_vpc_cidr" [label = "var.saopaulo_vpc_cidr", shape = "note"]
+		"[root] var.sns_email_endpoint" [label = "var.sns_email_endpoint", shape = "note"]
+		"[root] var.waf_log_retention_days" [label = "var.waf_log_retention_days", shape = "note"]
+		"[root] aws_acm_certificate.liberdade_sp_cert (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_acm_certificate.liberdade_sp_cert (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_acm_certificate.liberdade_sp_cert (expand)" -> "[root] var.app_subdomain"
+		"[root] aws_acm_certificate.liberdade_sp_cert (expand)" -> "[root] var.domain_name"
+		"[root] aws_acm_certificate_validation.liberdade_sp_cert_validated (expand)" -> "[root] aws_route53_record.liberdade_cert_validation (expand)"
+		"[root] aws_cloudwatch_log_group.liberdade_waf_logs (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_cloudwatch_log_group.liberdade_waf_logs (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudwatch_log_group.liberdade_waf_logs (expand)" -> "[root] var.waf_log_retention_days"
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_5xx_alarm (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_5xx_alarm (expand)" -> "[root] aws_sns_topic.liberdade_sns_topic01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_unhealthy_alarm (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_unhealthy_alarm (expand)" -> "[root] aws_lb_target_group.liberdade_tg01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.liberdade_alb_unhealthy_alarm (expand)" -> "[root] aws_sns_topic.liberdade_sns_topic01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.liberdade_db_conn_alarm (expand)" -> "[root] aws_sns_topic.liberdade_sns_topic01 (expand)"
+		"[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)" -> "[root] local.saopaulo_tgw_prefix (expand)"
+		"[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01 (expand)" -> "[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)"
+		"[root] aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01 (expand)" -> "[root] local.tokyo_tgw_id (expand)"
+		"[root] aws_ec2_transit_gateway_route.liberdade_to_tokyo_static (expand)" -> "[root] aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01 (expand)"
+		"[root] aws_ec2_transit_gateway_route.liberdade_to_tokyo_static (expand)" -> "[root] local.tokyo_vpc_cidr (expand)"
+		"[root] aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01 (expand)" -> "[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)"
+		"[root] aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_eip.liberdade_nat_eip01 (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_eip.liberdade_nat_eip01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_instance_profile.liberdade_instance_profile01 (expand)" -> "[root] aws_iam_role.liberdade_ec2_role01 (expand)"
+		"[root] aws_iam_role.liberdade_ec2_role01 (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_iam_role.liberdade_ec2_role01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_role_policy.liberdade_ec2_read_secret (expand)" -> "[root] aws_iam_role.liberdade_ec2_role01 (expand)"
+		"[root] aws_iam_role_policy.liberdade_ec2_read_secret (expand)" -> "[root] data.aws_caller_identity.current (expand)"
+		"[root] aws_iam_role_policy_attachment.liberdade_ec2_cw_attach (expand)" -> "[root] aws_iam_role.liberdade_ec2_role01 (expand)"
+		"[root] aws_iam_role_policy_attachment.liberdade_ec2_ssm_attach (expand)" -> "[root] aws_iam_role.liberdade_ec2_role01 (expand)"
+		"[root] aws_instance.liberdade_ec201 (expand)" -> "[root] aws_iam_instance_profile.liberdade_instance_profile01 (expand)"
+		"[root] aws_instance.liberdade_ec201 (expand)" -> "[root] aws_security_group.liberdade_ec2_sg01 (expand)"
+		"[root] aws_instance.liberdade_ec201 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_instance.liberdade_ec201 (expand)" -> "[root] var.ec2_instance_type"
+		"[root] aws_instance.liberdade_ec201 (expand)" -> "[root] var.saopaulo_ec2_ami_id"
+		"[root] aws_internet_gateway.liberdade_igw01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_lb.liberdade_alb01 (expand)" -> "[root] aws_s3_bucket_policy.liberdade_alb_logs_policy (expand)"
+		"[root] aws_lb.liberdade_alb01 (expand)" -> "[root] aws_security_group.liberdade_alb_sg01 (expand)"
+		"[root] aws_lb.liberdade_alb01 (expand)" -> "[root] aws_subnet.liberdade_public_subnet01 (expand)"
+		"[root] aws_lb.liberdade_alb01 (expand)" -> "[root] aws_subnet.liberdade_public_subnet02 (expand)"
+		"[root] aws_lb_listener.liberdade_http_listener01 (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] aws_lb_listener.liberdade_https_listener01 (expand)" -> "[root] aws_acm_certificate_validation.liberdade_sp_cert_validated (expand)"
+		"[root] aws_lb_listener.liberdade_https_listener01 (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] aws_lb_listener.liberdade_https_listener01 (expand)" -> "[root] aws_lb_target_group.liberdade_tg01 (expand)"
+		"[root] aws_lb_listener_rule.liberdade_default_block01 (expand)" -> "[root] aws_lb_listener.liberdade_https_listener01 (expand)"
+		"[root] aws_lb_listener_rule.liberdade_require_origin_header01 (expand)" -> "[root] aws_lb_listener.liberdade_https_listener01 (expand)"
+		"[root] aws_lb_listener_rule.liberdade_require_origin_header01 (expand)" -> "[root] local.origin_secret (expand)"
+		"[root] aws_lb_target_group.liberdade_tg01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_lb_target_group_attachment.liberdade_tg_attachment01 (expand)" -> "[root] aws_instance.liberdade_ec201 (expand)"
+		"[root] aws_lb_target_group_attachment.liberdade_tg_attachment01 (expand)" -> "[root] aws_lb_target_group.liberdade_tg01 (expand)"
+		"[root] aws_nat_gateway.liberdade_nat01 (expand)" -> "[root] aws_eip.liberdade_nat_eip01 (expand)"
+		"[root] aws_nat_gateway.liberdade_nat01 (expand)" -> "[root] aws_internet_gateway.liberdade_igw01 (expand)"
+		"[root] aws_nat_gateway.liberdade_nat01 (expand)" -> "[root] aws_subnet.liberdade_public_subnet01 (expand)"
+		"[root] aws_route.liberdade_private_default_route (expand)" -> "[root] aws_nat_gateway.liberdade_nat01 (expand)"
+		"[root] aws_route.liberdade_private_default_route (expand)" -> "[root] aws_route_table.liberdade_private_rt01 (expand)"
+		"[root] aws_route.liberdade_public_default_route (expand)" -> "[root] aws_internet_gateway.liberdade_igw01 (expand)"
+		"[root] aws_route.liberdade_public_default_route (expand)" -> "[root] aws_route_table.liberdade_public_rt01 (expand)"
+		"[root] aws_route.liberdade_to_tokyo_route01 (expand)" -> "[root] aws_ec2_transit_gateway_vpc_attachment.liberdade_attach_sp_vpc01 (expand)"
+		"[root] aws_route.liberdade_to_tokyo_route01 (expand)" -> "[root] aws_route_table.liberdade_private_rt01 (expand)"
+		"[root] aws_route.liberdade_to_tokyo_route01 (expand)" -> "[root] local.tokyo_vpc_cidr (expand)"
+		"[root] aws_route53_record.liberdade_cert_validation (expand)" -> "[root] aws_acm_certificate.liberdade_sp_cert (expand)"
+		"[root] aws_route53_record.liberdade_cert_validation (expand)" -> "[root] data.aws_route53_zone.chewbacca_zone (expand)"
+		"[root] aws_route53_record.liberdade_origin_dns (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] aws_route53_record.liberdade_origin_dns (expand)" -> "[root] data.aws_route53_zone.chewbacca_zone (expand)"
+		"[root] aws_route_table.liberdade_private_rt01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_route_table.liberdade_public_rt01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_route_table_association.liberdade_private_rta01 (expand)" -> "[root] aws_route_table.liberdade_private_rt01 (expand)"
+		"[root] aws_route_table_association.liberdade_private_rta01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_route_table_association.liberdade_private_rta02 (expand)" -> "[root] aws_route_table.liberdade_private_rt01 (expand)"
+		"[root] aws_route_table_association.liberdade_private_rta02 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_route_table_association.liberdade_public_rta01 (expand)" -> "[root] aws_route_table.liberdade_public_rt01 (expand)"
+		"[root] aws_route_table_association.liberdade_public_rta01 (expand)" -> "[root] aws_subnet.liberdade_public_subnet01 (expand)"
+		"[root] aws_route_table_association.liberdade_public_rta02 (expand)" -> "[root] aws_route_table.liberdade_public_rt01 (expand)"
+		"[root] aws_route_table_association.liberdade_public_rta02 (expand)" -> "[root] aws_subnet.liberdade_public_subnet02 (expand)"
+		"[root] aws_s3_bucket.liberdade_alb_logs (expand)" -> "[root] data.aws_caller_identity.current (expand)"
+		"[root] aws_s3_bucket.liberdade_alb_logs (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_s3_bucket_lifecycle_configuration.liberdade_alb_logs_lifecycle (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] aws_s3_bucket_lifecycle_configuration.liberdade_alb_logs_lifecycle (expand)" -> "[root] var.alb_logs_retention_days"
+		"[root] aws_s3_bucket_ownership_controls.liberdade_alb_logs_owner (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] aws_s3_bucket_policy.liberdade_alb_logs_policy (expand)" -> "[root] aws_s3_bucket_public_access_block.liberdade_alb_logs_pab (expand)"
+		"[root] aws_s3_bucket_policy.liberdade_alb_logs_policy (expand)" -> "[root] local.elb_account_id_sa_east_1 (expand)"
+		"[root] aws_s3_bucket_policy.liberdade_alb_logs_policy (expand)" -> "[root] var.alb_access_logs_prefix"
+		"[root] aws_s3_bucket_public_access_block.liberdade_alb_logs_pab (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] aws_s3_bucket_server_side_encryption_configuration.liberdade_alb_logs_sse (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] aws_s3_bucket_versioning.liberdade_alb_logs_versioning (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] aws_security_group.liberdade_alb_sg01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_security_group.liberdade_ec2_sg01 (expand)" -> "[root] aws_security_group.liberdade_alb_sg01 (expand)"
+		"[root] aws_security_group.liberdade_vpce_sg01 (expand)" -> "[root] aws_security_group.liberdade_ec2_sg01 (expand)"
+		"[root] aws_security_group_rule.liberdade_alb_ingress_cf443 (expand)" -> "[root] aws_security_group.liberdade_alb_sg01 (expand)"
+		"[root] aws_security_group_rule.liberdade_alb_ingress_cf443 (expand)" -> "[root] data.aws_ec2_managed_prefix_list.liberdade_cf_origin_facing01 (expand)"
+		"[root] aws_sns_topic.liberdade_sns_topic01 (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_sns_topic.liberdade_sns_topic01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_sns_topic_subscription.liberdade_sns_sub01 (expand)" -> "[root] aws_sns_topic.liberdade_sns_topic01 (expand)"
+		"[root] aws_sns_topic_subscription.liberdade_sns_sub01 (expand)" -> "[root] var.sns_email_endpoint"
+		"[root] aws_subnet.liberdade_private_subnet01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_subnet.liberdade_private_subnet01 (expand)" -> "[root] var.saopaulo_azs"
+		"[root] aws_subnet.liberdade_private_subnet01 (expand)" -> "[root] var.saopaulo_private_subnet_cidrs"
+		"[root] aws_subnet.liberdade_private_subnet02 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_subnet.liberdade_private_subnet02 (expand)" -> "[root] var.saopaulo_azs"
+		"[root] aws_subnet.liberdade_private_subnet02 (expand)" -> "[root] var.saopaulo_private_subnet_cidrs"
+		"[root] aws_subnet.liberdade_public_subnet01 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_subnet.liberdade_public_subnet01 (expand)" -> "[root] var.saopaulo_azs"
+		"[root] aws_subnet.liberdade_public_subnet01 (expand)" -> "[root] var.saopaulo_public_subnet_cidrs"
+		"[root] aws_subnet.liberdade_public_subnet02 (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] aws_subnet.liberdade_public_subnet02 (expand)" -> "[root] var.saopaulo_azs"
+		"[root] aws_subnet.liberdade_public_subnet02 (expand)" -> "[root] var.saopaulo_public_subnet_cidrs"
+		"[root] aws_vpc.liberdade_vpc01 (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_vpc.liberdade_vpc01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_vpc.liberdade_vpc01 (expand)" -> "[root] var.saopaulo_vpc_cidr"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ec2messages01 (expand)" -> "[root] aws_security_group.liberdade_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ec2messages01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ec2messages01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_logs01 (expand)" -> "[root] aws_security_group.liberdade_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_logs01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_logs01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_monitoring01 (expand)" -> "[root] aws_security_group.liberdade_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_monitoring01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_monitoring01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_s3_gw01 (expand)" -> "[root] aws_route_table.liberdade_private_rt01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssm01 (expand)" -> "[root] aws_security_group.liberdade_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssm01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssm01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssmmessages01 (expand)" -> "[root] aws_security_group.liberdade_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssmmessages01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.liberdade_vpce_ssmmessages01 (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] aws_wafv2_web_acl.liberdade_sp_waf01 (expand)" -> "[root] local.saopaulo_tags (expand)"
+		"[root] aws_wafv2_web_acl.liberdade_sp_waf01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_wafv2_web_acl_association.liberdade_sp_waf_alb_assoc (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] aws_wafv2_web_acl_association.liberdade_sp_waf_alb_assoc (expand)" -> "[root] aws_wafv2_web_acl.liberdade_sp_waf01 (expand)"
+		"[root] aws_wafv2_web_acl_logging_configuration.liberdade_sp_waf_logging (expand)" -> "[root] aws_cloudwatch_log_group.liberdade_waf_logs (expand)"
+		"[root] aws_wafv2_web_acl_logging_configuration.liberdade_sp_waf_logging (expand)" -> "[root] aws_wafv2_web_acl.liberdade_sp_waf01 (expand)"
+		"[root] data.aws_caller_identity.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ec2_managed_prefix_list.liberdade_cf_origin_facing01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_region.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_route53_zone.chewbacca_zone (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_route53_zone.chewbacca_zone (expand)" -> "[root] var.domain_name"
+		"[root] data.terraform_remote_state.tokyo (expand)" -> "[root] provider[\"terraform.io/builtin/terraform\"]"
+		"[root] local.common_tags (expand)" -> "[root] var.project_name"
+		"[root] local.origin_secret (expand)" -> "[root] data.terraform_remote_state.tokyo (expand)"
+		"[root] local.saopaulo_tags (expand)" -> "[root] local.common_tags (expand)"
+		"[root] local.saopaulo_tags (expand)" -> "[root] local.saopaulo_prefix (expand)"
+		"[root] local.tokyo_tgw_id (expand)" -> "[root] data.terraform_remote_state.tokyo (expand)"
+		"[root] local.tokyo_vpc_cidr (expand)" -> "[root] data.terraform_remote_state.tokyo (expand)"
+		"[root] output.alb_arn (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] output.alb_dns_name (expand)" -> "[root] aws_lb.liberdade_alb01 (expand)"
+		"[root] output.alb_logs_bucket (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] output.alb_logs_bucket_arn (expand)" -> "[root] aws_s3_bucket.liberdade_alb_logs (expand)"
+		"[root] output.origin_fqdn (expand)" -> "[root] aws_route53_record.liberdade_origin_dns (expand)"
+		"[root] output.saopaulo_ec2_instance_id (expand)" -> "[root] aws_instance.liberdade_ec201 (expand)"
+		"[root] output.saopaulo_private_subnet_ids (expand)" -> "[root] aws_subnet.liberdade_private_subnet01 (expand)"
+		"[root] output.saopaulo_private_subnet_ids (expand)" -> "[root] aws_subnet.liberdade_private_subnet02 (expand)"
+		"[root] output.saopaulo_public_subnet_ids (expand)" -> "[root] aws_subnet.liberdade_public_subnet01 (expand)"
+		"[root] output.saopaulo_public_subnet_ids (expand)" -> "[root] aws_subnet.liberdade_public_subnet02 (expand)"
+		"[root] output.saopaulo_tgw_id (expand)" -> "[root] aws_ec2_transit_gateway.liberdade_tgw01 (expand)"
+		"[root] output.saopaulo_vpc_cidr (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] output.saopaulo_vpc_id (expand)" -> "[root] aws_vpc.liberdade_vpc01 (expand)"
+		"[root] output.saopaulo_waf_acl_arn (expand)" -> "[root] aws_wafv2_web_acl.liberdade_sp_waf01 (expand)"
+		"[root] output.sns_topic_arn (expand)" -> "[root] aws_sns_topic.liberdade_sns_topic01 (expand)"
+		"[root] output.tgw_peering_attachment_id (expand)" -> "[root] aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.liberdade_alb_5xx_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.liberdade_alb_unhealthy_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.liberdade_db_conn_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ec2_transit_gateway_route.liberdade_to_tokyo_static (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy.liberdade_ec2_read_secret (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.liberdade_ec2_cw_attach (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.liberdade_ec2_ssm_attach (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener.liberdade_http_listener01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener_rule.liberdade_default_block01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener_rule.liberdade_require_origin_header01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_target_group_attachment.liberdade_tg_attachment01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.liberdade_private_default_route (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.liberdade_public_default_route (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.liberdade_to_tokyo_route01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.liberdade_origin_dns (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.liberdade_private_rta01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.liberdade_private_rta02 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.liberdade_public_rta01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.liberdade_public_rta02 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_lifecycle_configuration.liberdade_alb_logs_lifecycle (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_ownership_controls.liberdade_alb_logs_owner (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_server_side_encryption_configuration.liberdade_alb_logs_sse (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_versioning.liberdade_alb_logs_versioning (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group_rule.liberdade_alb_ingress_cf443 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_sns_topic_subscription.liberdade_sns_sub01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.liberdade_vpce_ec2messages01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.liberdade_vpce_logs01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.liberdade_vpce_monitoring01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.liberdade_vpce_s3_gw01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.liberdade_vpce_ssm01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.liberdade_vpce_ssmmessages01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_wafv2_web_acl_association.liberdade_sp_waf_alb_assoc (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_wafv2_web_acl_logging_configuration.liberdade_sp_waf_logging (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] data.aws_region.current (expand)"
+		"[root] provider[\"terraform.io/builtin/terraform\"] (close)" -> "[root] data.terraform_remote_state.tokyo (expand)"
+		"[root] root" -> "[root] output.alb_arn (expand)"
+		"[root] root" -> "[root] output.alb_dns_name (expand)"
+		"[root] root" -> "[root] output.alb_logs_bucket (expand)"
+		"[root] root" -> "[root] output.alb_logs_bucket_arn (expand)"
+		"[root] root" -> "[root] output.appi_compliance_note (expand)"
+		"[root] root" -> "[root] output.origin_fqdn (expand)"
+		"[root] root" -> "[root] output.saopaulo_ec2_instance_id (expand)"
+		"[root] root" -> "[root] output.saopaulo_private_subnet_ids (expand)"
+		"[root] root" -> "[root] output.saopaulo_public_subnet_ids (expand)"
+		"[root] root" -> "[root] output.saopaulo_tgw_id (expand)"
+		"[root] root" -> "[root] output.saopaulo_vpc_cidr (expand)"
+		"[root] root" -> "[root] output.saopaulo_vpc_id (expand)"
+		"[root] root" -> "[root] output.saopaulo_waf_acl_arn (expand)"
+		"[root] root" -> "[root] output.sns_topic_arn (expand)"
+		"[root] root" -> "[root] output.tgw_peering_attachment_id (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"terraform.io/builtin/terraform\"] (close)"
+	}
+}
+
