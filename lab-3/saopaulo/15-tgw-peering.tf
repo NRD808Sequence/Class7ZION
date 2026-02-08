@@ -1,0 +1,23 @@
+############################################
+# Lab 3: São Paulo TGW Peering REQUEST to Tokyo
+# Reversed from monolith: SP requests, Tokyo accepts in Phase 3
+############################################
+
+# Liberdade opens a corridor request to Shinjuku
+# SP knows Tokyo TGW ID from remote state
+resource "aws_ec2_transit_gateway_peering_attachment" "liberdade_to_shinjuku_peer01" {
+  transit_gateway_id      = aws_ec2_transit_gateway.liberdade_tgw01.id
+  peer_region             = "ap-northeast-1"
+  peer_transit_gateway_id = local.tokyo_tgw_id
+
+  tags = merge(local.saopaulo_tags, {
+    Name = "${local.saopaulo_tgw_prefix}-to-shinjuku-peer01"
+  })
+}
+
+# Static route to Tokyo via peering (becomes active after Tokyo accepts in Phase 3)
+resource "aws_ec2_transit_gateway_route" "liberdade_to_tokyo_static" {
+  destination_cidr_block         = local.tokyo_vpc_cidr # 10.75.0.0/16
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_peering_attachment.liberdade_to_shinjuku_peer01.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.liberdade_rt01.id
+}
