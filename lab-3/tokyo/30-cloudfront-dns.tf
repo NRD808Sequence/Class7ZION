@@ -50,6 +50,23 @@ resource "aws_acm_certificate_validation" "chewbacca_cf_cert_validated" {
 }
 
 #-----------------------------------------------------------------------------
+# Origin Domain -> ALB (enables https-only between CloudFront and ALB)
+# CloudFront connects to this FQDN; the wildcard ACM cert on the ALB matches
+#-----------------------------------------------------------------------------
+
+resource "aws_route53_record" "chewbacca_origin_tokyo" {
+  zone_id = local.chewbacca_zone_id
+  name    = "origin-tokyo.${var.domain_name}"
+  type    = "A"
+
+  alias {
+    name                   = aws_lb.chewbacca_alb01.dns_name
+    zone_id                = aws_lb.chewbacca_alb01.zone_id
+    evaluate_target_health = true
+  }
+}
+
+#-----------------------------------------------------------------------------
 # Root Domain -> CloudFront
 #-----------------------------------------------------------------------------
 

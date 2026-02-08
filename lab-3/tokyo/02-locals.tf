@@ -34,7 +34,7 @@ locals {
   # ── Phase 3 resolution (São Paulo remote state) ──
   resolved_sp_alb_dns    = try(data.terraform_remote_state.saopaulo[0].outputs.alb_dns_name, "")
   resolved_sp_peering_id = try(data.terraform_remote_state.saopaulo[0].outputs.tgw_peering_attachment_id, "")
-  resolved_sp_vpc_cidr   = try(data.terraform_remote_state.saopaulo[0].outputs.vpc_cidr, "")
+  resolved_sp_vpc_cidr   = try(data.terraform_remote_state.saopaulo[0].outputs.saopaulo_vpc_cidr, "")
   phase3_active          = var.enable_saopaulo_remote_state && local.resolved_sp_alb_dns != ""
 }
 

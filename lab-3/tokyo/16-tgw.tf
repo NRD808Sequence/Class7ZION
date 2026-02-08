@@ -6,8 +6,8 @@
 # Shinjuku Station is the hub — Tokyo is the data authority
 resource "aws_ec2_transit_gateway" "shinjuku_tgw01" {
   description                     = "shinjuku-tgw01 (Tokyo hub)"
-  default_route_table_association = "enable"
-  default_route_table_propagation = "enable"
+  default_route_table_association = "disable"
+  default_route_table_propagation = "disable"
   dns_support                     = "enable"
 
   tags = merge(local.tokyo_tags, {
@@ -42,6 +42,7 @@ resource "aws_ec2_transit_gateway_route_table" "shinjuku_rt01" {
 resource "aws_ec2_transit_gateway_route_table_association" "shinjuku_tokyo_vpc_assoc" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.shinjuku_rt01.id
+  replace_existing_association   = true
 }
 
 # Propagate Tokyo VPC routes

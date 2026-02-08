@@ -36,7 +36,7 @@ resource "aws_cloudfront_distribution" "chewbacca_cf01" {
   #-----------------------------------------------------------------------------
   origin {
     origin_id   = "tokyo-alb"
-    domain_name = aws_lb.chewbacca_alb01.dns_name
+    domain_name = aws_route53_record.chewbacca_origin_tokyo.fqdn
 
     custom_origin_config {
       http_port              = 80
@@ -85,7 +85,8 @@ resource "aws_cloudfront_distribution" "chewbacca_cf01" {
     target_origin_id       = local.phase3_active ? "multi-region-failover" : "tokyo-alb"
     viewer_protocol_policy = "redirect-to-https"
 
-    allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    # Origin groups only support GET/HEAD/OPTIONS — no write methods allowed
+    allowed_methods = local.phase3_active ? ["GET", "HEAD", "OPTIONS"] : ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods  = ["GET", "HEAD"]
 
     # Use AWS managed policies (API = no caching by default)

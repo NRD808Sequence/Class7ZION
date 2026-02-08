@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-# Update and install dependencies
-yum update -y
-yum install -y python3 python3-pip
+# Update and install dependencies (Ubuntu 22.04)
+apt-get update -y
+apt-get install -y python3 python3-pip
 
 # Install Python packages
 pip3 install flask pymysql boto3
