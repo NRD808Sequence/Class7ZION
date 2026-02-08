@@ -23,8 +23,8 @@ locals {
   })
 
   # Resolved values from Tokyo remote state
-  tokyo_tgw_id   = data.terraform_remote_state.tokyo.outputs.tokyo_tgw_id
-  tokyo_vpc_cidr = data.terraform_remote_state.tokyo.outputs.tokyo_vpc_cidr
+  tokyo_tgw_id   = data.terraform_remote_state.tokyo.outputs.tgw_id
+  tokyo_vpc_cidr = data.terraform_remote_state.tokyo.outputs.vpc_cidr
   origin_secret  = data.terraform_remote_state.tokyo.outputs.origin_secret
 
   # ELB account ID for sa-east-1 (ALB access logs)

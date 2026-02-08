@@ -94,6 +94,24 @@ output "saopaulo_waf_acl_arn" {
 }
 
 #-----------------------------------------------------------------------------
+# ORIGIN DNS OUTPUTS
+#-----------------------------------------------------------------------------
+
+output "origin_fqdn" {
+  description = "Origin FQDN for CloudFront failover (matches ACM wildcard cert)"
+  value       = aws_route53_record.liberdade_origin_dns.fqdn
+}
+
+#-----------------------------------------------------------------------------
+# SNS OUTPUTS
+#-----------------------------------------------------------------------------
+
+output "sns_topic_arn" {
+  description = "ARN of SP SNS topic for ALB incident alerts"
+  value       = aws_sns_topic.liberdade_sns_topic01.arn
+}
+
+#-----------------------------------------------------------------------------
 # COMPLIANCE OUTPUTS
 #-----------------------------------------------------------------------------
 
