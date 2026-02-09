@@ -54,3 +54,10 @@ rpm_packages/
 
 venv/
 .DS_Store
+
+# Environment variable files (may contain secrets)
+*.env
+.env*
+
+# Claude Code local settings
+.claude/
