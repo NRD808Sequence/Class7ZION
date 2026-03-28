@@ -1,7 +1,7 @@
 # Lab 3B — Audit Evidence Report (São Paulo / MacMini)
 
 > **Generated**: 2026-02-08 ~12:30 UTC
-> **Account**: `212809501772`
+> **Account**: `[ACCOUNT_ID]`
 > **Region**: `sa-east-1` (São Paulo)
 > **Domain**: `keepuneat.click`
 > **Branch**: `nikrdf-armageddon-branch`
@@ -102,7 +102,7 @@ $ aws ec2 describe-security-groups --region sa-east-1 \
 $ aws ec2 describe-instances --region sa-east-1 --instance-ids i-0a2a60715a2f2e4f6 \
     --query 'Reservations[0].Instances[0].IamInstanceProfile.Arn'
 
-"arn:aws:iam::212809501772:instance-profile/liberdade-instance-profile01"
+"arn:aws:iam::[ACCOUNT_ID]:instance-profile/liberdade-instance-profile01"
 ```
 
 **VPC Endpoints (SSM access, no SSH):**
@@ -341,7 +341,7 @@ Three log channels exist with retention/immutability controls:
 
 **ALB Logs — S3 Versioning:**
 ```
-$ aws s3api get-bucket-versioning --bucket liberdade-alb-logs-212809501772
+$ aws s3api get-bucket-versioning --bucket liberdade-alb-logs-[ACCOUNT_ID]
 
 {
     "Status": "Enabled"
@@ -351,7 +351,7 @@ Versioning = ON. Deleted or overwritten objects retain prior versions. Tamper-re
 
 **ALB Logs — S3 Lifecycle:**
 ```
-$ aws s3api get-bucket-lifecycle-configuration --bucket liberdade-alb-logs-212809501772
+$ aws s3api get-bucket-lifecycle-configuration --bucket liberdade-alb-logs-[ACCOUNT_ID]
 
 {
     "Rules": [
@@ -369,7 +369,7 @@ $ aws s3api get-bucket-lifecycle-configuration --bucket liberdade-alb-logs-21280
 
 **ALB Logs — S3 Bucket Policy (TLS enforcement):**
 ```
-$ aws s3api get-bucket-policy --bucket liberdade-alb-logs-212809501772
+$ aws s3api get-bucket-policy --bucket liberdade-alb-logs-[ACCOUNT_ID]
 
 Statement "DenyInsecureTransport":
   Effect: Deny
@@ -451,7 +451,7 @@ All alarms fire to the SNS topic. `INSUFFICIENT_DATA` on DB connection alarm is 
 | Origin DNS | sa-east-1 | `origin-saopaulo.keepuneat.click` → SP ALB |
 | ACM Cert | sa-east-1 | `app.keepuneat.click` (ISSUED) |
 | SNS Topic | sa-east-1 | `liberdade-alb-incidents` (email confirmed) |
-| ALB Logs S3 | sa-east-1 | `liberdade-alb-logs-212809501772` (versioned, lifecycle) |
+| ALB Logs S3 | sa-east-1 | `liberdade-alb-logs-[ACCOUNT_ID]` (versioned, lifecycle) |
 | WAF Logs CW | sa-east-1 | `aws-waf-logs-liberdade-sp-webacl` (30-day retention) |
 | VPC Endpoints | sa-east-1 | 6 endpoints (S3 GW, SSM, SSMMessages, EC2Messages, Logs, Monitoring) |
 

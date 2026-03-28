@@ -67,7 +67,7 @@ x-amz-cf-pop: DEN53-P5
                 "Field": "http-header",
                 "HttpHeaderConfig": {
                     "HttpHeaderName": "X-Vandelay-Secret",
-                    "Values": ["B9qmoHWWocUY0yKc88Ao1pZx2LL7Js7R"]
+                    "Values": ["<REDACTED>"]
                 }
             }
         ],
@@ -305,9 +305,9 @@ secret_name                  = "lab/rds/mysql"
 secret_rotation_enabled      = true
 iam_role_name                = "vandelay-ec2-role01"
 incident_reporter_function_name = "vandelay-incident-reporter"
-incident_reports_bucket      = "vandelay-incident-reports-212809501772"
-sns_topic_arn                = "arn:aws:sns:us-east-1:212809501772:vandelay-db-incidents"
-vandelay_cf_waf_arn          = "arn:aws:wafv2:us-east-1:212809501772:global/webacl/vandelay-cf-waf01/..."
+incident_reports_bucket      = "vandelay-incident-reports-[ACCOUNT_ID]"
+sns_topic_arn                = "arn:aws:sns:us-east-1:[ACCOUNT_ID]:vandelay-db-incidents"
+vandelay_cf_waf_arn          = "arn:aws:wafv2:us-east-1:[ACCOUNT_ID]:global/webacl/vandelay-cf-waf01/..."
 vandelay_waf_log_group_name  = "aws-waf-logs-vandelay-webacl"
 ```
 
