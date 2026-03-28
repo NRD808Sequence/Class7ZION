@@ -194,6 +194,30 @@ output "vandelay_log_group_name" {
   value       = aws_cloudwatch_log_group.vandelay_log_group01.name
 }
 
+#-----------------------------------------------------------------------------
+# JENKINS OUTPUTS
+#-----------------------------------------------------------------------------
+
+output "jenkins_instance_id" {
+  description = "ID of the Jenkins EC2 instance"
+  value       = aws_instance.vandelay_jenkins.id
+}
+
+output "jenkins_public_ip" {
+  description = "Public IP of Jenkins EC2"
+  value       = aws_instance.vandelay_jenkins.public_ip
+}
+
+output "jenkins_url" {
+  description = "URL to access Jenkins UI"
+  value       = "http://${aws_instance.vandelay_jenkins.public_ip}:8080"
+}
+
+output "jenkins_initial_password_cmd" {
+  description = "SSM command to retrieve the Jenkins initial admin password"
+  value       = "aws ssm start-session --target ${aws_instance.vandelay_jenkins.id} --region ${var.aws_region} --document-name AWS-StartInteractiveCommand --parameters 'command=sudo cat /var/lib/jenkins/secrets/initialAdminPassword'"
+}
+
 # Bonus: Private EC2 instance (if using bonus file)
 output "vandelay_ec2_private_instance_id" {
   description = "ID of the Vandelay private EC2 instance (Bonus A)"

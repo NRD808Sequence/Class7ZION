@@ -40,10 +40,22 @@ variable "ec2_ami_id" {
   default     = "ami-0c02fb55956c7d316" # Amazon Linux 2 in us-east-1
 }
 
+variable "jenkins_ami_id" {
+  description = "AMI ID for the Jenkins EC2 host. Defaults to Amazon Linux 2023."
+  type        = string
+  default     = "ami-02dfbd4ff395f2a1b" # Amazon Linux 2023 in us-east-1
+}
+
 variable "ec2_instance_type" {
   description = "EC2 instance size for the app."
   type        = string
   default     = "t3.micro"
+}
+
+variable "jenkins_instance_type" {
+  description = "EC2 instance size for Jenkins (t3.medium recommended for 300+ plugins)."
+  type        = string
+  default     = "t3.medium"
 }
 
 variable "db_engine" {

@@ -54,9 +54,10 @@ resource "aws_security_group" "vandelay_vpce_sg01" {
     protocol  = "tcp"
     security_groups = [
       aws_security_group.vandelay_ec2_sg01.id,
-      aws_security_group.rotation_lambda_sg.id
+      aws_security_group.rotation_lambda_sg.id,
+      aws_security_group.vandelay_jenkins_sg.id
     ]
-    description = "Allow HTTPS from EC2 and Lambda"
+    description = "Allow HTTPS from EC2, Lambda, and Jenkins"
   }
 
   egress {
