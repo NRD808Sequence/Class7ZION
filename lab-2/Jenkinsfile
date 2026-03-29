@@ -228,16 +228,12 @@ pipeline {
                 not { expression { params.DESTROY } }
             }
             steps {
-                // Restore tfplan from artifacts in case workspace was cleaned
-                // between the Approval Gate pause and this stage
-                copyArtifacts(
-                    projectName: env.JOB_NAME,
-                    selector: specific("${env.BUILD_NUMBER}"),
-                    filter: "${params.TF_DIR}/tfplan",
-                    optional: true
-                )
                 dir("${params.TF_DIR}") {
-                    sh 'terraform apply -auto-approve tfplan'
+                    sh '''
+                        # Re-init in case .terraform/ was cleaned by a previous build
+                        terraform init -backend=true -reconfigure
+                        terraform apply -auto-approve tfplan
+                    '''
                 }
             }
         }
