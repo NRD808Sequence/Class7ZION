@@ -1,15 +1,12 @@
 # =============================================================================
 # jenkins_plugins.txt — Vandelay Lab-2 Jenkins Plugin Manifest
 #
-# Format: <plugin-id>:<version>
-# Use "latest" to always pull the newest compatible version.
-# Pin a version (e.g. git:5.2.0) to lock for reproducibility.
-#
-# Install with: ./jenkins_install_plugins.sh
+# Verified plugin IDs from running instance (2026-03-29).
+# Install with: jenkins_install_plugins.sh  OR  jenkins-cli install-plugin
 # =============================================================================
 
 # ---------------------------------------------------------------------------
-# Pipeline core — declarative syntax, stages, when{}, input, post{}
+# Pipeline core
 # ---------------------------------------------------------------------------
 workflow-aggregator:latest
 
@@ -17,55 +14,138 @@ workflow-aggregator:latest
 # Source control
 # ---------------------------------------------------------------------------
 git:latest
+github:latest
+github-api:latest
+github-branch-source:latest
+github-oauth:latest
+github-pullrequest:latest
+github-issues:latest
+pipeline-github:latest
+pipeline-githubnotify-step:latest
+git-push:latest
+github-checks:latest
+git-tag-message:latest
+git-forensics:latest
+forensics-api:latest
+gitlab-api:latest
+gitlab-oauth:latest
+gitlab-plugin:latest
+gitlab-branch-source:latest
 
 # ---------------------------------------------------------------------------
-# Credentials & secrets injection
-# Provides: credentials('...') in environment{} block → TF_VAR_db_password
+# Credentials & secrets
 # ---------------------------------------------------------------------------
 credentials:latest
 credentials-binding:latest
+aws-credentials:latest
+aws-secrets-manager-credentials-provider:latest
+aws-bucket-credentials:latest
+azure-credentials:latest
+azure-keyvault:latest
+azure-ad:latest
+oauth-credentials:latest
+plain-credentials:latest
+ssh-credentials:latest
+
+# ---------------------------------------------------------------------------
+# AWS SDK v1
+# ---------------------------------------------------------------------------
+aws-java-sdk-minimal:latest
+aws-java-sdk-ec2:latest
+aws-java-sdk-ecr:latest
+aws-java-sdk-ecs:latest
+aws-java-sdk-efs:latest
+aws-java-sdk-iam:latest
+aws-java-sdk-lambda:latest
+aws-java-sdk-logs:latest
+aws-java-sdk-ssm:latest
+aws-java-sdk-sns:latest
+aws-java-sdk-sqs:latest
+aws-java-sdk-cloudwatch:latest
+aws-java-sdk-cloudformation:latest
+aws-java-sdk-cloudfront:latest
+aws-java-sdk-autoscaling:latest
+aws-java-sdk-elasticbeanstalk:latest
+aws-java-sdk-elasticloadbalancingv2:latest
+aws-java-sdk-codebuild:latest
+aws-java-sdk-codedeploy:latest
+aws-java-sdk-kinesis:latest
+aws-java-sdk-api-gateway:latest
+aws-java-sdk-organizations:latest
+
+# ---------------------------------------------------------------------------
+# AWS SDK v2
+# ---------------------------------------------------------------------------
+aws-java-sdk2-core:latest
+aws-java-sdk2-ec2:latest
+aws-java-sdk2-ecr:latest
+aws-java-sdk2-s3:latest
+aws-java-sdk2-secretsmanager:latest
+
+# ---------------------------------------------------------------------------
+# AWS integrations
+# ---------------------------------------------------------------------------
+pipeline-aws:latest
+aws-global-configuration:latest
+artifact-manager-s3:latest
+aws-lambda:latest
+aws-parameter-store:latest
+aws-codepipeline:latest
+
+# ---------------------------------------------------------------------------
+# Azure
+# ---------------------------------------------------------------------------
+azure-sdk:latest
+azure-vm-agents:latest
 
 # ---------------------------------------------------------------------------
 # Console / UX
 # ---------------------------------------------------------------------------
-timestamper:latest          # timestamps() option — prefix every log line
-ansicolor:latest            # coloured terraform/shell output in console
+timestamper:latest
+ansicolor:latest
+dark-theme:latest
+theme-manager:latest
 
 # ---------------------------------------------------------------------------
 # Build management
 # ---------------------------------------------------------------------------
-ws-cleanup:latest           # cleanWs() in post{} — purges .terraform/ between runs
-
-# ---------------------------------------------------------------------------
-# AWS integration
-# pipeline-aws provides withAWS{} blocks (CloudFront invalidation, S3 upload)
-# ---------------------------------------------------------------------------
-pipeline-aws:latest
-aws-credentials:latest
+ws-cleanup:latest
+copyartifact:latest
+build-timeout:latest
 
 # ---------------------------------------------------------------------------
 # Terraform
-# Provides: tool(name: 'terraform', type: 'terraform') in pipeline
 # ---------------------------------------------------------------------------
 terraform:latest
 
 # ---------------------------------------------------------------------------
-# Security scanning
+# Security / scanning
 # ---------------------------------------------------------------------------
 snyk-security-scanner:latest
+configuration-as-code:latest
+oidc-provider:latest
 
 # ---------------------------------------------------------------------------
-# GCP integration
-# google-oauth-plugin: GCP service account credential type
-# google-cloudbuild: Cloud Build pipeline steps
+# GCP
 # ---------------------------------------------------------------------------
 google-oauth-plugin:latest
 google-cloudbuild:latest
 
 # ---------------------------------------------------------------------------
-# GitHub
+# Kubernetes
 # ---------------------------------------------------------------------------
-github:latest
-github-oauth:latest
-github-pullrequest:latest
-pipeline-github:latest
+kubernetes-client-api:latest
+kubernetes-credentials-provider:latest
+
+# ---------------------------------------------------------------------------
+# Docker
+# ---------------------------------------------------------------------------
+docker-commons:latest
+
+# ---------------------------------------------------------------------------
+# Misc APIs
+# ---------------------------------------------------------------------------
+jersey3-api:latest
+handy-uri-templates-2-api:latest
+data-tables-api:latest
+jsch:latest
