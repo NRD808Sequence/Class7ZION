@@ -27,6 +27,13 @@ pipeline {
     agent any
 
     // -------------------------------------------------------------------------
+    // Triggers — GitHub push webhook fires this automatically on every push
+    // -------------------------------------------------------------------------
+    triggers {
+        githubPush()
+    }
+
+    // -------------------------------------------------------------------------
     // Build parameters — change these at queue time without editing the file
     // -------------------------------------------------------------------------
     parameters {
