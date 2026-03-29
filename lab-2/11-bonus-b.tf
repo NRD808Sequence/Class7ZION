@@ -22,7 +22,7 @@ locals {
 
 resource "aws_acm_certificate" "vandelay_cert" {
   domain_name               = local.vandelay_app_fqdn
-  subject_alternative_names = ["*.${var.domain_name}", var.domain_name]  # Include root domain for CloudFront
+  subject_alternative_names = ["*.${var.domain_name}", var.domain_name] # Include root domain for CloudFront
   validation_method         = "DNS"
 
   tags = merge(local.common_tags, {

@@ -8,11 +8,11 @@
 # This is different from ALB WAF which uses scope = "REGIONAL"
 
 resource "aws_wafv2_web_acl" "vandelay_cf_waf01" {
-  provider = aws  # Must be us-east-1 for CloudFront
+  provider = aws # Must be us-east-1 for CloudFront
 
   name        = "${local.name_prefix}-cf-waf01"
   description = "CloudFront WAF for Vandelay Industries"
-  scope       = "CLOUDFRONT"  # This is the key difference from ALB WAF
+  scope       = "CLOUDFRONT" # This is the key difference from ALB WAF
 
   default_action {
     allow {}

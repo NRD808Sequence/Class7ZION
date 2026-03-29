@@ -160,7 +160,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "vandelay_alb_logs_lifecycle" {
     status = "Enabled"
 
     filter {
-      prefix = ""  # Apply to all objects
+      prefix = "" # Apply to all objects
     }
 
     expiration {

@@ -20,7 +20,7 @@ resource "aws_route53_record" "vandelay_apex_to_cf01" {
   alias {
     name                   = aws_cloudfront_distribution.vandelay_cf01.domain_name
     zone_id                = aws_cloudfront_distribution.vandelay_cf01.hosted_zone_id
-    evaluate_target_health = false  # CloudFront handles health itself
+    evaluate_target_health = false # CloudFront handles health itself
   }
 }
 

@@ -13,8 +13,8 @@
 resource "aws_cloudfront_cache_policy" "vandelay_cache_static01" {
   name        = "${local.name_prefix}-cache-static01"
   comment     = "Aggressive caching for /static/* - 1 day default, 1 year max"
-  default_ttl = 86400     # 1 day (in seconds)
-  max_ttl     = 31536000  # 1 year (in seconds)
+  default_ttl = 86400    # 1 day (in seconds)
+  max_ttl     = 31536000 # 1 year (in seconds)
   min_ttl     = 0
 
   parameters_in_cache_key_and_forwarded_to_origin {

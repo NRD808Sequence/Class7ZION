@@ -21,7 +21,7 @@ resource "aws_cloudfront_distribution" "vandelay_cf01" {
     custom_origin_config {
       http_port              = 80
       https_port             = 443
-      origin_protocol_policy = "http-only"  # Use HTTP to ALB (secret header provides security)
+      origin_protocol_policy = "http-only" # Use HTTP to ALB (secret header provides security)
       origin_ssl_protocols   = ["TLSv1.2"]
     }
 

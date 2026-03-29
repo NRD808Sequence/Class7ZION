@@ -153,6 +153,6 @@ variable "alb_logs_retention_days" {
 variable "enable_private_ec2" {
   description = "Move EC2 to private subnet (requires VPC endpoints)"
   type        = bool
-  default     = false  # Set to true after VPC endpoints are deployed
+  default     = false # Set to true after VPC endpoints are deployed
 }
 
