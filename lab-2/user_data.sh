@@ -6,7 +6,7 @@ yum update -y
 yum install -y python3 python3-pip
 
 # Install Python packages
-pip3 install flask pymysql boto3
+pip3 install flask pymysql boto3 cryptography
 
 # Create app directory
 mkdir -p /opt/rdsapp
