@@ -299,9 +299,10 @@ resource "aws_security_group" "vpce_sg" {
     protocol  = "tcp"
     security_groups = [
       aws_security_group.rotation_lambda_sg.id,
-      aws_security_group.vandelay_ec2_sg01.id
+      aws_security_group.vandelay_ec2_sg01.id,
+      aws_security_group.vandelay_jenkins_sg.id
     ]
-    description = "Allow HTTPS from Lambda and EC2"
+    description = "Allow HTTPS from Lambda, EC2, and Jenkins"
   }
 
   tags = merge(local.common_tags, {
