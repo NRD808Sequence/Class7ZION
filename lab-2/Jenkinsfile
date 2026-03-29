@@ -444,3 +444,5 @@ pipeline {
         }
     }
 }
+
+// webhook-test: 2026-03-29 — validates SCMTriggerCause end-to-end
