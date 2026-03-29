@@ -37,8 +37,35 @@ ansicolor:latest            # coloured terraform/shell output in console
 ws-cleanup:latest           # cleanWs() in post{} — purges .terraform/ between runs
 
 # ---------------------------------------------------------------------------
-# AWS integration (optional but recommended)
-# pipeline-aws provides withAWS{} blocks; not used in current Jenkinsfile
-# but needed if you add AWS steps later (CloudFront invalidation, S3 upload)
+# AWS integration
+# pipeline-aws provides withAWS{} blocks (CloudFront invalidation, S3 upload)
 # ---------------------------------------------------------------------------
 pipeline-aws:latest
+aws-credentials:latest
+
+# ---------------------------------------------------------------------------
+# Terraform
+# Provides: tool(name: 'terraform', type: 'terraform') in pipeline
+# ---------------------------------------------------------------------------
+terraform:latest
+
+# ---------------------------------------------------------------------------
+# Security scanning
+# ---------------------------------------------------------------------------
+snyk-security-scanner:latest
+
+# ---------------------------------------------------------------------------
+# GCP integration
+# google-oauth-plugin: GCP service account credential type
+# google-cloudbuild: Cloud Build pipeline steps
+# ---------------------------------------------------------------------------
+google-oauth-plugin:latest
+google-cloudbuild:latest
+
+# ---------------------------------------------------------------------------
+# GitHub
+# ---------------------------------------------------------------------------
+github:latest
+github-oauth:latest
+github-pullrequest:latest
+pipeline-github:latest

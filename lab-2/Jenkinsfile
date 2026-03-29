@@ -133,7 +133,7 @@ pipeline {
         // ---------------------------------------------------------------------
         stage('TF Plan') {
             when {
-                not { params.DESTROY }
+                not { expression { params.DESTROY } }
             }
             steps {
                 dir("${params.TF_DIR}") {
@@ -155,8 +155,8 @@ pipeline {
         stage('TF Plan (Destroy Preview)') {
             when {
                 allOf {
-                    params.DESTROY
-                    params.AUTO_APPROVE
+                    expression { params.DESTROY }
+                    expression { params.AUTO_APPROVE }
                 }
             }
             steps {
@@ -182,8 +182,8 @@ pipeline {
         stage('Approval Gate') {
             when {
                 allOf {
-                    not { params.AUTO_APPROVE }
-                    not { params.DESTROY }
+                    not { expression { params.AUTO_APPROVE } }
+                    not { expression { params.DESTROY } }
                 }
             }
             steps {
@@ -202,8 +202,8 @@ pipeline {
         stage('Destroy Approval Gate') {
             when {
                 allOf {
-                    params.DESTROY
-                    not { params.AUTO_APPROVE }
+                    expression { params.DESTROY }
+                    not { expression { params.AUTO_APPROVE } }
                 }
             }
             steps {
@@ -224,7 +224,7 @@ pipeline {
         // ---------------------------------------------------------------------
         stage('TF Apply') {
             when {
-                not { params.DESTROY }
+                not { expression { params.DESTROY } }
             }
             steps {
                 dir("${params.TF_DIR}") {
@@ -235,7 +235,7 @@ pipeline {
 
         stage('TF Destroy') {
             when {
-                params.DESTROY
+                expression { params.DESTROY }
             }
             steps {
                 dir("${params.TF_DIR}") {
@@ -259,7 +259,7 @@ pipeline {
         // ---------------------------------------------------------------------
         stage('Extract Outputs') {
             when {
-                not { params.DESTROY }
+                not { expression { params.DESTROY } }
             }
             steps {
                 dir("${params.TF_DIR}") {
@@ -312,7 +312,7 @@ pipeline {
         // ---------------------------------------------------------------------
         stage('Smoke Test') {
             when {
-                not { params.DESTROY }
+                not { expression { params.DESTROY } }
             }
             steps {
                 sh '''
@@ -341,7 +341,7 @@ pipeline {
         // ---------------------------------------------------------------------
         stage('Gate Tests') {
             when {
-                not { params.DESTROY }
+                not { expression { params.DESTROY } }
             }
             steps {
                 dir("${params.TF_DIR}/python") {
