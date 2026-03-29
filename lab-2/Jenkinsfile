@@ -147,8 +147,9 @@ pipeline {
                         terraform show -no-color tfplan | tee tfplan.txt
                     '''
                 }
-                // Archive so you have an immutable record of what was approved
-                archiveArtifacts artifacts: "${params.TF_DIR}/tfplan.txt", fingerprint: true
+                // Archive both the human-readable and binary plan — binary is
+                // needed by TF Apply after the Approval Gate pause
+                archiveArtifacts artifacts: "${params.TF_DIR}/tfplan.txt, ${params.TF_DIR}/tfplan", fingerprint: true
             }
         }
 
@@ -170,7 +171,7 @@ pipeline {
                         terraform show -no-color tfplan | tee tfplan.txt
                     '''
                 }
-                archiveArtifacts artifacts: "${params.TF_DIR}/tfplan.txt", fingerprint: true
+                archiveArtifacts artifacts: "${params.TF_DIR}/tfplan.txt, ${params.TF_DIR}/tfplan", fingerprint: true
             }
         }
 
@@ -227,6 +228,14 @@ pipeline {
                 not { expression { params.DESTROY } }
             }
             steps {
+                // Restore tfplan from artifacts in case workspace was cleaned
+                // between the Approval Gate pause and this stage
+                copyArtifacts(
+                    projectName: env.JOB_NAME,
+                    selector: specific("${env.BUILD_NUMBER}"),
+                    filter: "${params.TF_DIR}/tfplan",
+                    optional: true
+                )
                 dir("${params.TF_DIR}") {
                     sh 'terraform apply -auto-approve tfplan'
                 }
