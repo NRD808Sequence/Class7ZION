@@ -72,6 +72,70 @@ resource "aws_iam_instance_profile" "vandelay_jenkins_profile" {
   role = aws_iam_role.vandelay_jenkins_role.name
 }
 
+# Terraform deploy permissions — lets Jenkins run terraform init/plan/apply
+# against the lab-2 stack. Scoped to the S3 state bucket + full infra actions.
+resource "aws_iam_role_policy" "vandelay_jenkins_terraform" {
+  name = "VandelayTerraformDeployPolicy"
+  role = aws_iam_role.vandelay_jenkins_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "TerraformStateS3"
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket",
+          "s3:GetBucketVersioning",
+          "s3:GetEncryptionConfiguration"
+        ]
+        Resource = [
+          "arn:aws:s3:::class7-armagaggeon-tf-bucket",
+          "arn:aws:s3:::class7-armagaggeon-tf-bucket/*"
+        ]
+      },
+      {
+        Sid    = "TerraformInfra"
+        Effect = "Allow"
+        Action = [
+          "ec2:*", "elasticloadbalancing:*", "rds:*",
+          "secretsmanager:*", "cloudfront:*", "wafv2:*",
+          "route53:*", "route53domains:*", "cloudwatch:*",
+          "logs:*", "iam:*", "lambda:*", "s3:*", "sns:*",
+          "sqs:*", "acm:*", "dynamodb:*", "autoscaling:*",
+          "ssm:*", "kms:*", "events:*", "firehose:*"
+        ]
+        Resource = "*"
+      },
+      {
+        Sid    = "ServerlessApplicationRepository"
+        Effect = "Allow"
+        Action = [
+          "serverlessrepo:GetApplication",
+          "serverlessrepo:CreateCloudFormationTemplate",
+          "serverlessrepo:GetCloudFormationTemplate",
+          "serverlessrepo:ListApplicationVersions",
+          "cloudformation:CreateChangeSet",
+          "cloudformation:DescribeChangeSet",
+          "cloudformation:ExecuteChangeSet",
+          "cloudformation:DescribeStacks",
+          "cloudformation:DescribeStackEvents",
+          "cloudformation:GetTemplate",
+          "cloudformation:ListStacks",
+          "cloudformation:CreateStack",
+          "cloudformation:UpdateStack",
+          "cloudformation:DeleteStack",
+          "cloudformation:ValidateTemplate"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
 # Jenkins EC2 Instance
 resource "aws_instance" "vandelay_jenkins" {
   ami                    = var.jenkins_ami_id

@@ -49,6 +49,13 @@ dnf install -y java-21-amazon-corretto-headless
 # Jenkins + Git
 dnf install -y jenkins git
 
+########################################
+# Install Terraform (HashiCorp repo)
+########################################
+dnf install -y dnf-plugins-core
+dnf config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+dnf install -y terraform
+
 systemctl enable jenkins
 systemctl start jenkins
 
