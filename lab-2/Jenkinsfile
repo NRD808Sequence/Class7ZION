@@ -56,8 +56,8 @@ pipeline {
     // Environment — secrets injected here, never echo'd in logs
     // -------------------------------------------------------------------------
     environment {
-        // Injected from Jenkins credential store — never hardcoded
-        TF_VAR_db_password = credentials('vandelay-db-password')
+        // db_password is injected via withCredentials in each stage that needs it
+        // (global credentials() binding is unreliable for TF_VAR_* names)
 
         // Terraform non-interactive mode
         TF_IN_AUTOMATION  = 'true'
@@ -136,16 +136,18 @@ pipeline {
                 not { expression { params.DESTROY } }
             }
             steps {
-                dir("${params.TF_DIR}") {
-                    sh '''
-                        terraform plan \
-                            -out=tfplan \
-                            -detailed-exitcode \
-                            || true
+                withCredentials([string(credentialsId: 'vandelay-db-password', variable: 'TF_VAR_db_password')]) {
+                    dir("${params.TF_DIR}") {
+                        sh '''
+                            terraform plan \
+                                -out=tfplan \
+                                -detailed-exitcode \
+                                || true
 
-                        # Show a human-readable version for the log
-                        terraform show -no-color tfplan | tee tfplan.txt
-                    '''
+                            # Show a human-readable version for the log
+                            terraform show -no-color tfplan | tee tfplan.txt
+                        '''
+                    }
                 }
                 // Archive both the human-readable and binary plan — binary is
                 // needed by TF Apply after the Approval Gate pause
@@ -161,15 +163,17 @@ pipeline {
                 }
             }
             steps {
-                dir("${params.TF_DIR}") {
-                    sh '''
-                        terraform plan -destroy \
-                            -out=tfplan \
-                            -detailed-exitcode \
-                            || true
+                withCredentials([string(credentialsId: 'vandelay-db-password', variable: 'TF_VAR_db_password')]) {
+                    dir("${params.TF_DIR}") {
+                        sh '''
+                            terraform plan -destroy \
+                                -out=tfplan \
+                                -detailed-exitcode \
+                                || true
 
-                        terraform show -no-color tfplan | tee tfplan.txt
-                    '''
+                            terraform show -no-color tfplan | tee tfplan.txt
+                        '''
+                    }
                 }
                 archiveArtifacts artifacts: "${params.TF_DIR}/tfplan.txt, ${params.TF_DIR}/tfplan", fingerprint: true
             }
@@ -228,12 +232,14 @@ pipeline {
                 not { expression { params.DESTROY } }
             }
             steps {
-                dir("${params.TF_DIR}") {
-                    sh '''
-                        # Re-init in case .terraform/ was cleaned by a previous build
-                        terraform init -backend=true -reconfigure
-                        terraform apply -auto-approve tfplan
-                    '''
+                withCredentials([string(credentialsId: 'vandelay-db-password', variable: 'TF_VAR_db_password')]) {
+                    dir("${params.TF_DIR}") {
+                        sh '''
+                            # Re-init in case .terraform/ was cleaned by a previous build
+                            terraform init -backend=true -reconfigure
+                            terraform apply -auto-approve tfplan
+                        '''
+                    }
                 }
             }
         }
@@ -243,16 +249,18 @@ pipeline {
                 expression { params.DESTROY }
             }
             steps {
-                dir("${params.TF_DIR}") {
-                    // Remove prevent_destroy resources from state first
-                    sh '''
-                        echo "Removing prevent_destroy resources from state..."
-                        terraform state rm aws_ebs_volume.vandelay_jenkins_data || true
-                        terraform state rm "aws_s3_bucket.vandelay_alb_logs[0]"  || true
-                        terraform state rm aws_s3_bucket.vandelay_incident_reports || true
+                withCredentials([string(credentialsId: 'vandelay-db-password', variable: 'TF_VAR_db_password')]) {
+                    dir("${params.TF_DIR}") {
+                        // Remove prevent_destroy resources from state first
+                        sh '''
+                            echo "Removing prevent_destroy resources from state..."
+                            terraform state rm aws_ebs_volume.vandelay_jenkins_data || true
+                            terraform state rm "aws_s3_bucket.vandelay_alb_logs[0]"  || true
+                            terraform state rm aws_s3_bucket.vandelay_incident_reports || true
 
-                        terraform destroy -auto-approve
-                    '''
+                            terraform destroy -auto-approve
+                        '''
+                    }
                 }
             }
         }
