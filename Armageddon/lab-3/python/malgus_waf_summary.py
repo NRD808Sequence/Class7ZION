@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+import boto3, time, json, argparse
+from datetime import datetime, timezone, timedelta
+
+# Reason why Darth Malgus would be pleased with this script.
+# He enjoys watching attacks get denied at the edge—statistics are trophies.
+# Reason why this script is relevant to your career.
+# WAF analysis and false-positive detection are daily security operations.
+# How you would talk about this script at an interview.
+# "I standardized WAF triage by querying logs and producing an audit-friendly summary."
+
+def run(client, group, query, minutes):
+    end = int(datetime.now(timezone.utc).timestamp())
+    start = int((datetime.now(timezone.utc)-timedelta(minutes=minutes)).timestamp())
+    qid = client.start_query(logGroupName=group, startTime=start, endTime=end, queryString=query, limit=50)["queryId"]
+    for _ in range(30):
+        r = client.get_query_results(queryId=qid)
+        if r["status"] == "Complete":
+            return [{x["field"]: x["value"] for x in row} for row in r["results"]]
+        time.sleep(1)
+    raise TimeoutError("Query timed out")
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--log-group", required=True)
+    ap.add_argument("--region", default="ap-northeast-1", help="AWS region where the log group lives")
+    ap.add_argument("--minutes", type=int, default=30)
+    args = ap.parse_args()
+    logs = boto3.client("logs", region_name=args.region)
+
+    actions   = run(logs, args.log_group, "stats count() as hits by action | sort hits desc", args.minutes)
+    top_ips   = run(logs, args.log_group, "stats count() as hits by httpRequest.clientIp | sort hits desc | limit 10", args.minutes)
+    blocked   = run(logs, args.log_group, "filter action='BLOCK' | stats count() as hits by terminatingRuleId | sort hits desc | limit 10", args.minutes)
+    top_uris  = run(logs, args.log_group, "stats count() as hits by httpRequest.uri | sort hits desc | limit 10", args.minutes)
+    countries = run(logs, args.log_group, "stats count() as hits by httpRequest.country | sort hits desc | limit 10", args.minutes)
+
+    print(json.dumps({
+        "log_group": args.log_group,
+        "window_minutes": args.minutes,
+        "actions": actions,
+        "top_ips": top_ips,
+        "blocked_by_rule": blocked,
+        "top_uris": top_uris,
+        "top_countries": countries,
+    }, indent=2))
+
+if __name__ == "__main__":
+    main()

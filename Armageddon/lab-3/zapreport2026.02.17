@@ -1,0 +1,295 @@
+ZAP by Checkmarx Scanning Report
+Generated with The ZAP logoZAP on Tue 17 Feb 2026, at 21:25:01
+
+ZAP Version: 2.17.0
+
+ZAP by Checkmarx
+
+Contents
+About This Report
+Report Parameters
+Summaries
+Alert Counts by Risk and Confidence
+Alert Counts by Site and Risk
+Alert Counts by Alert Type
+Insights
+Alerts
+Risk=Medium, Confidence=High (1)
+Risk=Medium, Confidence=Medium (1)
+Risk=Low, Confidence=High (2)
+Risk=Low, Confidence=Medium (1)
+Risk=Informational, Confidence=Medium (1)
+Risk=Informational, Confidence=Low (1)
+Appendix
+Alert Types
+About This Report
+Report Parameters
+Contexts
+No contexts were selected, so all contexts were included by default.
+
+Sites
+The following sites were included:
+
+https://keepuneat.click
+http://keepuneat.click
+(If no sites were selected, all sites were included by default.)
+
+An included site must also be within one of the included contexts for its data to be included in the report.
+
+Risk levels
+Included: High, Medium, Low, Informational
+
+Excluded: None
+
+Confidence levels
+Included: User Confirmed, High, Medium, Low
+
+Excluded: User Confirmed, High, Medium, Low, False Positive
+
+Summaries
+Alert Counts by Risk and Confidence
+This table shows the number of alerts for each level of risk and confidence included in the report.
+
+(The percentages in brackets represent the count as a percentage of the total number of alerts included in the report, rounded to one decimal place.)
+
+Confidence
+User Confirmed	High	Medium	Low	Total
+Risk	High	0
+(0.0%)	0
+(0.0%)	0
+(0.0%)	0
+(0.0%)	0
+(0.0%)
+Medium	0
+(0.0%)	1
+(14.3%)	1
+(14.3%)	0
+(0.0%)	2
+(28.6%)
+Low	0
+(0.0%)	2
+(28.6%)	1
+(14.3%)	0
+(0.0%)	3
+(42.9%)
+Informational	0
+(0.0%)	0
+(0.0%)	1
+(14.3%)	1
+(14.3%)	2
+(28.6%)
+Total	0
+(0.0%)	3
+(42.9%)	3
+(42.9%)	1
+(14.3%)	7
+(100%)
+Alert Counts by Site and Risk
+This table shows, for each site for which one or more alerts were raised, the number of alerts raised at each risk level.
+
+Alerts with a confidence level of "False Positive" have been excluded from these counts.
+
+(The numbers in brackets are the number of alerts raised for the site at or above that risk level.)
+
+Risk
+High
+(= High)	Medium
+(>= Medium)	Low
+(>= Low)	Informational
+(>= Informational)
+Site	https://keepuneat.click	0
+(0)	0
+(0)	1
+(1)	1
+(2)
+http://keepuneat.click	0
+(0)	2
+(2)	2
+(4)	1
+(5)
+Alert Counts by Alert Type
+This table shows the number of alerts of each alert type, together with the alert type's risk level.
+
+(The percentages in brackets represent each count as a percentage, rounded to one decimal place, of the total number of alerts included in this report.)
+
+Alert type	Risk	Count
+Content Security Policy (CSP) Header Not Set	Medium	5
+(71.4%)
+Missing Anti-clickjacking Header	Medium	3
+(42.9%)
+Server Leaks Version Information via "Server" HTTP Response Header Field	Low	6
+(85.7%)
+Strict-Transport-Security Header Not Set	Low	5
+(71.4%)
+X-Content-Type-Options Header Missing	Low	6
+(85.7%)
+Re-examine Cache-control Directives	Informational	5
+(71.4%)
+User Agent Fuzzer	Informational	5
+(71.4%)
+Total		7
+Insights
+This table shows information that is likely to be very relevant to you, but which is not related to vulnerabilities, or potentially even related to the application in question.
+
+Level	Reason	Site	Description	Statistic
+Low
+Warning
+ZAP warnings logged - see the zap.log file for details
+3
+Info
+Informational
+http://keepuneat.click
+Percentage of responses with status code 2xx
+8 %
+Info
+Informational
+http://keepuneat.click
+Percentage of responses with status code 3xx
+47 %
+Info
+Informational
+http://keepuneat.click
+Percentage of responses with status code 4xx
+44 %
+Info
+Informational
+http://keepuneat.click
+Percentage of endpoints with content type text/html
+100 %
+Info
+Informational
+http://keepuneat.click
+Percentage of endpoints with method GET
+100 %
+Info
+Informational
+http://keepuneat.click
+Count of total endpoints
+2
+Info
+Informational
+http://keepuneat.click
+Percentage of slow responses
+1 %
+Info
+Informational
+https://keepuneat.click
+Percentage of responses with status code 2xx
+75 %
+Info
+Informational
+https://keepuneat.click
+Percentage of responses with status code 4xx
+25 %
+Info
+Informational
+https://keepuneat.click
+Percentage of endpoints with content type application/json
+42 %
+Info
+Informational
+https://keepuneat.click
+Percentage of endpoints with content type text/html
+57 %
+Info
+Informational
+https://keepuneat.click
+Percentage of endpoints with method GET
+100 %
+Info
+Informational
+https://keepuneat.click
+Count of total endpoints
+7
+Info
+Informational
+https://keepuneat.click
+Percentage of slow responses
+100 %
+Alerts
+Risk=Medium, Confidence=High (1)
+http://keepuneat.click (1)
+Content Security Policy (CSP) Header Not Set (1)
+GET http://keepuneat.click
+Risk=Medium, Confidence=Medium (1)
+http://keepuneat.click (1)
+Missing Anti-clickjacking Header (1)
+GET http://keepuneat.click
+Risk=Low, Confidence=High (2)
+https://keepuneat.click (1)
+Strict-Transport-Security Header Not Set (1)
+GET https://keepuneat.click/robots.txt
+http://keepuneat.click (1)
+Server Leaks Version Information via "Server" HTTP Response Header Field (1)
+GET http://keepuneat.click
+Risk=Low, Confidence=Medium (1)
+http://keepuneat.click (1)
+X-Content-Type-Options Header Missing (1)
+GET http://keepuneat.click
+Risk=Informational, Confidence=Medium (1)
+http://keepuneat.click (1)
+User Agent Fuzzer (1)
+GET http://keepuneat.click/sitemap.xml
+Risk=Informational, Confidence=Low (1)
+https://keepuneat.click (1)
+Re-examine Cache-control Directives (1)
+GET https://keepuneat.click/add?note=hello
+Appendix
+Alert Types
+This section contains additional information on the types of alerts in the report.
+
+Content Security Policy (CSP) Header Not Set
+Source	raised by a passive scanner (Content Security Policy (CSP) Header Not Set)
+CWE ID	693
+WASC ID	15
+Reference	
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP
+https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
+https://www.w3.org/TR/CSP/
+https://w3c.github.io/webappsec-csp/
+https://web.dev/articles/csp
+https://caniuse.com/#feat=contentsecuritypolicy
+https://content-security-policy.com/
+Missing Anti-clickjacking Header
+Source	raised by a passive scanner (Anti-clickjacking Header)
+CWE ID	1021
+WASC ID	15
+Reference	
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options
+Server Leaks Version Information via "Server" HTTP Response Header Field
+Source	raised by a passive scanner (HTTP Server Response Header)
+CWE ID	497
+WASC ID	13
+Reference	
+https://httpd.apache.org/docs/current/mod/core.html#servertokens
+https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10)
+https://www.troyhunt.com/shhh-dont-let-your-response-headers/
+Strict-Transport-Security Header Not Set
+Source	raised by a passive scanner (Strict-Transport-Security Header)
+CWE ID	319
+WASC ID	15
+Reference	
+https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html
+https://owasp.org/www-community/Security_Headers
+https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+https://caniuse.com/stricttransportsecurity
+https://datatracker.ietf.org/doc/html/rfc6797
+X-Content-Type-Options Header Missing
+Source	raised by a passive scanner (X-Content-Type-Options Header Missing)
+CWE ID	693
+WASC ID	15
+Reference	
+https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)
+https://owasp.org/www-community/Security_Headers
+Re-examine Cache-control Directives
+Source	raised by a passive scanner (Re-examine Cache-control Directives)
+CWE ID	525
+WASC ID	13
+Reference	
+https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control
+https://grayduck.mn/2021/09/13/cache-control-recommendations/
+User Agent Fuzzer
+Source	raised by an active scanner (User Agent Fuzzer)
+Reference	
+https://owasp.org/wstg

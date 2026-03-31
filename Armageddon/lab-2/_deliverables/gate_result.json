@@ -1,0 +1,30 @@
+{
+  "gate": "all_gates",
+  "timestamp_utc": "2026-02-09T06:05:11Z",
+  "region": "us-east-1 ",
+  "inputs": {
+    "instance_id": "i-01e26a1aa17773ef2 ",
+    "secret_id": "lab/rds/mysql ",
+    "db_id": "vandelay-rds01 "
+  },
+  "child_gates": [
+    {
+      "name": "secrets_and_role",
+      "script": "gate_secrets_and_role.sh",
+      "result_file": "gate_secrets_and_role.json",
+      "exit_code": 0
+    },
+    {
+      "name": "network_db",
+      "script": "gate_network_db.sh",
+      "result_file": "gate_network_db.json",
+      "exit_code": 0
+    }
+  ],
+  "badge": {
+    "status": "GREEN ",
+    "meaning": "GREEN=all pass, YELLOW=pass with warnings, RED=one or more failures"
+  },
+  "status": "PASS ",
+  "exit_code": 0
+}

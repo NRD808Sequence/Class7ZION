@@ -1,0 +1,461 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_acm_certificate.chewbacca_cf_cert (expand)" [label = "aws_acm_certificate.chewbacca_cf_cert", shape = "box"]
+		"[root] aws_acm_certificate.chewbacca_tokyo_cert (expand)" [label = "aws_acm_certificate.chewbacca_tokyo_cert", shape = "box"]
+		"[root] aws_acm_certificate_validation.chewbacca_cf_cert_validated (expand)" [label = "aws_acm_certificate_validation.chewbacca_cf_cert_validated", shape = "box"]
+		"[root] aws_acm_certificate_validation.chewbacca_tokyo_cert_validated (expand)" [label = "aws_acm_certificate_validation.chewbacca_tokyo_cert_validated", shape = "box"]
+		"[root] aws_cloudfront_cache_policy.chewbacca_cache_static01 (expand)" [label = "aws_cloudfront_cache_policy.chewbacca_cache_static01", shape = "box"]
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" [label = "aws_cloudfront_distribution.chewbacca_cf01", shape = "box"]
+		"[root] aws_cloudfront_origin_request_policy.chewbacca_orp_static01 (expand)" [label = "aws_cloudfront_origin_request_policy.chewbacca_orp_static01", shape = "box"]
+		"[root] aws_cloudfront_response_headers_policy.chewbacca_rsp_static01 (expand)" [label = "aws_cloudfront_response_headers_policy.chewbacca_rsp_static01", shape = "box"]
+		"[root] aws_cloudwatch_log_group.chewbacca_cf_waf_logs (expand)" [label = "aws_cloudwatch_log_group.chewbacca_cf_waf_logs", shape = "box"]
+		"[root] aws_cloudwatch_log_group.chewbacca_log_group01 (expand)" [label = "aws_cloudwatch_log_group.chewbacca_log_group01", shape = "box"]
+		"[root] aws_cloudwatch_log_group.chewbacca_waf_logs (expand)" [label = "aws_cloudwatch_log_group.chewbacca_waf_logs", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_5xx_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.chewbacca_alb_5xx_alarm", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_unhealthy_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.chewbacca_alb_unhealthy_alarm", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_db_alarm01 (expand)" [label = "aws_cloudwatch_metric_alarm.chewbacca_db_alarm01", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_rds_cpu_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.chewbacca_rds_cpu_alarm", shape = "box"]
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_rds_storage_alarm (expand)" [label = "aws_cloudwatch_metric_alarm.chewbacca_rds_storage_alarm", shape = "box"]
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" [label = "aws_db_instance.chewbacca_rds01", shape = "box"]
+		"[root] aws_db_subnet_group.chewbacca_rds_subnet_group01 (expand)" [label = "aws_db_subnet_group.chewbacca_rds_subnet_group01", shape = "box"]
+		"[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)" [label = "aws_ec2_transit_gateway.shinjuku_tgw01", shape = "box"]
+		"[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)" [label = "aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01", shape = "box"]
+		"[root] aws_ec2_transit_gateway_route.shinjuku_to_saopaulo_static (expand)" [label = "aws_ec2_transit_gateway_route.shinjuku_to_saopaulo_static", shape = "box"]
+		"[root] aws_ec2_transit_gateway_route_table.shinjuku_rt01 (expand)" [label = "aws_ec2_transit_gateway_route_table.shinjuku_rt01", shape = "box"]
+		"[root] aws_ec2_transit_gateway_route_table_association.shinjuku_peering_rt_assoc (expand)" [label = "aws_ec2_transit_gateway_route_table_association.shinjuku_peering_rt_assoc", shape = "box"]
+		"[root] aws_ec2_transit_gateway_route_table_association.shinjuku_tokyo_vpc_assoc (expand)" [label = "aws_ec2_transit_gateway_route_table_association.shinjuku_tokyo_vpc_assoc", shape = "box"]
+		"[root] aws_ec2_transit_gateway_route_table_propagation.shinjuku_tokyo_vpc_prop (expand)" [label = "aws_ec2_transit_gateway_route_table_propagation.shinjuku_tokyo_vpc_prop", shape = "box"]
+		"[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)" [label = "aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01", shape = "box"]
+		"[root] aws_eip.chewbacca_nat_eip01 (expand)" [label = "aws_eip.chewbacca_nat_eip01", shape = "box"]
+		"[root] aws_iam_instance_profile.chewbacca_instance_profile01 (expand)" [label = "aws_iam_instance_profile.chewbacca_instance_profile01", shape = "box"]
+		"[root] aws_iam_role.chewbacca_ec2_role01 (expand)" [label = "aws_iam_role.chewbacca_ec2_role01", shape = "box"]
+		"[root] aws_iam_role_policy.chewbacca_ec2_read_secret (expand)" [label = "aws_iam_role_policy.chewbacca_ec2_read_secret", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.chewbacca_ec2_cw_attach (expand)" [label = "aws_iam_role_policy_attachment.chewbacca_ec2_cw_attach", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.chewbacca_ec2_ssm_attach (expand)" [label = "aws_iam_role_policy_attachment.chewbacca_ec2_ssm_attach", shape = "box"]
+		"[root] aws_instance.chewbacca_ec201 (expand)" [label = "aws_instance.chewbacca_ec201", shape = "box"]
+		"[root] aws_internet_gateway.chewbacca_igw01 (expand)" [label = "aws_internet_gateway.chewbacca_igw01", shape = "box"]
+		"[root] aws_lb.chewbacca_alb01 (expand)" [label = "aws_lb.chewbacca_alb01", shape = "box"]
+		"[root] aws_lb_listener.chewbacca_http_listener01 (expand)" [label = "aws_lb_listener.chewbacca_http_listener01", shape = "box"]
+		"[root] aws_lb_listener.chewbacca_https_listener01 (expand)" [label = "aws_lb_listener.chewbacca_https_listener01", shape = "box"]
+		"[root] aws_lb_listener_rule.chewbacca_default_block01 (expand)" [label = "aws_lb_listener_rule.chewbacca_default_block01", shape = "box"]
+		"[root] aws_lb_listener_rule.chewbacca_require_origin_header01 (expand)" [label = "aws_lb_listener_rule.chewbacca_require_origin_header01", shape = "box"]
+		"[root] aws_lb_target_group.chewbacca_tg01 (expand)" [label = "aws_lb_target_group.chewbacca_tg01", shape = "box"]
+		"[root] aws_lb_target_group_attachment.chewbacca_tg_attachment01 (expand)" [label = "aws_lb_target_group_attachment.chewbacca_tg_attachment01", shape = "box"]
+		"[root] aws_nat_gateway.chewbacca_nat01 (expand)" [label = "aws_nat_gateway.chewbacca_nat01", shape = "box"]
+		"[root] aws_route.chewbacca_private_default_route (expand)" [label = "aws_route.chewbacca_private_default_route", shape = "box"]
+		"[root] aws_route.chewbacca_public_default_route (expand)" [label = "aws_route.chewbacca_public_default_route", shape = "box"]
+		"[root] aws_route.shinjuku_to_sp_route01 (expand)" [label = "aws_route.shinjuku_to_sp_route01", shape = "box"]
+		"[root] aws_route53_record.chewbacca_apex_to_cf01 (expand)" [label = "aws_route53_record.chewbacca_apex_to_cf01", shape = "box"]
+		"[root] aws_route53_record.chewbacca_app_to_cf01 (expand)" [label = "aws_route53_record.chewbacca_app_to_cf01", shape = "box"]
+		"[root] aws_route53_record.chewbacca_cf_cert_validation (expand)" [label = "aws_route53_record.chewbacca_cf_cert_validation", shape = "box"]
+		"[root] aws_route53_record.chewbacca_origin_tokyo (expand)" [label = "aws_route53_record.chewbacca_origin_tokyo", shape = "box"]
+		"[root] aws_route53_record.chewbacca_tokyo_cert_validation (expand)" [label = "aws_route53_record.chewbacca_tokyo_cert_validation", shape = "box"]
+		"[root] aws_route_table.chewbacca_private_rt01 (expand)" [label = "aws_route_table.chewbacca_private_rt01", shape = "box"]
+		"[root] aws_route_table.chewbacca_public_rt01 (expand)" [label = "aws_route_table.chewbacca_public_rt01", shape = "box"]
+		"[root] aws_route_table_association.chewbacca_private_rta01 (expand)" [label = "aws_route_table_association.chewbacca_private_rta01", shape = "box"]
+		"[root] aws_route_table_association.chewbacca_private_rta02 (expand)" [label = "aws_route_table_association.chewbacca_private_rta02", shape = "box"]
+		"[root] aws_route_table_association.chewbacca_public_rta01 (expand)" [label = "aws_route_table_association.chewbacca_public_rta01", shape = "box"]
+		"[root] aws_route_table_association.chewbacca_public_rta02 (expand)" [label = "aws_route_table_association.chewbacca_public_rta02", shape = "box"]
+		"[root] aws_secretsmanager_secret.chewbacca_rds_secret (expand)" [label = "aws_secretsmanager_secret.chewbacca_rds_secret", shape = "box"]
+		"[root] aws_secretsmanager_secret_version.chewbacca_rds_secret_version (expand)" [label = "aws_secretsmanager_secret_version.chewbacca_rds_secret_version", shape = "box"]
+		"[root] aws_security_group.chewbacca_alb_sg01 (expand)" [label = "aws_security_group.chewbacca_alb_sg01", shape = "box"]
+		"[root] aws_security_group.chewbacca_ec2_sg01 (expand)" [label = "aws_security_group.chewbacca_ec2_sg01", shape = "box"]
+		"[root] aws_security_group.chewbacca_rds_sg01 (expand)" [label = "aws_security_group.chewbacca_rds_sg01", shape = "box"]
+		"[root] aws_security_group.chewbacca_rotation_lambda_sg01 (expand)" [label = "aws_security_group.chewbacca_rotation_lambda_sg01", shape = "box"]
+		"[root] aws_security_group.chewbacca_vpce_sg01 (expand)" [label = "aws_security_group.chewbacca_vpce_sg01", shape = "box"]
+		"[root] aws_security_group_rule.chewbacca_alb_ingress_cf443 (expand)" [label = "aws_security_group_rule.chewbacca_alb_ingress_cf443", shape = "box"]
+		"[root] aws_security_group_rule.shinjuku_rds_ingress_from_liberdade01 (expand)" [label = "aws_security_group_rule.shinjuku_rds_ingress_from_liberdade01", shape = "box"]
+		"[root] aws_sns_topic.chewbacca_sns_topic01 (expand)" [label = "aws_sns_topic.chewbacca_sns_topic01", shape = "box"]
+		"[root] aws_sns_topic_subscription.chewbacca_sns_sub01 (expand)" [label = "aws_sns_topic_subscription.chewbacca_sns_sub01", shape = "box"]
+		"[root] aws_ssm_parameter.chewbacca_db_endpoint_param (expand)" [label = "aws_ssm_parameter.chewbacca_db_endpoint_param", shape = "box"]
+		"[root] aws_ssm_parameter.chewbacca_db_name_param (expand)" [label = "aws_ssm_parameter.chewbacca_db_name_param", shape = "box"]
+		"[root] aws_ssm_parameter.chewbacca_db_port_param (expand)" [label = "aws_ssm_parameter.chewbacca_db_port_param", shape = "box"]
+		"[root] aws_subnet.chewbacca_private_subnet01 (expand)" [label = "aws_subnet.chewbacca_private_subnet01", shape = "box"]
+		"[root] aws_subnet.chewbacca_private_subnet02 (expand)" [label = "aws_subnet.chewbacca_private_subnet02", shape = "box"]
+		"[root] aws_subnet.chewbacca_public_subnet01 (expand)" [label = "aws_subnet.chewbacca_public_subnet01", shape = "box"]
+		"[root] aws_subnet.chewbacca_public_subnet02 (expand)" [label = "aws_subnet.chewbacca_public_subnet02", shape = "box"]
+		"[root] aws_vpc.chewbacca_vpc01 (expand)" [label = "aws_vpc.chewbacca_vpc01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ec2messages01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_ec2messages01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_kms01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_kms01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_logs01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_logs01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_monitoring01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_monitoring01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_s3_gw01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_s3_gw01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_secretsmanager01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_secretsmanager01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssm01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_ssm01", shape = "box"]
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssmmessages01 (expand)" [label = "aws_vpc_endpoint.chewbacca_vpce_ssmmessages01", shape = "box"]
+		"[root] aws_wafv2_web_acl.chewbacca_cf_waf01 (expand)" [label = "aws_wafv2_web_acl.chewbacca_cf_waf01", shape = "box"]
+		"[root] aws_wafv2_web_acl.chewbacca_tokyo_waf01 (expand)" [label = "aws_wafv2_web_acl.chewbacca_tokyo_waf01", shape = "box"]
+		"[root] aws_wafv2_web_acl_association.chewbacca_tokyo_waf_alb_assoc (expand)" [label = "aws_wafv2_web_acl_association.chewbacca_tokyo_waf_alb_assoc", shape = "box"]
+		"[root] aws_wafv2_web_acl_logging_configuration.chewbacca_cf_waf_logging (expand)" [label = "aws_wafv2_web_acl_logging_configuration.chewbacca_cf_waf_logging", shape = "box"]
+		"[root] aws_wafv2_web_acl_logging_configuration.chewbacca_tokyo_waf_logging (expand)" [label = "aws_wafv2_web_acl_logging_configuration.chewbacca_tokyo_waf_logging", shape = "box"]
+		"[root] data.aws_caller_identity.current (expand)" [label = "data.aws_caller_identity.current", shape = "box"]
+		"[root] data.aws_cloudfront_cache_policy.chewbacca_caching_disabled (expand)" [label = "data.aws_cloudfront_cache_policy.chewbacca_caching_disabled", shape = "box"]
+		"[root] data.aws_cloudfront_cache_policy.chewbacca_use_origin_headers01 (expand)" [label = "data.aws_cloudfront_cache_policy.chewbacca_use_origin_headers01", shape = "box"]
+		"[root] data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer (expand)" [label = "data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer", shape = "box"]
+		"[root] data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer01 (expand)" [label = "data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer01", shape = "box"]
+		"[root] data.aws_ec2_managed_prefix_list.chewbacca_cf_origin_facing01 (expand)" [label = "data.aws_ec2_managed_prefix_list.chewbacca_cf_origin_facing01", shape = "box"]
+		"[root] data.aws_region.current (expand)" [label = "data.aws_region.current", shape = "box"]
+		"[root] data.aws_route53_zone.chewbacca_zone (expand)" [label = "data.aws_route53_zone.chewbacca_zone", shape = "box"]
+		"[root] data.terraform_remote_state.saopaulo (expand)" [label = "data.terraform_remote_state.saopaulo", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1" [label = "provider[\"registry.terraform.io/hashicorp/aws\"].useast1", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"]" [label = "provider[\"registry.terraform.io/hashicorp/random\"]", shape = "diamond"]
+		"[root] provider[\"terraform.io/builtin/terraform\"]" [label = "provider[\"terraform.io/builtin/terraform\"]", shape = "diamond"]
+		"[root] random_password.chewbacca_origin_header_value01 (expand)" [label = "random_password.chewbacca_origin_header_value01", shape = "box"]
+		"[root] var.alb_access_logs_prefix" [label = "var.alb_access_logs_prefix", shape = "note"]
+		"[root] var.alb_logs_retention_days" [label = "var.alb_logs_retention_days", shape = "note"]
+		"[root] var.app_subdomain" [label = "var.app_subdomain", shape = "note"]
+		"[root] var.db_engine" [label = "var.db_engine", shape = "note"]
+		"[root] var.db_instance_class" [label = "var.db_instance_class", shape = "note"]
+		"[root] var.db_name" [label = "var.db_name", shape = "note"]
+		"[root] var.db_password" [label = "var.db_password", shape = "note"]
+		"[root] var.db_username" [label = "var.db_username", shape = "note"]
+		"[root] var.domain_name" [label = "var.domain_name", shape = "note"]
+		"[root] var.ec2_instance_type" [label = "var.ec2_instance_type", shape = "note"]
+		"[root] var.enable_alb_access_logs" [label = "var.enable_alb_access_logs", shape = "note"]
+		"[root] var.enable_saopaulo_remote_state" [label = "var.enable_saopaulo_remote_state", shape = "note"]
+		"[root] var.my_ip" [label = "var.my_ip", shape = "note"]
+		"[root] var.project_name" [label = "var.project_name", shape = "note"]
+		"[root] var.sns_email_endpoint" [label = "var.sns_email_endpoint", shape = "note"]
+		"[root] var.tokyo_azs" [label = "var.tokyo_azs", shape = "note"]
+		"[root] var.tokyo_ec2_ami_id" [label = "var.tokyo_ec2_ami_id", shape = "note"]
+		"[root] var.tokyo_private_subnet_cidrs" [label = "var.tokyo_private_subnet_cidrs", shape = "note"]
+		"[root] var.tokyo_public_subnet_cidrs" [label = "var.tokyo_public_subnet_cidrs", shape = "note"]
+		"[root] var.tokyo_vpc_cidr" [label = "var.tokyo_vpc_cidr", shape = "note"]
+		"[root] var.waf_log_retention_days" [label = "var.waf_log_retention_days", shape = "note"]
+		"[root] aws_acm_certificate.chewbacca_cf_cert (expand)" -> "[root] local.common_tags (expand)"
+		"[root] aws_acm_certificate.chewbacca_cf_cert (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] aws_acm_certificate.chewbacca_cf_cert (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1"
+		"[root] aws_acm_certificate.chewbacca_cf_cert (expand)" -> "[root] var.domain_name"
+		"[root] aws_acm_certificate.chewbacca_tokyo_cert (expand)" -> "[root] local.chewbacca_app_fqdn (expand)"
+		"[root] aws_acm_certificate.chewbacca_tokyo_cert (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_acm_certificate.chewbacca_tokyo_cert (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_acm_certificate_validation.chewbacca_cf_cert_validated (expand)" -> "[root] aws_route53_record.chewbacca_cf_cert_validation (expand)"
+		"[root] aws_acm_certificate_validation.chewbacca_tokyo_cert_validated (expand)" -> "[root] aws_route53_record.chewbacca_tokyo_cert_validation (expand)"
+		"[root] aws_cloudfront_cache_policy.chewbacca_cache_static01 (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] aws_cloudfront_cache_policy.chewbacca_cache_static01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] aws_acm_certificate_validation.chewbacca_cf_cert_validated (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] aws_cloudfront_cache_policy.chewbacca_cache_static01 (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] aws_cloudfront_origin_request_policy.chewbacca_orp_static01 (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] aws_cloudfront_response_headers_policy.chewbacca_rsp_static01 (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] aws_route53_record.chewbacca_origin_tokyo (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] aws_wafv2_web_acl.chewbacca_cf_waf01 (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] data.aws_cloudfront_cache_policy.chewbacca_caching_disabled (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] local.phase3_active (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] local.resolved_sp_origin_fqdn (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] random_password.chewbacca_origin_header_value01 (expand)"
+		"[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)" -> "[root] var.app_subdomain"
+		"[root] aws_cloudfront_origin_request_policy.chewbacca_orp_static01 (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] aws_cloudfront_origin_request_policy.chewbacca_orp_static01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudfront_response_headers_policy.chewbacca_rsp_static01 (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] aws_cloudfront_response_headers_policy.chewbacca_rsp_static01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudwatch_log_group.chewbacca_cf_waf_logs (expand)" -> "[root] local.common_tags (expand)"
+		"[root] aws_cloudwatch_log_group.chewbacca_cf_waf_logs (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] aws_cloudwatch_log_group.chewbacca_cf_waf_logs (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1"
+		"[root] aws_cloudwatch_log_group.chewbacca_cf_waf_logs (expand)" -> "[root] var.waf_log_retention_days"
+		"[root] aws_cloudwatch_log_group.chewbacca_log_group01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_cloudwatch_log_group.chewbacca_log_group01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudwatch_log_group.chewbacca_waf_logs (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_cloudwatch_log_group.chewbacca_waf_logs (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudwatch_log_group.chewbacca_waf_logs (expand)" -> "[root] var.waf_log_retention_days"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_5xx_alarm (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_5xx_alarm (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_unhealthy_alarm (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_unhealthy_alarm (expand)" -> "[root] aws_lb_target_group.chewbacca_tg01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_alb_unhealthy_alarm (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_db_alarm01 (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_rds_cpu_alarm (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_rds_cpu_alarm (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_rds_storage_alarm (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] aws_cloudwatch_metric_alarm.chewbacca_rds_storage_alarm (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] aws_db_subnet_group.chewbacca_rds_subnet_group01 (expand)"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] aws_security_group.chewbacca_rds_sg01 (expand)"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] var.db_engine"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] var.db_instance_class"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] var.db_name"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] var.db_password"
+		"[root] aws_db_instance.chewbacca_rds01 (expand)" -> "[root] var.db_username"
+		"[root] aws_db_subnet_group.chewbacca_rds_subnet_group01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_db_subnet_group.chewbacca_rds_subnet_group01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)" -> "[root] local.tokyo_tgw_prefix (expand)"
+		"[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)" -> "[root] local.phase3_active (expand)"
+		"[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)" -> "[root] local.resolved_sp_peering_id (expand)"
+		"[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)" -> "[root] local.tokyo_tgw_prefix (expand)"
+		"[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_ec2_transit_gateway_route.shinjuku_to_saopaulo_static (expand)" -> "[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)"
+		"[root] aws_ec2_transit_gateway_route.shinjuku_to_saopaulo_static (expand)" -> "[root] aws_ec2_transit_gateway_route_table.shinjuku_rt01 (expand)"
+		"[root] aws_ec2_transit_gateway_route.shinjuku_to_saopaulo_static (expand)" -> "[root] local.resolved_sp_vpc_cidr (expand)"
+		"[root] aws_ec2_transit_gateway_route_table.shinjuku_rt01 (expand)" -> "[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)"
+		"[root] aws_ec2_transit_gateway_route_table_association.shinjuku_peering_rt_assoc (expand)" -> "[root] aws_ec2_transit_gateway_peering_attachment_accepter.shinjuku_accept_liberdade_peer01 (expand)"
+		"[root] aws_ec2_transit_gateway_route_table_association.shinjuku_peering_rt_assoc (expand)" -> "[root] aws_ec2_transit_gateway_route_table.shinjuku_rt01 (expand)"
+		"[root] aws_ec2_transit_gateway_route_table_association.shinjuku_tokyo_vpc_assoc (expand)" -> "[root] aws_ec2_transit_gateway_route_table.shinjuku_rt01 (expand)"
+		"[root] aws_ec2_transit_gateway_route_table_association.shinjuku_tokyo_vpc_assoc (expand)" -> "[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)"
+		"[root] aws_ec2_transit_gateway_route_table_propagation.shinjuku_tokyo_vpc_prop (expand)" -> "[root] aws_ec2_transit_gateway_route_table.shinjuku_rt01 (expand)"
+		"[root] aws_ec2_transit_gateway_route_table_propagation.shinjuku_tokyo_vpc_prop (expand)" -> "[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)"
+		"[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)" -> "[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)"
+		"[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_eip.chewbacca_nat_eip01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_eip.chewbacca_nat_eip01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_instance_profile.chewbacca_instance_profile01 (expand)" -> "[root] aws_iam_role.chewbacca_ec2_role01 (expand)"
+		"[root] aws_iam_role.chewbacca_ec2_role01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_iam_role.chewbacca_ec2_role01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_role_policy.chewbacca_ec2_read_secret (expand)" -> "[root] aws_iam_role.chewbacca_ec2_role01 (expand)"
+		"[root] aws_iam_role_policy.chewbacca_ec2_read_secret (expand)" -> "[root] data.aws_caller_identity.current (expand)"
+		"[root] aws_iam_role_policy_attachment.chewbacca_ec2_cw_attach (expand)" -> "[root] aws_iam_role.chewbacca_ec2_role01 (expand)"
+		"[root] aws_iam_role_policy_attachment.chewbacca_ec2_ssm_attach (expand)" -> "[root] aws_iam_role.chewbacca_ec2_role01 (expand)"
+		"[root] aws_instance.chewbacca_ec201 (expand)" -> "[root] aws_iam_instance_profile.chewbacca_instance_profile01 (expand)"
+		"[root] aws_instance.chewbacca_ec201 (expand)" -> "[root] aws_security_group.chewbacca_ec2_sg01 (expand)"
+		"[root] aws_instance.chewbacca_ec201 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_instance.chewbacca_ec201 (expand)" -> "[root] var.ec2_instance_type"
+		"[root] aws_instance.chewbacca_ec201 (expand)" -> "[root] var.tokyo_ec2_ami_id"
+		"[root] aws_internet_gateway.chewbacca_igw01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_lb.chewbacca_alb01 (expand)" -> "[root] aws_security_group.chewbacca_alb_sg01 (expand)"
+		"[root] aws_lb.chewbacca_alb01 (expand)" -> "[root] aws_subnet.chewbacca_public_subnet01 (expand)"
+		"[root] aws_lb.chewbacca_alb01 (expand)" -> "[root] aws_subnet.chewbacca_public_subnet02 (expand)"
+		"[root] aws_lb_listener.chewbacca_http_listener01 (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] aws_lb_listener.chewbacca_https_listener01 (expand)" -> "[root] aws_acm_certificate_validation.chewbacca_tokyo_cert_validated (expand)"
+		"[root] aws_lb_listener.chewbacca_https_listener01 (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] aws_lb_listener.chewbacca_https_listener01 (expand)" -> "[root] aws_lb_target_group.chewbacca_tg01 (expand)"
+		"[root] aws_lb_listener_rule.chewbacca_default_block01 (expand)" -> "[root] aws_lb_listener.chewbacca_https_listener01 (expand)"
+		"[root] aws_lb_listener_rule.chewbacca_require_origin_header01 (expand)" -> "[root] aws_lb_listener.chewbacca_https_listener01 (expand)"
+		"[root] aws_lb_listener_rule.chewbacca_require_origin_header01 (expand)" -> "[root] random_password.chewbacca_origin_header_value01 (expand)"
+		"[root] aws_lb_target_group.chewbacca_tg01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_lb_target_group_attachment.chewbacca_tg_attachment01 (expand)" -> "[root] aws_instance.chewbacca_ec201 (expand)"
+		"[root] aws_lb_target_group_attachment.chewbacca_tg_attachment01 (expand)" -> "[root] aws_lb_target_group.chewbacca_tg01 (expand)"
+		"[root] aws_nat_gateway.chewbacca_nat01 (expand)" -> "[root] aws_eip.chewbacca_nat_eip01 (expand)"
+		"[root] aws_nat_gateway.chewbacca_nat01 (expand)" -> "[root] aws_internet_gateway.chewbacca_igw01 (expand)"
+		"[root] aws_nat_gateway.chewbacca_nat01 (expand)" -> "[root] aws_subnet.chewbacca_public_subnet01 (expand)"
+		"[root] aws_route.chewbacca_private_default_route (expand)" -> "[root] aws_nat_gateway.chewbacca_nat01 (expand)"
+		"[root] aws_route.chewbacca_private_default_route (expand)" -> "[root] aws_route_table.chewbacca_private_rt01 (expand)"
+		"[root] aws_route.chewbacca_public_default_route (expand)" -> "[root] aws_internet_gateway.chewbacca_igw01 (expand)"
+		"[root] aws_route.chewbacca_public_default_route (expand)" -> "[root] aws_route_table.chewbacca_public_rt01 (expand)"
+		"[root] aws_route.shinjuku_to_sp_route01 (expand)" -> "[root] aws_ec2_transit_gateway_vpc_attachment.shinjuku_attach_tokyo_vpc01 (expand)"
+		"[root] aws_route.shinjuku_to_sp_route01 (expand)" -> "[root] aws_route_table.chewbacca_private_rt01 (expand)"
+		"[root] aws_route.shinjuku_to_sp_route01 (expand)" -> "[root] local.phase3_active (expand)"
+		"[root] aws_route.shinjuku_to_sp_route01 (expand)" -> "[root] local.resolved_sp_vpc_cidr (expand)"
+		"[root] aws_route53_record.chewbacca_apex_to_cf01 (expand)" -> "[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)"
+		"[root] aws_route53_record.chewbacca_app_to_cf01 (expand)" -> "[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)"
+		"[root] aws_route53_record.chewbacca_cf_cert_validation (expand)" -> "[root] aws_acm_certificate.chewbacca_cf_cert (expand)"
+		"[root] aws_route53_record.chewbacca_cf_cert_validation (expand)" -> "[root] local.chewbacca_zone_id (expand)"
+		"[root] aws_route53_record.chewbacca_origin_tokyo (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] aws_route53_record.chewbacca_origin_tokyo (expand)" -> "[root] local.chewbacca_zone_id (expand)"
+		"[root] aws_route53_record.chewbacca_tokyo_cert_validation (expand)" -> "[root] aws_acm_certificate.chewbacca_tokyo_cert (expand)"
+		"[root] aws_route53_record.chewbacca_tokyo_cert_validation (expand)" -> "[root] local.chewbacca_zone_id (expand)"
+		"[root] aws_route_table.chewbacca_private_rt01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_route_table.chewbacca_public_rt01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_route_table_association.chewbacca_private_rta01 (expand)" -> "[root] aws_route_table.chewbacca_private_rt01 (expand)"
+		"[root] aws_route_table_association.chewbacca_private_rta01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_route_table_association.chewbacca_private_rta02 (expand)" -> "[root] aws_route_table.chewbacca_private_rt01 (expand)"
+		"[root] aws_route_table_association.chewbacca_private_rta02 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_route_table_association.chewbacca_public_rta01 (expand)" -> "[root] aws_route_table.chewbacca_public_rt01 (expand)"
+		"[root] aws_route_table_association.chewbacca_public_rta01 (expand)" -> "[root] aws_subnet.chewbacca_public_subnet01 (expand)"
+		"[root] aws_route_table_association.chewbacca_public_rta02 (expand)" -> "[root] aws_route_table.chewbacca_public_rt01 (expand)"
+		"[root] aws_route_table_association.chewbacca_public_rta02 (expand)" -> "[root] aws_subnet.chewbacca_public_subnet02 (expand)"
+		"[root] aws_secretsmanager_secret.chewbacca_rds_secret (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_secretsmanager_secret.chewbacca_rds_secret (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_secretsmanager_secret_version.chewbacca_rds_secret_version (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] aws_secretsmanager_secret_version.chewbacca_rds_secret_version (expand)" -> "[root] aws_secretsmanager_secret.chewbacca_rds_secret (expand)"
+		"[root] aws_security_group.chewbacca_alb_sg01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_security_group.chewbacca_ec2_sg01 (expand)" -> "[root] aws_security_group.chewbacca_alb_sg01 (expand)"
+		"[root] aws_security_group.chewbacca_ec2_sg01 (expand)" -> "[root] var.my_ip"
+		"[root] aws_security_group.chewbacca_rds_sg01 (expand)" -> "[root] aws_security_group.chewbacca_ec2_sg01 (expand)"
+		"[root] aws_security_group.chewbacca_rds_sg01 (expand)" -> "[root] aws_security_group.chewbacca_rotation_lambda_sg01 (expand)"
+		"[root] aws_security_group.chewbacca_rotation_lambda_sg01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_security_group.chewbacca_vpce_sg01 (expand)" -> "[root] aws_security_group.chewbacca_ec2_sg01 (expand)"
+		"[root] aws_security_group.chewbacca_vpce_sg01 (expand)" -> "[root] aws_security_group.chewbacca_rotation_lambda_sg01 (expand)"
+		"[root] aws_security_group_rule.chewbacca_alb_ingress_cf443 (expand)" -> "[root] aws_security_group.chewbacca_alb_sg01 (expand)"
+		"[root] aws_security_group_rule.chewbacca_alb_ingress_cf443 (expand)" -> "[root] data.aws_ec2_managed_prefix_list.chewbacca_cf_origin_facing01 (expand)"
+		"[root] aws_security_group_rule.shinjuku_rds_ingress_from_liberdade01 (expand)" -> "[root] aws_security_group.chewbacca_rds_sg01 (expand)"
+		"[root] aws_security_group_rule.shinjuku_rds_ingress_from_liberdade01 (expand)" -> "[root] local.phase3_active (expand)"
+		"[root] aws_security_group_rule.shinjuku_rds_ingress_from_liberdade01 (expand)" -> "[root] local.resolved_sp_vpc_cidr (expand)"
+		"[root] aws_sns_topic.chewbacca_sns_topic01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_sns_topic.chewbacca_sns_topic01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_sns_topic_subscription.chewbacca_sns_sub01 (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] aws_sns_topic_subscription.chewbacca_sns_sub01 (expand)" -> "[root] var.sns_email_endpoint"
+		"[root] aws_ssm_parameter.chewbacca_db_endpoint_param (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] aws_ssm_parameter.chewbacca_db_name_param (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_ssm_parameter.chewbacca_db_name_param (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_ssm_parameter.chewbacca_db_name_param (expand)" -> "[root] var.db_name"
+		"[root] aws_ssm_parameter.chewbacca_db_port_param (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] aws_subnet.chewbacca_private_subnet01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_subnet.chewbacca_private_subnet01 (expand)" -> "[root] var.tokyo_azs"
+		"[root] aws_subnet.chewbacca_private_subnet01 (expand)" -> "[root] var.tokyo_private_subnet_cidrs"
+		"[root] aws_subnet.chewbacca_private_subnet02 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_subnet.chewbacca_private_subnet02 (expand)" -> "[root] var.tokyo_azs"
+		"[root] aws_subnet.chewbacca_private_subnet02 (expand)" -> "[root] var.tokyo_private_subnet_cidrs"
+		"[root] aws_subnet.chewbacca_public_subnet01 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_subnet.chewbacca_public_subnet01 (expand)" -> "[root] var.tokyo_azs"
+		"[root] aws_subnet.chewbacca_public_subnet01 (expand)" -> "[root] var.tokyo_public_subnet_cidrs"
+		"[root] aws_subnet.chewbacca_public_subnet02 (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] aws_subnet.chewbacca_public_subnet02 (expand)" -> "[root] var.tokyo_azs"
+		"[root] aws_subnet.chewbacca_public_subnet02 (expand)" -> "[root] var.tokyo_public_subnet_cidrs"
+		"[root] aws_vpc.chewbacca_vpc01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_vpc.chewbacca_vpc01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_vpc.chewbacca_vpc01 (expand)" -> "[root] var.tokyo_vpc_cidr"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ec2messages01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ec2messages01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ec2messages01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_kms01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_kms01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_kms01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_logs01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_logs01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_logs01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_monitoring01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_monitoring01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_monitoring01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_s3_gw01 (expand)" -> "[root] aws_route_table.chewbacca_private_rt01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_secretsmanager01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_secretsmanager01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_secretsmanager01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssm01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssm01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssm01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssmmessages01 (expand)" -> "[root] aws_security_group.chewbacca_vpce_sg01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssmmessages01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] aws_vpc_endpoint.chewbacca_vpce_ssmmessages01 (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] aws_wafv2_web_acl.chewbacca_cf_waf01 (expand)" -> "[root] local.common_tags (expand)"
+		"[root] aws_wafv2_web_acl.chewbacca_cf_waf01 (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] aws_wafv2_web_acl.chewbacca_cf_waf01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1"
+		"[root] aws_wafv2_web_acl.chewbacca_tokyo_waf01 (expand)" -> "[root] local.tokyo_tags (expand)"
+		"[root] aws_wafv2_web_acl.chewbacca_tokyo_waf01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_wafv2_web_acl_association.chewbacca_tokyo_waf_alb_assoc (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] aws_wafv2_web_acl_association.chewbacca_tokyo_waf_alb_assoc (expand)" -> "[root] aws_wafv2_web_acl.chewbacca_tokyo_waf01 (expand)"
+		"[root] aws_wafv2_web_acl_logging_configuration.chewbacca_cf_waf_logging (expand)" -> "[root] aws_cloudwatch_log_group.chewbacca_cf_waf_logs (expand)"
+		"[root] aws_wafv2_web_acl_logging_configuration.chewbacca_cf_waf_logging (expand)" -> "[root] aws_wafv2_web_acl.chewbacca_cf_waf01 (expand)"
+		"[root] aws_wafv2_web_acl_logging_configuration.chewbacca_tokyo_waf_logging (expand)" -> "[root] aws_cloudwatch_log_group.chewbacca_waf_logs (expand)"
+		"[root] aws_wafv2_web_acl_logging_configuration.chewbacca_tokyo_waf_logging (expand)" -> "[root] aws_wafv2_web_acl.chewbacca_tokyo_waf01 (expand)"
+		"[root] data.aws_caller_identity.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_cloudfront_cache_policy.chewbacca_caching_disabled (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_cloudfront_cache_policy.chewbacca_use_origin_headers01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ec2_managed_prefix_list.chewbacca_cf_origin_facing01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_region.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_route53_zone.chewbacca_zone (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_route53_zone.chewbacca_zone (expand)" -> "[root] var.domain_name"
+		"[root] data.terraform_remote_state.saopaulo (expand)" -> "[root] provider[\"terraform.io/builtin/terraform\"]"
+		"[root] data.terraform_remote_state.saopaulo (expand)" -> "[root] var.enable_saopaulo_remote_state"
+		"[root] local.chewbacca_app_fqdn (expand)" -> "[root] var.app_subdomain"
+		"[root] local.chewbacca_app_fqdn (expand)" -> "[root] var.domain_name"
+		"[root] local.chewbacca_zone_id (expand)" -> "[root] data.aws_route53_zone.chewbacca_zone (expand)"
+		"[root] local.common_tags (expand)" -> "[root] var.project_name"
+		"[root] local.phase3_active (expand)" -> "[root] local.resolved_sp_alb_dns (expand)"
+		"[root] local.resolved_sp_alb_dns (expand)" -> "[root] data.terraform_remote_state.saopaulo (expand)"
+		"[root] local.resolved_sp_origin_fqdn (expand)" -> "[root] data.terraform_remote_state.saopaulo (expand)"
+		"[root] local.resolved_sp_peering_id (expand)" -> "[root] data.terraform_remote_state.saopaulo (expand)"
+		"[root] local.resolved_sp_vpc_cidr (expand)" -> "[root] data.terraform_remote_state.saopaulo (expand)"
+		"[root] local.tokyo_tags (expand)" -> "[root] local.common_tags (expand)"
+		"[root] local.tokyo_tags (expand)" -> "[root] local.tokyo_prefix (expand)"
+		"[root] output.alb_dns_name (expand)" -> "[root] aws_lb.chewbacca_alb01 (expand)"
+		"[root] output.app_url (expand)" -> "[root] var.app_subdomain"
+		"[root] output.app_url (expand)" -> "[root] var.domain_name"
+		"[root] output.cloudfront_distribution_id (expand)" -> "[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)"
+		"[root] output.cloudfront_domain_name (expand)" -> "[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)"
+		"[root] output.ec2_instance_id (expand)" -> "[root] aws_instance.chewbacca_ec201 (expand)"
+		"[root] output.log_group_name (expand)" -> "[root] aws_cloudwatch_log_group.chewbacca_log_group01 (expand)"
+		"[root] output.origin_secret (expand)" -> "[root] random_password.chewbacca_origin_header_value01 (expand)"
+		"[root] output.phase3_active (expand)" -> "[root] local.phase3_active (expand)"
+		"[root] output.private_subnet_ids (expand)" -> "[root] aws_subnet.chewbacca_private_subnet01 (expand)"
+		"[root] output.private_subnet_ids (expand)" -> "[root] aws_subnet.chewbacca_private_subnet02 (expand)"
+		"[root] output.public_subnet_ids (expand)" -> "[root] aws_subnet.chewbacca_public_subnet01 (expand)"
+		"[root] output.public_subnet_ids (expand)" -> "[root] aws_subnet.chewbacca_public_subnet02 (expand)"
+		"[root] output.rds_endpoint (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] output.rds_identifier (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] output.rds_port (expand)" -> "[root] aws_db_instance.chewbacca_rds01 (expand)"
+		"[root] output.rds_sg_id (expand)" -> "[root] aws_security_group.chewbacca_rds_sg01 (expand)"
+		"[root] output.root_url (expand)" -> "[root] var.domain_name"
+		"[root] output.sns_topic_arn (expand)" -> "[root] aws_sns_topic.chewbacca_sns_topic01 (expand)"
+		"[root] output.tgw_id (expand)" -> "[root] aws_ec2_transit_gateway.shinjuku_tgw01 (expand)"
+		"[root] output.verification_commands (expand)" -> "[root] aws_cloudfront_distribution.chewbacca_cf01 (expand)"
+		"[root] output.vpc_cidr (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] output.vpc_id (expand)" -> "[root] aws_vpc.chewbacca_vpc01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_log_group.chewbacca_log_group01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.chewbacca_alb_5xx_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.chewbacca_alb_unhealthy_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.chewbacca_db_alarm01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.chewbacca_rds_cpu_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudwatch_metric_alarm.chewbacca_rds_storage_alarm (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ec2_transit_gateway_route.shinjuku_to_saopaulo_static (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ec2_transit_gateway_route_table_association.shinjuku_peering_rt_assoc (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ec2_transit_gateway_route_table_association.shinjuku_tokyo_vpc_assoc (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ec2_transit_gateway_route_table_propagation.shinjuku_tokyo_vpc_prop (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy.chewbacca_ec2_read_secret (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.chewbacca_ec2_cw_attach (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.chewbacca_ec2_ssm_attach (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener.chewbacca_http_listener01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener_rule.chewbacca_default_block01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener_rule.chewbacca_require_origin_header01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_target_group_attachment.chewbacca_tg_attachment01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.chewbacca_private_default_route (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.chewbacca_public_default_route (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.shinjuku_to_sp_route01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.chewbacca_apex_to_cf01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.chewbacca_app_to_cf01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.chewbacca_private_rta01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.chewbacca_private_rta02 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.chewbacca_public_rta01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.chewbacca_public_rta02 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_secretsmanager_secret_version.chewbacca_rds_secret_version (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group_rule.chewbacca_alb_ingress_cf443 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group_rule.shinjuku_rds_ingress_from_liberdade01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_sns_topic_subscription.chewbacca_sns_sub01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ssm_parameter.chewbacca_db_endpoint_param (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ssm_parameter.chewbacca_db_name_param (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_ssm_parameter.chewbacca_db_port_param (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_ec2messages01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_kms01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_logs01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_monitoring01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_s3_gw01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_secretsmanager01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_ssm01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_endpoint.chewbacca_vpce_ssmmessages01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_wafv2_web_acl_association.chewbacca_tokyo_waf_alb_assoc (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_wafv2_web_acl_logging_configuration.chewbacca_tokyo_waf_logging (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] data.aws_cloudfront_cache_policy.chewbacca_use_origin_headers01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] data.aws_region.current (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1 (close)" -> "[root] aws_acm_certificate_validation.chewbacca_cf_cert_validated (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1 (close)" -> "[root] aws_wafv2_web_acl_logging_configuration.chewbacca_cf_waf_logging (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)" -> "[root] random_password.chewbacca_origin_header_value01 (expand)"
+		"[root] provider[\"terraform.io/builtin/terraform\"] (close)" -> "[root] data.terraform_remote_state.saopaulo (expand)"
+		"[root] random_password.chewbacca_origin_header_value01 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"]"
+		"[root] root" -> "[root] local.elb_account_id (expand)"
+		"[root] root" -> "[root] output.alb_dns_name (expand)"
+		"[root] root" -> "[root] output.app_url (expand)"
+		"[root] root" -> "[root] output.cloudfront_distribution_id (expand)"
+		"[root] root" -> "[root] output.cloudfront_domain_name (expand)"
+		"[root] root" -> "[root] output.ec2_instance_id (expand)"
+		"[root] root" -> "[root] output.log_group_name (expand)"
+		"[root] root" -> "[root] output.origin_secret (expand)"
+		"[root] root" -> "[root] output.phase3_active (expand)"
+		"[root] root" -> "[root] output.private_subnet_ids (expand)"
+		"[root] root" -> "[root] output.public_subnet_ids (expand)"
+		"[root] root" -> "[root] output.rds_endpoint (expand)"
+		"[root] root" -> "[root] output.rds_identifier (expand)"
+		"[root] root" -> "[root] output.rds_port (expand)"
+		"[root] root" -> "[root] output.rds_sg_id (expand)"
+		"[root] root" -> "[root] output.root_url (expand)"
+		"[root] root" -> "[root] output.sns_topic_arn (expand)"
+		"[root] root" -> "[root] output.tgw_id (expand)"
+		"[root] root" -> "[root] output.verification_commands (expand)"
+		"[root] root" -> "[root] output.vpc_cidr (expand)"
+		"[root] root" -> "[root] output.vpc_id (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].useast1 (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)"
+		"[root] root" -> "[root] provider[\"terraform.io/builtin/terraform\"] (close)"
+		"[root] root" -> "[root] var.alb_access_logs_prefix"
+		"[root] root" -> "[root] var.alb_logs_retention_days"
+		"[root] root" -> "[root] var.enable_alb_access_logs"
+	}
+}
+

@@ -1,0 +1,42 @@
+nikto -h https://keepuneat.click
+- Nikto v2.6.0
+---------------------------------------------------------------------------
++ Your Nikto installation is out of date. Please run 'git pull' to update to the latest version of Nikto.
++ Target IP:          18.154.101.42
++ Target Hostname:    keepuneat.click
++ Target Port:        443
+---------------------------------------------------------------------------
++ SSL Info:           Subject:  /CN=keepuneat.click
+                      CN:       keepuneat.click
+                      SAN:      keepuneat.click, *.keepuneat.click
+                      Ciphers:  AEAD-AES128-GCM-SHA256
+                      Issuer:   /C=US/O=Amazon/CN=Amazon RSA 2048 M04
++ Platform:           Unknown
++ Start Time:         2026-02-17 19:23:56 (GMT-7)
+---------------------------------------------------------------------------
++ Server: Werkzeug/3.1.5 Python/3.10.12
++ Multiple IPs found: 18.154.101.42, 18.154.101.127, 18.154.101.103, 18.154.101.37
++ [999986] /: Retrieved via header: 1.1 e5eb6c7f102110906ece71324dc7e664.cloudfront.net (CloudFront).
++ No CGI Directories found (use '-C all' to force check all possible dirs). CGI tests skipped.
++ [600652] Python/3.10.12 appears to be outdated (current is at least 3.13.1).
++ [999962] /: Server banner changed from 'Werkzeug/3.1.5 Python/3.10.12' to 'CloudFront'.
++ [013587] /: Suggested security header missing: referrer-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
++ [013587] /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
++ [013587] /: Suggested security header missing: content-security-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
++ [013587] /: Suggested security header missing: x-content-type-options. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
++ [013587] /: Suggested security header missing: strict-transport-security. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
++ ERROR: *** Error limit (20) reached for host, giving up. Last error: opening stream: ssl connect failed. ***
++ ERROR: *** Consider using mitmproxy to avoid TLS fingerprinting. ***
+- STATUS: Completed 95 requests (~1% complete, ~16.3 minutes left): currently in plugin 'Site Files'
+- STATUS: Running average: Not enough data.
++ Scan terminated: 20 errors and 8 items reported on the remote host
++ End Time:           2026-02-17 19:24:08 (GMT-7) (12 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+      *********************************************************************
+      Portions of the server's headers (Werkzeug/3.1.5) are not in
+      the Nikto 2.6.0 database or are newer than the known string. Would you like
+      to submit this information (*no server specific data*) to CIRT.net
+      for a Nikto update (or you may email to sullo@cirt.net) (y/n)? n

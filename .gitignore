@@ -1,0 +1,20 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+tfplan
+*.tfplan
+terraform.tfvars
+*.auto.tfvars
+
+# OS
+.DS_Store
+**/.DS_Store
+
+# Jenkins / Java
+lab-2/java/
+
+# Secrets
+*.pem
+*.key
+.env

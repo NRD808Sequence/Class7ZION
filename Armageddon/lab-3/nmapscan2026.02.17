@@ -1,0 +1,24 @@
+nslookup app.keepuneat.click 
+Server:		192.168.1.1
+Address:	192.168.1.1#53
+
+Non-authoritative answer:
+Name:	app.keepuneat.click
+Address: 18.154.101.42
+Name:	app.keepuneat.click
+Address: 18.154.101.127
+Name:	app.keepuneat.click
+Address: 18.154.101.103
+Name:	app.keepuneat.click
+Address: 18.154.101.37
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-02-17 19:10 -0700
+Nmap scan report for server-18-154-101-42.den52.r.cloudfront.net (18.154.101.42)
+Host is up (0.013s latency).
+Not shown: 998 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 43.31 seconds
+

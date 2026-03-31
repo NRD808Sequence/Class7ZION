@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(terraform apply:*)",
+      "Bash(aws ssm send-command --instance-ids i-0aaa9a733b564cc06 --region us-east-1 --document-name \"AWS-RunShellScript\" --comment \"Migrate Jenkins home to EBS volume\" --timeout-seconds 300 --parameters 'commands=[:*)",
+      "Bash(aws ssm send-command --instance-ids i-0aaa9a733b564cc06 --region us-east-1 --document-name \"AWS-RunShellScript\" --timeout-seconds 30 --parameters 'commands=[:*)",
+      "Bash(aws ssm:*)"
+    ]
+  }
+}
