@@ -44,7 +44,7 @@ pipeline {
         )
         string(
             name: 'TF_DIR',
-            defaultValue: 'lab-2',
+            defaultValue: 'Armageddon/lab-2',
             description: 'Path to Terraform root (relative to repo root)'
         )
         booleanParam(
