@@ -1,0 +1,22 @@
+{
+  "gate": "network_db",
+  "timestamp_utc": "2026-04-05T15:30:30Z",
+  "region": "us-east-1 ",
+  "instance_id": "i-07be502d81275854c ",
+  "db_id": "vandelay-rds01 ",
+  "engine": "mysql ",
+  "db_port": "3306 ",
+  "publicly_accessible": "False ",
+  "ec2_security_groups": "sg-0733362cfff813d6e ",
+  "rds_security_groups": "sg-0371f51e450798f1a ",
+  "db_subnet_group": "vandelay-rds-subnet-group01 ",
+  "toggles": {
+    "check_private_subnets": false
+  },
+  "status": "PASS ",
+  "exit_code": 0,
+  "details": [
+"PASS: aws sts get-caller-identity succeeded (credentials OK). PASS: RDS instance exists (vandelay-rds01). PASS: RDS is not publicly accessible (PubliclyAccessible=False). PASS: discovered DB port = 3306 (engine=mysql). PASS: EC2 security groups resolved (i-07be502d81275854c): sg-0733362cfff813d6e PASS: RDS security groups resolved (vandelay-rds01): sg-0371f51e450798f1a PASS: RDS SG allows DB port 3306 from EC2 SG (SG-to-SG ingress present). INFO: private subnet check disabled (CHECK_PRIVATE_SUBNETS=false). "],
+  "warnings": [],
+  "failures": []
+}

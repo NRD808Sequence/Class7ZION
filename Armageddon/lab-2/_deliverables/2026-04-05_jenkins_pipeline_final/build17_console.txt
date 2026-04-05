@@ -1,0 +1,659 @@
+Started by user ShogunnMaster
+Replayed #14
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/vandelay-lab2-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/vandelay-lab2-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/NRD808Sequence/Class7ZION.git # timeout=10
+Fetching upstream changes from https://github.com/NRD808Sequence/Class7ZION.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/NRD808Sequence/Class7ZION.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 8b8068349a545ce329bd9c7e792100165ff6d846 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8b8068349a545ce329bd9c7e792100165ff6d846 # timeout=10
+Commit message: "Fix: set TF_DIR default to Armageddon/lab-2 in Jenkinsfile"
+ > git rev-list --no-walk 8b8068349a545ce329bd9c7e792100165ff6d846 # timeout=10
+[Checks API] No suitable checks publisher found.
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse HEAD^{commit} # timeout=10
+The recommended git tool is: git
+No credentials specified
+[GitCheckoutListener] Recording commits of 'git https://github.com/NRD808Sequence/Class7ZION.git'
+[GitCheckoutListener] Found previous build 'vandelay-lab2-pipeline #16' that contains recorded Git commits
+[GitCheckoutListener] -> Starting recording of new commits since '8b80683'
+[GitCheckoutListener] -> Single parent commit found - branch is already descendant of target branch head
+[GitCheckoutListener] -> Using head commit '8b80683' as starting point
+[GitCheckoutListener] -> No new commits found
+[GitCheckoutListener] -> Git commit decorator successfully obtained 'hudson.plugins.git.browser.GithubWeb@68303270' to render commit links
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] timeout
+[2026-04-05T15:12:34.900Z] Timeout set to expire in 1 hr 30 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+[2026-04-05T15:12:35.016Z] The recommended git tool is: git
+[2026-04-05T15:12:35.017Z] No credentials specified
+[2026-04-05T15:12:35.017Z]  > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/vandelay-lab2-pipeline/.git # timeout=10
+[2026-04-05T15:12:35.027Z] Fetching changes from the remote Git repository
+[2026-04-05T15:12:35.029Z]  > git config remote.origin.url https://github.com/NRD808Sequence/Class7ZION.git # timeout=10
+[2026-04-05T15:12:35.082Z] Fetching upstream changes from https://github.com/NRD808Sequence/Class7ZION.git
+[2026-04-05T15:12:35.083Z]  > git --version # timeout=10
+[2026-04-05T15:12:35.099Z]  > git --version # 'git version 2.50.1'
+[2026-04-05T15:12:35.099Z]  > git fetch --tags --force --progress -- https://github.com/NRD808Sequence/Class7ZION.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-04-05T15:12:35.181Z]  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+[2026-04-05T15:12:35.194Z] Checking out Revision 8b8068349a545ce329bd9c7e792100165ff6d846 (refs/remotes/origin/main)
+[2026-04-05T15:12:35.194Z]  > git config core.sparsecheckout # timeout=10
+[2026-04-05T15:12:35.203Z]  > git checkout -f 8b8068349a545ce329bd9c7e792100165ff6d846 # timeout=10
+[2026-04-05T15:12:35.221Z] Commit message: "Fix: set TF_DIR default to Armageddon/lab-2 in Jenkinsfile"
+[2026-04-05T15:12:35.223Z] [Checks API] No suitable checks publisher found.
+[2026-04-05T15:12:35.223Z] [GitCheckoutListener] Skipping recording, since SCM 'git https://github.com/NRD808Sequence/Class7ZION.git' already has been processed
+[Pipeline] echo
+[2026-04-05T15:12:35.289Z] Branch: origin/main | Commit: 8b806834
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (TF Init)
+[Pipeline] dir
+[2026-04-05T15:12:35.516Z] Running in /var/lib/jenkins/workspace/vandelay-lab2-pipeline/Armageddon/lab-2
+[Pipeline] {
+[Pipeline] sh
+[2026-04-05T15:12:35.854Z] + terraform version
+[2026-04-05T15:12:35.854Z] Terraform v1.14.8
+[2026-04-05T15:12:35.854Z] on linux_amd64
+[2026-04-05T15:12:35.854Z] + provider registry.terraform.io/hashicorp/archive v2.7.1
+[2026-04-05T15:12:35.854Z] + provider registry.terraform.io/hashicorp/aws v5.100.0
+[2026-04-05T15:12:35.854Z] + provider registry.terraform.io/hashicorp/null v3.2.4
+[2026-04-05T15:12:35.854Z] + provider registry.terraform.io/hashicorp/random v3.8.1
+[2026-04-05T15:12:35.854Z] + terraform init -backend=true -reconfigure
+[2026-04-05T15:12:35.854Z] Initializing the backend...
+[2026-04-05T15:12:35.854Z] 
+[2026-04-05T15:12:35.854Z] Successfully configured the backend "s3"! Terraform will automatically
+[2026-04-05T15:12:35.854Z] use this backend unless the backend configuration changes.
+[2026-04-05T15:12:36.104Z] Initializing provider plugins...
+[2026-04-05T15:12:36.104Z] - Reusing previous version of hashicorp/archive from the dependency lock file
+[2026-04-05T15:12:36.104Z] - Reusing previous version of hashicorp/random from the dependency lock file
+[2026-04-05T15:12:36.104Z] - Reusing previous version of hashicorp/null from the dependency lock file
+[2026-04-05T15:12:36.104Z] - Reusing previous version of hashicorp/aws from the dependency lock file
+[2026-04-05T15:12:36.104Z] - Installing hashicorp/archive v2.7.1...
+[2026-04-05T15:12:36.655Z] - Installed hashicorp/archive v2.7.1 (signed by HashiCorp)
+[2026-04-05T15:12:36.655Z] - Installing hashicorp/random v3.8.1...
+[2026-04-05T15:12:37.206Z] - Installed hashicorp/random v3.8.1 (signed by HashiCorp)
+[2026-04-05T15:12:37.206Z] - Installing hashicorp/null v3.2.4...
+[2026-04-05T15:12:37.757Z] - Installed hashicorp/null v3.2.4 (signed by HashiCorp)
+[2026-04-05T15:12:37.757Z] - Installing hashicorp/aws v5.100.0...
+[2026-04-05T15:12:52.519Z] - Installed hashicorp/aws v5.100.0 (signed by HashiCorp)
+[2026-04-05T15:12:52.519Z] Terraform has made some changes to the provider dependency selections recorded
+[2026-04-05T15:12:52.519Z] in the .terraform.lock.hcl file. Review those changes and commit them to your
+[2026-04-05T15:12:52.519Z] version control system if they represent changes you intended to make.
+[2026-04-05T15:12:52.519Z] 
+[2026-04-05T15:12:52.519Z] Terraform has been successfully initialized!
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (TF Validate)
+[Pipeline] dir
+[2026-04-05T15:12:52.711Z] Running in /var/lib/jenkins/workspace/vandelay-lab2-pipeline/Armageddon/lab-2
+[Pipeline] {
+[Pipeline] sh
+[2026-04-05T15:12:53.013Z] + terraform validate
+[2026-04-05T15:12:59.494Z] Success! The configuration is valid.
+[2026-04-05T15:12:59.494Z] 
+[2026-04-05T15:12:59.494Z] + terraform fmt -check -recursive
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (TF Plan)
+[Pipeline] withCredentials
+[2026-04-05T15:12:59.871Z] Masking supported pattern matches of $TF_VAR_db_password
+[Pipeline] {
+[Pipeline] dir
+[2026-04-05T15:12:59.912Z] Running in /var/lib/jenkins/workspace/vandelay-lab2-pipeline/Armageddon/lab-2
+[Pipeline] {
+[Pipeline] sh
+[2026-04-05T15:13:00.227Z] + terraform plan -out=tfplan -detailed-exitcode
+[2026-04-05T15:13:08.259Z] data.archive_file.incident_reporter_zip: Reading...
+[2026-04-05T15:13:08.259Z] random_password.vandelay_origin_secret01: Refreshing state... [id=none]
+[2026-04-05T15:13:08.259Z] data.archive_file.incident_reporter_zip: Read complete after 0s [id=15cd71387977ca6d3e101eed4610cf31fc46094a]
+[2026-04-05T15:13:08.259Z] data.aws_secretsmanager_secret.vandelay_db_secret01: Reading...
+[2026-04-05T15:13:08.259Z] data.aws_ec2_managed_prefix_list.vandelay_cf_origin_facing01: Reading...
+[2026-04-05T15:13:08.259Z] aws_vpc.vandelay_vpc01: Refreshing state... [id=vpc-07f63d2e128b8b78c]
+[2026-04-05T15:13:08.259Z] aws_cloudfront_origin_request_policy.vandelay_orp_static01: Refreshing state... [id=8b6d7d0d-4b21-44df-880f-27ef82b6ff57]
+[2026-04-05T15:13:08.259Z] aws_sns_topic.vandelay_sns_topic01: Refreshing state... [id=arn:aws:sns:us-east-1:212809501772:vandelay-db-incidents]
+[2026-04-05T15:13:08.259Z] data.aws_caller_identity.current: Reading...
+[2026-04-05T15:13:08.259Z] aws_cloudfront_response_headers_policy.vandelay_rsp_static01: Refreshing state... [id=6f3ef015-fcbb-423b-96d6-cb4219fd7974]
+[2026-04-05T15:13:08.259Z] aws_ssm_parameter.vandelay_db_name: Refreshing state... [id=/vandelay/db/name]
+[2026-04-05T15:13:08.259Z] data.aws_serverlessapplicationrepository_application.secrets_manager_rotation: Reading...
+[2026-04-05T15:13:08.259Z] aws_cloudwatch_log_group.vandelay_log_group01: Refreshing state... [id=/aws/ec2/vandelay-rds-app]
+[2026-04-05T15:13:08.259Z] data.aws_caller_identity.current: Read complete after 0s [id=212809501772]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_origin_request_policy.vandelay_orp_all_viewer: Reading...
+[2026-04-05T15:13:08.259Z] data.aws_secretsmanager_secret.vandelay_db_secret01: Read complete after 0s [id=arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_cache_policy.vandelay_use_origin_headers01: Reading...
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_origin_request_policy.vandelay_orp_all_viewer: Read complete after 0s [id=b689b0a8-53d0-40ab-baf2-68738e2966ac]
+[2026-04-05T15:13:08.259Z] aws_iam_role.vandelay_ec2_role01: Refreshing state... [id=vandelay-ec2-role01]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_cache_policy.vandelay_use_origin_headers01: Read complete after 0s [id=658327ea-f89d-4fab-a63d-7e88639e58f6]
+[2026-04-05T15:13:08.259Z] aws_eip.vandelay_nat_eip01: Refreshing state... [id=eipalloc-066643f2eff66dc8a]
+[2026-04-05T15:13:08.259Z] aws_iam_role.incident_reporter_role: Refreshing state... [id=vandelay-incident-reporter-role]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_cache_policy.vandelay_caching_disabled: Reading...
+[2026-04-05T15:13:08.259Z] aws_iam_role.rotation_lambda_role: Refreshing state... [id=vandelay-rotation-lambda-role]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_cache_policy.vandelay_use_origin_headers_qs01: Reading...
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_cache_policy.vandelay_caching_disabled: Read complete after 0s [id=4135ea2d-6df8-44a3-9df3-4b5a84be39ad]
+[2026-04-05T15:13:08.259Z] aws_iam_role.vandelay_jenkins_role: Refreshing state... [id=vandelay-jenkins-role]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_cache_policy.vandelay_use_origin_headers_qs01: Read complete after 0s [id=b2884449-e4de-46a7-ac36-70bc7f1ddd6d]
+[2026-04-05T15:13:08.259Z] data.aws_cloudfront_origin_request_policy.vandelay_orp_all_viewer01: Reading...
+[2026-04-05T15:13:08.259Z] data.aws_ec2_managed_prefix_list.vandelay_cf_origin_facing01: Read complete after 0s [id=pl-3b927c52]
+[2026-04-05T15:13:08.510Z] data.aws_cloudfront_origin_request_policy.vandelay_orp_all_viewer01: Read complete after 0s [id=216adef6-5c7f-47e4-b989-5492eafa07d3]
+[2026-04-05T15:13:08.510Z] aws_ebs_volume.vandelay_jenkins_data: Refreshing state... [id=vol-0f20219f677bf1d78]
+[2026-04-05T15:13:08.510Z] aws_cloudfront_cache_policy.vandelay_cache_static01: Refreshing state... [id=ed790306-73c2-4abf-93e7-9330d415dd80]
+[2026-04-05T15:13:08.510Z] aws_acm_certificate.vandelay_cert: Refreshing state... [id=arn:aws:acm:us-east-1:212809501772:certificate/e5ee1298-c99e-42d6-8271-88a2bfb87b21]
+[2026-04-05T15:13:08.510Z] aws_ssm_parameter.vandelay_db_name_param: Refreshing state... [id=/lab/db/name]
+[2026-04-05T15:13:08.510Z] data.aws_route53_zone.vandelay_zone: Reading...
+[2026-04-05T15:13:08.510Z] data.aws_cloudfront_origin_request_policy.vandelay_orp_all_viewer_except_host01: Reading...
+[2026-04-05T15:13:08.510Z] aws_cloudwatch_log_group.vandelay_waf_logs: Refreshing state... [id=aws-waf-logs-vandelay-webacl]
+[2026-04-05T15:13:08.510Z] data.aws_serverlessapplicationrepository_application.secrets_manager_rotation: Read complete after 0s [id=arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSMySQLRotationSingleUser]
+[2026-04-05T15:13:08.510Z] data.aws_cloudfront_origin_request_policy.vandelay_orp_all_viewer_except_host01: Read complete after 0s [id=b689b0a8-53d0-40ab-baf2-68738e2966ac]
+[2026-04-05T15:13:08.510Z] data.aws_region.vandelay_region01: Reading...
+[2026-04-05T15:13:08.510Z] data.aws_caller_identity.vandelay_self01: Reading...
+[2026-04-05T15:13:08.510Z] data.aws_region.vandelay_region01: Read complete after 0s [id=us-east-1]
+[2026-04-05T15:13:08.510Z] aws_s3_bucket.incident_reports: Refreshing state... [id=vandelay-incident-reports-212809501772]
+[2026-04-05T15:13:08.510Z] aws_s3_bucket.vandelay_alb_logs[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:08.510Z] data.aws_caller_identity.vandelay_self01: Read complete after 0s [id=212809501772]
+[2026-04-05T15:13:08.510Z] aws_iam_policy.vandelay_leastpriv_read_secret01: Refreshing state... [id=arn:aws:iam::212809501772:policy/vandelay-lp-secrets-read01]
+[2026-04-05T15:13:08.510Z] data.aws_secretsmanager_secret_version.vandelay_db_secret_version01: Reading...
+[2026-04-05T15:13:08.761Z] aws_sns_topic_subscription.vandelay_sns_sub01: Refreshing state... [id=arn:aws:sns:us-east-1:212809501772:vandelay-db-incidents:0197a848-fae8-49ef-9b76-4934280f2cc7]
+[2026-04-05T15:13:08.761Z] aws_cloudwatch_metric_alarm.vandelay_db_alarm01: Refreshing state... [id=vandelay-db-connection-failure]
+[2026-04-05T15:13:08.761Z] data.aws_secretsmanager_secret_version.vandelay_db_secret_version01: Read complete after 1s [id=arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie|AWSCURRENT]
+[2026-04-05T15:13:08.761Z] data.aws_route53_zone.vandelay_zone: Read complete after 1s [id=Z07421622AG1WUIDW7VC3]
+[2026-04-05T15:13:08.761Z] aws_iam_policy.vandelay_leastpriv_cwlogs01: Refreshing state... [id=arn:aws:iam::212809501772:policy/vandelay-lp-cwlogs01]
+[2026-04-05T15:13:08.761Z] aws_iam_instance_profile.vandelay_instance_profile01: Refreshing state... [id=vandelay-instance-profile01]
+[2026-04-05T15:13:08.761Z] aws_iam_role_policy.vandelay_ec2_read_secret: Refreshing state... [id=vandelay-ec2-role01:vandelay-ec2-read-secret-policy]
+[2026-04-05T15:13:08.761Z] aws_iam_role_policy_attachment.vandelay_ec2_ssm_attach: Refreshing state... [id=vandelay-ec2-role01-20260405052502473200000006]
+[2026-04-05T15:13:08.761Z] aws_iam_role_policy_attachment.vandelay_ec2_cw_attach: Refreshing state... [id=vandelay-ec2-role01-20260405052502492200000007]
+[2026-04-05T15:13:09.011Z] aws_iam_instance_profile.vandelay_jenkins_profile: Refreshing state... [id=vandelay-jenkins-profile]
+[2026-04-05T15:13:09.011Z] aws_iam_role_policy_attachment.vandelay_jenkins_cw: Refreshing state... [id=vandelay-jenkins-role-20260405052502249600000004]
+[2026-04-05T15:13:09.011Z] aws_iam_role_policy_attachment.rotation_lambda_vpc: Refreshing state... [id=vandelay-rotation-lambda-role-20260405052502167200000001]
+[2026-04-05T15:13:09.011Z] aws_iam_role_policy.rotation_lambda_policy: Refreshing state... [id=vandelay-rotation-lambda-role:vandelay-rotation-lambda-policy]
+[2026-04-05T15:13:09.011Z] aws_iam_role_policy_attachment.rotation_lambda_basic: Refreshing state... [id=vandelay-rotation-lambda-role-20260405052502511900000008]
+[2026-04-05T15:13:09.011Z] aws_iam_role_policy_attachment.vandelay_jenkins_ssm: Refreshing state... [id=vandelay-jenkins-role-20260405052502219300000003]
+[2026-04-05T15:13:09.011Z] aws_iam_role_policy.incident_reporter_bedrock: Refreshing state... [id=vandelay-incident-reporter-role:vandelay-incident-reporter-bedrock]
+[2026-04-05T15:13:09.262Z] aws_iam_policy.vandelay_leastpriv_read_params01: Refreshing state... [id=arn:aws:iam::212809501772:policy/vandelay-lp-ssm-read01]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy.vandelay_jenkins_terraform: Refreshing state... [id=vandelay-jenkins-role:VandelayTerraformDeployPolicy]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy.incident_reporter_secrets: Refreshing state... [id=vandelay-incident-reporter-role:vandelay-incident-reporter-secrets]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy.incident_reporter_sns: Refreshing state... [id=vandelay-incident-reporter-role:vandelay-incident-reporter-sns]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy.incident_reporter_logs: Refreshing state... [id=vandelay-incident-reporter-role:vandelay-incident-reporter-logs]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy.incident_reporter_ssm: Refreshing state... [id=vandelay-incident-reporter-role:vandelay-incident-reporter-ssm]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy_attachment.incident_reporter_basic: Refreshing state... [id=vandelay-incident-reporter-role-20260405052502470000000005]
+[2026-04-05T15:13:09.262Z] aws_iam_role_policy_attachment.vandelay_attach_lp_secret01: Refreshing state... [id=vandelay-ec2-role01-20260405052502612600000009]
+[2026-04-05T15:13:09.262Z] aws_security_group.vandelay_alb_sg01: Refreshing state... [id=sg-0a44d80dcb3ebe0ee]
+[2026-04-05T15:13:09.262Z] aws_subnet.vandelay_public_subnets[0]: Refreshing state... [id=subnet-0a40900984a4ec239]
+[2026-04-05T15:13:09.262Z] aws_internet_gateway.vandelay_igw01: Refreshing state... [id=igw-0b158a3aa0b8b10a1]
+[2026-04-05T15:13:09.262Z] aws_subnet.vandelay_public_subnets[1]: Refreshing state... [id=subnet-0109002d0b807ed61]
+[2026-04-05T15:13:09.513Z] aws_subnet.vandelay_private_subnets[1]: Refreshing state... [id=subnet-044b00f7e4585e545]
+[2026-04-05T15:13:09.513Z] aws_security_group.vandelay_jenkins_sg: Refreshing state... [id=sg-06eee3931828b09bb]
+[2026-04-05T15:13:09.513Z] aws_subnet.vandelay_private_subnets[0]: Refreshing state... [id=subnet-0b06248764f97abf5]
+[2026-04-05T15:13:09.513Z] aws_route_table.vandelay_private_rt01: Refreshing state... [id=rtb-0e302b1849b86eb5c]
+[2026-04-05T15:13:09.513Z] aws_route_table.vandelay_public_rt01: Refreshing state... [id=rtb-0a8f7857189501c4b]
+[2026-04-05T15:13:09.513Z] aws_security_group.rotation_lambda_sg: Refreshing state... [id=sg-06d748dc00c8a8f78]
+[2026-04-05T15:13:09.513Z] aws_lb_target_group.vandelay_tg01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:targetgroup/vandelay-tg01/5eaf979559571e1d]
+[2026-04-05T15:13:09.763Z] aws_iam_role_policy_attachment.vandelay_attach_lp_cwlogs01: Refreshing state... [id=vandelay-ec2-role01-20260405143949368000000004]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_server_side_encryption_configuration.incident_reports: Refreshing state... [id=vandelay-incident-reports-212809501772]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_versioning.incident_reports: Refreshing state... [id=vandelay-incident-reports-212809501772]
+[2026-04-05T15:13:09.763Z] aws_lambda_function.incident_reporter: Refreshing state... [id=vandelay-incident-reporter]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_public_access_block.incident_reports: Refreshing state... [id=vandelay-incident-reports-212809501772]
+[2026-04-05T15:13:09.763Z] aws_iam_role_policy.incident_reporter_s3: Refreshing state... [id=vandelay-incident-reporter-role:vandelay-incident-reporter-s3]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_public_access_block.vandelay_alb_logs_pab[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_server_side_encryption_configuration.vandelay_alb_logs_sse[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_versioning.vandelay_alb_logs_versioning[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_lifecycle_configuration.vandelay_alb_logs_lifecycle[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:09.763Z] aws_s3_bucket_ownership_controls.vandelay_alb_logs_owner[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:09.763Z] aws_route53_record.vandelay_cert_validation["*.keepuneat.click"]: Refreshing state... [id=Z07421622AG1WUIDW7VC3__8a9b7dc35375689165ec9fcefdd02cde.keepuneat.click._CNAME]
+[2026-04-05T15:13:10.014Z] aws_route53_record.vandelay_cert_validation["keepuneat.click"]: Refreshing state... [id=Z07421622AG1WUIDW7VC3__8a9b7dc35375689165ec9fcefdd02cde.keepuneat.click._CNAME]
+[2026-04-05T15:13:10.014Z] aws_route53_record.vandelay_cert_validation["app.keepuneat.click"]: Refreshing state... [id=Z07421622AG1WUIDW7VC3__a1830e57280623936855a533b94fd09c.app.keepuneat.click._CNAME]
+[2026-04-05T15:13:10.264Z] aws_iam_role_policy_attachment.vandelay_attach_lp_params01: Refreshing state... [id=vandelay-ec2-role01-20260405052502192000000002]
+[2026-04-05T15:13:10.264Z] aws_security_group_rule.vandelay_alb_ingress_cf80: Refreshing state... [id=sgrule-941617283]
+[2026-04-05T15:13:10.264Z] aws_vpc_endpoint.vandelay_vpce_s3_gw01: Refreshing state... [id=vpce-0495f8199efa600d7]
+[2026-04-05T15:13:10.264Z] aws_security_group.vandelay_ec2_sg01: Refreshing state... [id=sg-0733362cfff813d6e]
+[2026-04-05T15:13:10.264Z] aws_lb.vandelay_alb01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:loadbalancer/app/vandelay-alb01/1c936814b22a7775]
+[2026-04-05T15:13:10.264Z] aws_nat_gateway.vandelay_nat01: Refreshing state... [id=nat-02e488d821a685749]
+[2026-04-05T15:13:10.517Z] aws_db_subnet_group.vandelay_rds_subnet_group01: Refreshing state... [id=vandelay-rds-subnet-group01]
+[2026-04-05T15:13:10.517Z] aws_route_table_association.vandelay_private_rta[0]: Refreshing state... [id=rtbassoc-02f71795852991f35]
+[2026-04-05T15:13:10.517Z] aws_route_table_association.vandelay_private_rta[1]: Refreshing state... [id=rtbassoc-0cd4a8ce79d681535]
+[2026-04-05T15:13:10.517Z] aws_serverlessapplicationrepository_cloudformation_stack.rotation_lambda: Refreshing state... [id=arn:aws:cloudformation:us-east-1:212809501772:stack/serverlessrepo-vandelay-mysql-rotation/a15ae0b0-30fe-11f1-ba9f-12ca9f6188ad]
+[2026-04-05T15:13:10.517Z] aws_instance.vandelay_jenkins: Refreshing state... [id=i-0878a0ddfe28e5624]
+[2026-04-05T15:13:10.769Z] aws_route_table_association.vandelay_public_rta[0]: Refreshing state... [id=rtbassoc-0c1a1ade37539e052]
+[2026-04-05T15:13:10.769Z] aws_route.vandelay_public_default_route: Refreshing state... [id=r-rtb-0a8f7857189501c4b1080289494]
+[2026-04-05T15:13:10.769Z] aws_route_table_association.vandelay_public_rta[1]: Refreshing state... [id=rtbassoc-00f8f819d5d6a826d]
+[2026-04-05T15:13:10.769Z] aws_s3_bucket_policy.vandelay_alb_logs_policy[0]: Refreshing state... [id=vandelay-alb-logs-212809501772]
+[2026-04-05T15:13:10.769Z] aws_sns_topic_subscription.incident_reporter_sub: Refreshing state... [id=arn:aws:sns:us-east-1:212809501772:vandelay-db-incidents:d0aa257a-e0ea-4a53-bfb4-10df17b2f714]
+[2026-04-05T15:13:11.019Z] aws_lambda_permission.incident_reporter_sns: Refreshing state... [id=AllowSNSInvoke]
+[2026-04-05T15:13:11.019Z] aws_acm_certificate_validation.vandelay_cert_validated: Refreshing state... [id=2026-04-05 05:07:31.459 +0000 UTC]
+[2026-04-05T15:13:11.019Z] aws_route.vandelay_private_default_route: Refreshing state... [id=r-rtb-0e302b1849b86eb5c1080289494]
+[2026-04-05T15:13:11.019Z] aws_security_group.vandelay_rds_sg01: Refreshing state... [id=sg-0371f51e450798f1a]
+[2026-04-05T15:13:11.019Z] aws_instance.vandelay_ec201: Refreshing state... [id=i-07be502d81275854c]
+[2026-04-05T15:13:11.019Z] aws_security_group.vpce_sg: Refreshing state... [id=sg-06da4ed964924cadc]
+[2026-04-05T15:13:11.270Z] aws_security_group.vandelay_vpce_sg01: Refreshing state... [id=sg-0c986236436a9f5e0]
+[2026-04-05T15:13:11.270Z] aws_instance.vandelay_ec201_private_bonus: Refreshing state... [id=i-035f0315cbd8e5141]
+[2026-04-05T15:13:11.270Z] aws_cloudwatch_metric_alarm.vandelay_alb_5xx_alarm: Refreshing state... [id=vandelay-alb-5xx-alarm]
+[2026-04-05T15:13:11.270Z] aws_cloudwatch_dashboard.vandelay_dashboard01: Refreshing state... [id=vandelay-dashboard01]
+[2026-04-05T15:13:11.270Z] aws_lb_listener.vandelay_http_listener: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:listener/app/vandelay-alb01/1c936814b22a7775/f65cbedab62f7f63]
+[2026-04-05T15:13:11.270Z] aws_wafv2_web_acl.vandelay_waf01: Refreshing state... [id=035d9b2a-d505-47df-8bb7-7ad22985a8ca]
+[2026-04-05T15:13:11.270Z] aws_lambda_permission.secrets_manager_rotation: Refreshing state... [id=AllowSecretsManagerInvocation]
+[2026-04-05T15:13:11.270Z] aws_wafv2_web_acl.vandelay_cf_waf01: Refreshing state... [id=cf55b7ba-b72f-4d37-abe9-b2f95e3a7aa6]
+[2026-04-05T15:13:11.521Z] aws_db_instance.vandelay_rds01: Refreshing state... [id=db-PX3OGWU5PFJGP53TNXDQMPKJF4]
+[2026-04-05T15:13:11.521Z] aws_lb_listener.vandelay_https_listener: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:listener/app/vandelay-alb01/1c936814b22a7775/5664f290409f5c31]
+[2026-04-05T15:13:11.521Z] aws_vpc_endpoint.secretsmanager: Refreshing state... [id=vpce-07661c6c9fcd1b0cc]
+[2026-04-05T15:13:11.521Z] aws_vpc_endpoint.vandelay_vpce_monitoring: Refreshing state... [id=vpce-06f9a294ecc17d4ae]
+[2026-04-05T15:13:11.521Z] aws_vpc_endpoint.vandelay_vpce_ssmmessages01: Refreshing state... [id=vpce-0afea7fad91935c18]
+[2026-04-05T15:13:11.521Z] aws_vpc_endpoint.vandelay_vpce_logs01: Refreshing state... [id=vpce-01bb9c6685a4555a9]
+[2026-04-05T15:13:11.521Z] aws_vpc_endpoint.vandelay_vpce_ec2messages01: Refreshing state... [id=vpce-092320811f88ebe85]
+[2026-04-05T15:13:12.864Z] aws_vpc_endpoint.vandelay_vpce_kms01: Refreshing state... [id=vpce-07a5a1d001548890c]
+[2026-04-05T15:13:12.864Z] aws_vpc_endpoint.vandelay_vpce_ssm01: Refreshing state... [id=vpce-08565365e4d7ded7d]
+[2026-04-05T15:13:12.864Z] aws_lb_listener_rule.vandelay_require_origin_header01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:listener-rule/app/vandelay-alb01/1c936814b22a7775/f65cbedab62f7f63/93cf4a9d9e1ea8ad]
+[2026-04-05T15:13:12.864Z] aws_lb_listener_rule.vandelay_default_block01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:listener-rule/app/vandelay-alb01/1c936814b22a7775/f65cbedab62f7f63/8f348baaeb13261d]
+[2026-04-05T15:13:12.864Z] aws_secretsmanager_secret_rotation.vandelay_db_rotation: Refreshing state... [id=arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie]
+[2026-04-05T15:13:12.864Z] aws_ssm_parameter.vandelay_db_endpoint: Refreshing state... [id=/vandelay/db/endpoint]
+[2026-04-05T15:13:12.864Z] aws_ssm_parameter.vandelay_db_endpoint_param: Refreshing state... [id=/lab/db/endpoint]
+[2026-04-05T15:13:12.864Z] aws_ssm_parameter.vandelay_db_port_param: Refreshing state... [id=/lab/db/port]
+[2026-04-05T15:13:12.864Z] aws_ssm_parameter.vandelay_db_port: Refreshing state... [id=/vandelay/db/port]
+[2026-04-05T15:13:12.864Z] aws_lb_target_group_attachment.vandelay_tg_attachment01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:212809501772:targetgroup/vandelay-tg01/5eaf979559571e1d-20260405144005335200000006]
+[2026-04-05T15:13:13.115Z] aws_volume_attachment.vandelay_jenkins_data: Refreshing state... [id=vai-668960203]
+[2026-04-05T15:13:19.596Z] aws_wafv2_web_acl_logging_configuration.vandelay_waf_logging: Refreshing state... [id=arn:aws:wafv2:us-east-1:212809501772:regional/webacl/vandelay-waf01/035d9b2a-d505-47df-8bb7-7ad22985a8ca]
+[2026-04-05T15:13:19.596Z] aws_wafv2_web_acl_association.vandelay_waf_alb_assoc: Refreshing state... [id=arn:aws:wafv2:us-east-1:212809501772:regional/webacl/vandelay-waf01/035d9b2a-d505-47df-8bb7-7ad22985a8ca,arn:aws:elasticloadbalancing:us-east-1:212809501772:loadbalancer/app/vandelay-alb01/1c936814b22a7775]
+[2026-04-05T15:13:19.596Z] aws_cloudfront_distribution.vandelay_cf01: Refreshing state... [id=E2J9Y6PVQFFAD2]
+[2026-04-05T15:13:19.596Z] aws_route53_record.vandelay_apex_to_cf01: Refreshing state... [id=Z07421622AG1WUIDW7VC3_keepuneat.click_A]
+[2026-04-05T15:13:19.596Z] null_resource.vandelay_cache_invalidation01: Refreshing state... [id=5875168542821987902]
+[2026-04-05T15:13:19.596Z] aws_route53_record.vandelay_app_to_cf01: Refreshing state... [id=Z07421622AG1WUIDW7VC3_app.keepuneat.click_A]
+[2026-04-05T15:13:20.939Z] 
+[2026-04-05T15:13:20.939Z] Terraform used the selected providers to generate the following execution
+[2026-04-05T15:13:20.939Z] plan. Resource actions are indicated with the following symbols:
+[2026-04-05T15:13:20.939Z]   ~ update in-place
+[2026-04-05T15:13:20.939Z] 
+[2026-04-05T15:13:20.939Z] Terraform will perform the following actions:
+[2026-04-05T15:13:20.939Z] 
+[2026-04-05T15:13:20.939Z]   # aws_secretsmanager_secret_rotation.vandelay_db_rotation will be updated in-place
+[2026-04-05T15:13:20.939Z]   ~ resource "aws_secretsmanager_secret_rotation" "vandelay_db_rotation" {
+[2026-04-05T15:13:20.939Z]         id                  = "arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie"
+[2026-04-05T15:13:20.939Z]       + rotate_immediately  = true
+[2026-04-05T15:13:20.939Z]         # (3 unchanged attributes hidden)
+[2026-04-05T15:13:20.939Z] 
+[2026-04-05T15:13:20.939Z]         # (1 unchanged block hidden)
+[2026-04-05T15:13:20.939Z]     }
+[2026-04-05T15:13:20.939Z] 
+[2026-04-05T15:13:20.939Z] Plan: 0 to add, 1 to change, 0 to destroy.
+[2026-04-05T15:13:20.939Z] + true
+[2026-04-05T15:13:20.939Z] + tee tfplan.txt
+[2026-04-05T15:13:20.939Z] + terraform show -no-color tfplan
+[2026-04-05T15:13:26.134Z] 
+[2026-04-05T15:13:26.134Z] Terraform used the selected providers to generate the following execution
+[2026-04-05T15:13:26.134Z] plan. Resource actions are indicated with the following symbols:
+[2026-04-05T15:13:26.134Z]   ~ update in-place
+[2026-04-05T15:13:26.134Z] 
+[2026-04-05T15:13:26.134Z] Terraform will perform the following actions:
+[2026-04-05T15:13:26.134Z] 
+[2026-04-05T15:13:26.134Z]   # aws_secretsmanager_secret_rotation.vandelay_db_rotation will be updated in-place
+[2026-04-05T15:13:26.134Z]   ~ resource "aws_secretsmanager_secret_rotation" "vandelay_db_rotation" {
+[2026-04-05T15:13:26.134Z]         id                  = "arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie"
+[2026-04-05T15:13:26.134Z]       + rotate_immediately  = true
+[2026-04-05T15:13:26.134Z]         # (3 unchanged attributes hidden)
+[2026-04-05T15:13:26.134Z] 
+[2026-04-05T15:13:26.134Z]         # (1 unchanged block hidden)
+[2026-04-05T15:13:26.134Z]     }
+[2026-04-05T15:13:26.134Z] 
+[2026-04-05T15:13:26.134Z] Plan: 0 to add, 1 to change, 0 to destroy.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] archiveArtifacts
+[2026-04-05T15:13:26.278Z] Archiving artifacts
+[2026-04-05T15:13:26.280Z] Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (TF Plan (Destroy Preview))
+Stage "TF Plan (Destroy Preview)" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Approval Gate)
+[Pipeline] input
+[2026-04-05T15:13:26.610Z] 
+[2026-04-05T15:13:26.610Z]                     Review the plan artifact (tfplan.txt) attached to this build.
+[2026-04-05T15:13:26.610Z]                     Click PROCEED to apply or ABORT to cancel.
+[2026-04-05T15:13:26.610Z] 
+[2026-04-05T15:13:26.610Z]                     Branch:  origin/main
+[2026-04-05T15:13:26.610Z]                     Commit:  8b806834
+[2026-04-05T15:13:26.610Z]                     Region:  us-east-1
+[2026-04-05T15:13:26.610Z]                     
+[2026-04-05T15:13:26.610Z] PROCEED — Apply to AWS or Abort
+[2026-04-05T15:27:56.108Z] Approved by ShogunnMaster
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Destroy Approval Gate)
+Stage "Destroy Approval Gate" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (TF Apply)
+[Pipeline] withCredentials
+[2026-04-05T15:27:56.479Z] Masking supported pattern matches of $TF_VAR_db_password
+[Pipeline] {
+[Pipeline] dir
+[2026-04-05T15:27:56.517Z] Running in /var/lib/jenkins/workspace/vandelay-lab2-pipeline/Armageddon/lab-2
+[Pipeline] {
+[Pipeline] sh
+[2026-04-05T15:27:56.819Z] + terraform init -backend=true -reconfigure
+[2026-04-05T15:27:56.819Z] Initializing the backend...
+[2026-04-05T15:27:59.302Z] 
+[2026-04-05T15:27:59.302Z] Successfully configured the backend "s3"! Terraform will automatically
+[2026-04-05T15:27:59.302Z] use this backend unless the backend configuration changes.
+[2026-04-05T15:28:01.785Z] Initializing provider plugins...
+[2026-04-05T15:28:01.785Z] - Reusing previous version of hashicorp/random from the dependency lock file
+[2026-04-05T15:28:01.785Z] - Reusing previous version of hashicorp/null from the dependency lock file
+[2026-04-05T15:28:01.785Z] - Reusing previous version of hashicorp/archive from the dependency lock file
+[2026-04-05T15:28:01.785Z] - Reusing previous version of hashicorp/aws from the dependency lock file
+[2026-04-05T15:28:02.035Z] - Using previously-installed hashicorp/random v3.8.1
+[2026-04-05T15:28:02.035Z] - Using previously-installed hashicorp/null v3.2.4
+[2026-04-05T15:28:02.286Z] - Using previously-installed hashicorp/archive v2.7.1
+[2026-04-05T15:28:04.769Z] - Using previously-installed hashicorp/aws v5.100.0
+[2026-04-05T15:28:04.769Z] 
+[2026-04-05T15:28:04.769Z] Terraform has been successfully initialized!
+[2026-04-05T15:28:04.769Z] + terraform apply -auto-approve tfplan
+[2026-04-05T15:28:09.963Z] aws_secretsmanager_secret_rotation.vandelay_db_rotation: Modifying... [id=arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie]
+[2026-04-05T15:28:09.963Z] aws_secretsmanager_secret_rotation.vandelay_db_rotation: Modifications complete after 0s [id=arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie]
+[2026-04-05T15:28:09.963Z] 
+[2026-04-05T15:28:09.963Z] Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+[2026-04-05T15:28:09.963Z] 
+[2026-04-05T15:28:09.963Z] Outputs:
+[2026-04-05T15:28:09.963Z] 
+[2026-04-05T15:28:09.963Z] app_urls = {
+[2026-04-05T15:28:09.963Z]   "add" = "http://35.175.217.81/add?note=hello_vandelay"
+[2026-04-05T15:28:09.963Z]   "home" = "http://35.175.217.81/"
+[2026-04-05T15:28:09.963Z]   "init" = "http://35.175.217.81/init"
+[2026-04-05T15:28:09.963Z]   "list" = "http://35.175.217.81/list"
+[2026-04-05T15:28:09.963Z] }
+[2026-04-05T15:28:09.963Z] ec2_instance_id = "i-07be502d81275854c"
+[2026-04-05T15:28:09.963Z] ec2_public_dns = "ec2-35-175-217-81.compute-1.amazonaws.com"
+[2026-04-05T15:28:09.963Z] ec2_public_ip = "35.175.217.81"
+[2026-04-05T15:28:09.963Z] ec2_security_group_id = "sg-0733362cfff813d6e"
+[2026-04-05T15:28:09.963Z] gate_script_variables = {
+[2026-04-05T15:28:09.963Z]   "DB_ID" = "vandelay-rds01"
+[2026-04-05T15:28:09.963Z]   "INSTANCE_ID" = "i-07be502d81275854c"
+[2026-04-05T15:28:09.963Z]   "REGION" = "us-east-1"
+[2026-04-05T15:28:09.963Z]   "SECRET_ID" = "lab/rds/mysql"
+[2026-04-05T15:28:09.963Z] }
+[2026-04-05T15:28:09.963Z] iam_role_name = "vandelay-ec2-role01"
+[2026-04-05T15:28:09.963Z] incident_reporter_arn = "arn:aws:lambda:us-east-1:212809501772:function:vandelay-incident-reporter"
+[2026-04-05T15:28:09.963Z] incident_reporter_function_name = "vandelay-incident-reporter"
+[2026-04-05T15:28:09.964Z] incident_reports_bucket = "vandelay-incident-reports-212809501772"
+[2026-04-05T15:28:09.964Z] instance_profile_name = "vandelay-instance-profile01"
+[2026-04-05T15:28:09.964Z] jenkins_initial_password_cmd = "aws ssm start-session --target i-0878a0ddfe28e5624 --region us-east-1 --document-name AWS-StartInteractiveCommand --parameters 'command=sudo cat /var/lib/jenkins/secrets/initialAdminPassword'"
+[2026-04-05T15:28:09.964Z] jenkins_instance_id = "i-0878a0ddfe28e5624"
+[2026-04-05T15:28:09.964Z] jenkins_public_ip = "44.210.136.8"
+[2026-04-05T15:28:09.964Z] jenkins_url = "http://44.210.136.8:8080"
+[2026-04-05T15:28:09.964Z] log_group_name = "/aws/ec2/vandelay-rds-app"
+[2026-04-05T15:28:09.964Z] private_subnet_ids = [
+[2026-04-05T15:28:09.964Z]   "subnet-0b06248764f97abf5",
+[2026-04-05T15:28:09.964Z]   "subnet-044b00f7e4585e545",
+[2026-04-05T15:28:09.964Z] ]
+[2026-04-05T15:28:09.964Z] public_subnet_ids = [
+[2026-04-05T15:28:09.964Z]   "subnet-0a40900984a4ec239",
+[2026-04-05T15:28:09.964Z]   "subnet-0109002d0b807ed61",
+[2026-04-05T15:28:09.964Z] ]
+[2026-04-05T15:28:09.964Z] rds_endpoint = "vandelay-rds01.cmrys4aosktq.us-east-1.rds.amazonaws.com"
+[2026-04-05T15:28:09.964Z] rds_identifier = "vandelay-rds01"
+[2026-04-05T15:28:09.964Z] rds_port = 3306
+[2026-04-05T15:28:09.964Z] rds_security_group_id = "sg-0371f51e450798f1a"
+[2026-04-05T15:28:09.964Z] rotation_lambda_name = "vandelay-mysql-rotation-lambda"
+[2026-04-05T15:28:09.964Z] secret_arn = "arn:aws:secretsmanager:us-east-1:212809501772:secret:lab/rds/mysql-x7lYie"
+[2026-04-05T15:28:09.964Z] secret_name = "lab/rds/mysql"
+[2026-04-05T15:28:09.964Z] secret_rotation_enabled = true
+[2026-04-05T15:28:09.964Z] sns_topic_arn = "arn:aws:sns:us-east-1:212809501772:vandelay-db-incidents"
+[2026-04-05T15:28:09.964Z] vandelay_alb_logs_bucket = "vandelay-alb-logs-212809501772"
+[2026-04-05T15:28:09.964Z] vandelay_alb_logs_bucket_arn = "arn:aws:s3:::vandelay-alb-logs-212809501772"
+[2026-04-05T15:28:09.964Z] vandelay_app_url_via_cloudfront = "https://app.keepuneat.click"
+[2026-04-05T15:28:09.964Z] vandelay_cache_policy_api_id = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+[2026-04-05T15:28:09.964Z] vandelay_cache_policy_static_id = "ed790306-73c2-4abf-93e7-9330d415dd80"
+[2026-04-05T15:28:09.964Z] vandelay_cf_waf_arn = "arn:aws:wafv2:us-east-1:212809501772:global/webacl/vandelay-cf-waf01/cf55b7ba-b72f-4d37-abe9-b2f95e3a7aa6"
+[2026-04-05T15:28:09.964Z] vandelay_cloudfront_domain = "d28vdsxee1qyko.cloudfront.net"
+[2026-04-05T15:28:09.964Z] vandelay_cloudfront_id = "E2J9Y6PVQFFAD2"
+[2026-04-05T15:28:09.964Z] vandelay_ec2_instance_id = "i-07be502d81275854c"
+[2026-04-05T15:28:09.964Z] vandelay_ec2_private_instance_id = "i-035f0315cbd8e5141"
+[2026-04-05T15:28:09.964Z] vandelay_invalidation_command = "aws cloudfront create-invalidation --distribution-id E2J9Y6PVQFFAD2 --paths '/*'"
+[2026-04-05T15:28:09.964Z] vandelay_log_group_name = "/aws/ec2/vandelay-rds-app"
+[2026-04-05T15:28:09.964Z] vandelay_managed_cache_policy_optimized = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+[2026-04-05T15:28:09.964Z] vandelay_origin_cloaking_enabled = true
+[2026-04-05T15:28:09.964Z] vandelay_private_subnet_ids = [
+[2026-04-05T15:28:09.964Z]   "subnet-0b06248764f97abf5",
+[2026-04-05T15:28:09.964Z]   "subnet-044b00f7e4585e545",
+[2026-04-05T15:28:09.964Z] ]
+[2026-04-05T15:28:09.964Z] vandelay_public_subnet_ids = [
+[2026-04-05T15:28:09.964Z]   "subnet-0a40900984a4ec239",
+[2026-04-05T15:28:09.964Z]   "subnet-0109002d0b807ed61",
+[2026-04-05T15:28:09.964Z] ]
+[2026-04-05T15:28:09.964Z] vandelay_rds_endpoint = "vandelay-rds01.cmrys4aosktq.us-east-1.rds.amazonaws.com"
+[2026-04-05T15:28:09.964Z] vandelay_root_url_via_cloudfront = "https://keepuneat.click"
+[2026-04-05T15:28:09.964Z] vandelay_sns_topic_arn = "arn:aws:sns:us-east-1:212809501772:vandelay-db-incidents"
+[2026-04-05T15:28:09.964Z] vandelay_vpc_id = "vpc-07f63d2e128b8b78c"
+[2026-04-05T15:28:09.964Z] vandelay_vpce_monitoring_id = "vpce-06f9a294ecc17d4ae"
+[2026-04-05T15:28:09.964Z] vandelay_waf_log_group_arn = "arn:aws:logs:us-east-1:212809501772:log-group:aws-waf-logs-vandelay-webacl"
+[2026-04-05T15:28:09.964Z] vandelay_waf_log_group_name = "aws-waf-logs-vandelay-webacl"
+[2026-04-05T15:28:09.964Z] vpc_id = "vpc-07f63d2e128b8b78c"
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (TF Destroy)
+Stage "TF Destroy" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Extract Outputs)
+[Pipeline] dir
+[2026-04-05T15:28:10.356Z] Running in /var/lib/jenkins/workspace/vandelay-lab2-pipeline/Armageddon/lab-2
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-04-05T15:28:10.744Z] + terraform output -raw ec2_instance_id
+[Pipeline] sh
+[2026-04-05T15:28:13.516Z] + terraform output -raw secret_name
+[Pipeline] sh
+[2026-04-05T15:28:16.288Z] + terraform output -raw rds_identifier
+[Pipeline] sh
+[2026-04-05T15:28:19.059Z] + terraform output -raw ec2_public_ip
+[Pipeline] sh
+[2026-04-05T15:28:21.830Z] + terraform output -raw jenkins_url
+[Pipeline] echo
+[2026-04-05T15:28:24.346Z] 
+[2026-04-05T15:28:24.346Z]                         ┌─────────────────────────────────────────┐
+[2026-04-05T15:28:24.346Z]                         │  Deployed Resources                     │
+[2026-04-05T15:28:24.346Z]                         ├─────────────────────────────────────────┤
+[2026-04-05T15:28:24.346Z]                         │  EC2 Instance : i-07be502d81275854c
+[2026-04-05T15:28:24.346Z]                         │  RDS Secret   : lab/rds/mysql
+[2026-04-05T15:28:24.346Z]                         │  RDS DB ID    : vandelay-rds01
+[2026-04-05T15:28:24.346Z]                         │  App URL      : http://35.175.217.81/
+[2026-04-05T15:28:24.346Z]                         │  Jenkins URL  : http://44.210.136.8:8080
+[2026-04-05T15:28:24.346Z]                         └─────────────────────────────────────────┘
+[2026-04-05T15:28:24.346Z]                         
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Smoke Test)
+[Pipeline] sh
+[2026-04-05T15:28:24.843Z] + echo 'Waiting for app to be reachable (up to 3 min)...'
+[2026-04-05T15:28:24.843Z] Waiting for app to be reachable (up to 3 min)...
+[2026-04-05T15:28:24.843Z] ++ seq 1 18
+[2026-04-05T15:28:24.843Z] + for i in $(seq 1 18)
+[2026-04-05T15:28:24.843Z] ++ curl -s -o /dev/null -w '%{http_code}' --connect-timeout 5 http://35.175.217.81/
+[2026-04-05T15:28:24.843Z] + STATUS=200
+[2026-04-05T15:28:24.843Z] + echo 'Attempt 1: HTTP 200'
+[2026-04-05T15:28:24.843Z] Attempt 1: HTTP 200
+[2026-04-05T15:28:24.843Z] + '[' 200 = 200 ']'
+[2026-04-05T15:28:24.843Z] + echo 'SMOKE TEST PASSED — app returned HTTP 200'
+[2026-04-05T15:28:24.843Z] SMOKE TEST PASSED — app returned HTTP 200
+[2026-04-05T15:28:24.843Z] + exit 0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Gate Tests)
+[Pipeline] dir
+[2026-04-05T15:28:24.995Z] Running in /var/lib/jenkins/workspace/vandelay-lab2-pipeline/Armageddon/lab-2/python
+[Pipeline] {
+[Pipeline] sh
+[2026-04-05T15:28:25.299Z] + chmod +x run_all_gates.sh gate_secrets_and_role.sh gate_network_db.sh
+[2026-04-05T15:28:25.299Z] + REGION=us-east-1
+[2026-04-05T15:28:25.299Z] + INSTANCE_ID=i-07be502d81275854c
+[2026-04-05T15:28:25.299Z] + SECRET_ID=lab/rds/mysql
+[2026-04-05T15:28:25.299Z] + DB_ID=vandelay-rds01
+[2026-04-05T15:28:25.299Z] + REQUIRE_ROTATION=false
+[2026-04-05T15:28:25.299Z] + CHECK_PRIVATE_SUBNETS=false
+[2026-04-05T15:28:25.299Z] + OUT_JSON=gate_result.json
+[2026-04-05T15:28:25.299Z] + ./run_all_gates.sh
+[2026-04-05T15:28:25.299Z] === Running Gate 1/2: secrets_and_role ===
+[2026-04-05T15:28:30.494Z] 
+[2026-04-05T15:28:30.494Z] === SEIR Gate: Secrets + EC2 Role Verification ===
+[2026-04-05T15:28:30.494Z] Timestamp (UTC): 2026-04-05T15:28:29Z
+[2026-04-05T15:28:30.494Z] Region:          us-east-1
+[2026-04-05T15:28:30.494Z] Instance ID:     i-07be502d81275854c
+[2026-04-05T15:28:30.494Z] Secret ID:       lab/rds/mysql
+[2026-04-05T15:28:30.494Z] Resolved Role:   vandelay-ec2-role01
+[2026-04-05T15:28:30.494Z] Caller ARN:      arn:aws:sts::212809501772:assumed-role/vandelay-jenkins-role/i-0ae539b167d765370
+[2026-04-05T15:28:30.494Z] -----------------------------------------------
+[2026-04-05T15:28:30.494Z] PASS: aws sts get-caller-identity succeeded (credentials OK).
+[2026-04-05T15:28:30.494Z] PASS: secret exists and is describable (lab/rds/mysql).
+[2026-04-05T15:28:30.494Z] INFO: rotation requirement disabled (REQUIRE_ROTATION=false).
+[2026-04-05T15:28:30.494Z] PASS: no resource policy found (OK) or not applicable (lab/rds/mysql).
+[2026-04-05T15:28:30.494Z] PASS: instance has IAM instance profile attached (i-07be502d81275854c).
+[2026-04-05T15:28:30.494Z] PASS: resolved instance profile -> role (vandelay-instance-profile01 -> vandelay-ec2-role01).
+[2026-04-05T15:28:30.494Z] INFO: EXPECTED_ROLE_NAME not set; using resolved role (vandelay-ec2-role01).
+[2026-04-05T15:28:30.494Z] INFO: on-instance checks skipped (not running as expected role on EC2).
+[2026-04-05T15:28:30.494Z] 
+[2026-04-05T15:28:30.494Z] Warnings:
+[2026-04-05T15:28:30.494Z]   - WARN: current caller ARN is not assumed-role/vandelay-ec2-role01 (you may be running off-instance).
+[2026-04-05T15:28:30.494Z] 
+[2026-04-05T15:28:30.494Z] RESULT: PASS
+[2026-04-05T15:28:30.494Z] ===============================================
+[2026-04-05T15:28:30.494Z] 
+[2026-04-05T15:28:30.494Z] Wrote: gate_secrets_and_role.json
+[2026-04-05T15:28:30.494Z] === Running Gate 2/2: network_db ===
+[2026-04-05T15:28:42.593Z] 
+[2026-04-05T15:28:42.593Z] === SEIR Gate: Network + RDS Verification ===
+[2026-04-05T15:28:42.593Z] Timestamp (UTC): 2026-04-05T15:28:40Z
+[2026-04-05T15:28:42.593Z] Region:          us-east-1
+[2026-04-05T15:28:42.593Z] EC2 Instance:    i-07be502d81275854c
+[2026-04-05T15:28:42.593Z] RDS Instance:    vandelay-rds01
+[2026-04-05T15:28:42.593Z] Engine:          mysql
+[2026-04-05T15:28:42.593Z] DB Port:         3306
+[2026-04-05T15:28:42.593Z] Caller ARN:      arn:aws:sts::212809501772:assumed-role/vandelay-jenkins-role/i-0ae539b167d765370
+[2026-04-05T15:28:42.593Z] -------------------------------------------
+[2026-04-05T15:28:42.593Z] PASS: aws sts get-caller-identity succeeded (credentials OK).
+[2026-04-05T15:28:42.593Z] PASS: RDS instance exists (vandelay-rds01).
+[2026-04-05T15:28:42.593Z] PASS: RDS is not publicly accessible (PubliclyAccessible=False).
+[2026-04-05T15:28:42.593Z] PASS: discovered DB port = 3306 (engine=mysql).
+[2026-04-05T15:28:42.593Z] PASS: EC2 security groups resolved (i-07be502d81275854c): sg-0733362cfff813d6e
+[2026-04-05T15:28:42.593Z] PASS: RDS security groups resolved (vandelay-rds01): sg-0371f51e450798f1a
+[2026-04-05T15:28:42.593Z] PASS: RDS SG allows DB port 3306 from EC2 SG (SG-to-SG ingress present).
+[2026-04-05T15:28:42.593Z] INFO: private subnet check disabled (CHECK_PRIVATE_SUBNETS=false).
+[2026-04-05T15:28:42.593Z] 
+[2026-04-05T15:28:42.593Z] RESULT: PASS
+[2026-04-05T15:28:42.593Z] ===========================================
+[2026-04-05T15:28:42.593Z] 
+[2026-04-05T15:28:42.593Z] Wrote: gate_network_db.json
+[2026-04-05T15:28:42.593Z] 
+[2026-04-05T15:28:42.593Z] ===== SEIR Combined Gate Summary =====
+[2026-04-05T15:28:42.593Z] Gate 1 (secrets_and_role) exit: 0  -> gate_secrets_and_role.json
+[2026-04-05T15:28:42.593Z] Gate 2 (network_db)       exit: 0  -> gate_network_db.json
+[2026-04-05T15:28:42.593Z] --------------------------------------
+[2026-04-05T15:28:42.593Z] BADGE:  GREEN
+[2026-04-05T15:28:42.593Z] RESULT: PASS
+[2026-04-05T15:28:42.593Z] Wrote:  gate_result.json
+[2026-04-05T15:28:42.593Z] ======================================
+[2026-04-05T15:28:42.593Z] 
+[Pipeline] }
+[Pipeline] // dir
+Post stage
+[Pipeline] archiveArtifacts
+[2026-04-05T15:28:42.689Z] Archiving artifacts
+[2026-04-05T15:28:42.690Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2026-04-05T15:28:42.748Z] Archiving artifacts
+[Pipeline] archiveArtifacts
+[2026-04-05T15:28:42.786Z] Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Notify)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+[2026-04-05T15:28:43.012Z] 
+[2026-04-05T15:28:43.012Z]                     ╔══════════════════════════════════════════╗
+[2026-04-05T15:28:43.012Z]                     ║  Vandelay Lab-2 Pipeline Complete        ║
+[2026-04-05T15:28:43.012Z]                     ╠══════════════════════════════════════════╣
+[2026-04-05T15:28:43.012Z]                     ║  Action  : DEPLOY
+[2026-04-05T15:28:43.012Z]                     ║  Branch  : origin/main
+[2026-04-05T15:28:43.012Z]                     ║  Commit  : 8b806834
+[2026-04-05T15:28:43.012Z]                     ║  Region  : us-east-1
+[2026-04-05T15:28:43.012Z]                     ║  Build # : 17
+[2026-04-05T15:28:43.012Z]                     ║  Status  : SUCCESS
+[2026-04-05T15:28:43.012Z]                     ╚══════════════════════════════════════════╝
+[2026-04-05T15:28:43.012Z]                     
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] cleanWs
+[2026-04-05T15:28:43.301Z] [WS-CLEANUP] Deleting project workspace...
+[2026-04-05T15:28:43.301Z] [WS-CLEANUP] Skipped based on build state SUCCESS
+[Pipeline] echo
+[2026-04-05T15:28:43.432Z] BUILD SUCCEEDED — Infrastructure deployed and gates passed.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+[Checks API] No suitable checks publisher found.
+Finished: SUCCESS

@@ -12,7 +12,15 @@ terraform.tfvars
 **/.DS_Store
 
 # Jenkins / Java
-lab-2/java/
+**/java/
+**/*.jar
+
+# Claude Code session data
+**/.claude/
+
+# Runtime artifacts
+**/python/gate_*.json
+**/lambda/*.zip
 
 # Secrets
 *.pem
