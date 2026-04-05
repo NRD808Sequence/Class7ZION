@@ -17,14 +17,9 @@ resource "aws_security_group" "vandelay_ec2_sg01" {
     description = "Allow HTTP from anywhere"
   }
 
-  # Inbound: Allow SSH (port 22) from your IP only for troubleshooting
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.my_ip]
-    description = "Allow SSH from admin IP"
-  }
+  # SSH removed — use AWS Systems Manager Session Manager (SSM) instead.
+  # AmazonSSMManagedInstanceCore is attached to vandelay-ec2-role01.
+  # Connect via: aws ssm start-session --target <instance-id>
 
   # Inbound: Allow HTTP from ALB (Bonus B)
   ingress {
