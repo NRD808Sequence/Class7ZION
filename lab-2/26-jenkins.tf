@@ -17,14 +17,9 @@ resource "aws_security_group" "vandelay_jenkins_sg" {
     description = "Allow Jenkins UI from admin IP"
   }
 
-  # SSH for troubleshooting
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.my_ip]
-    description = "Allow SSH from admin IP"
-  }
+  # SSH removed — use AWS Systems Manager Session Manager (SSM) instead.
+  # AmazonSSMManagedInstanceCore is attached to vandelay-jenkins-role.
+  # Connect via: aws ssm start-session --target <instance-id>
 
   egress {
     from_port   = 0
