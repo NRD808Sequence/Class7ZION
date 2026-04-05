@@ -447,4 +447,4 @@ pipeline {
 
 // webhook-test: 2026-03-29 LIVE — GitHubPushTrigger registered, SCMTriggerCause expected
 
-// pipeline-init: 2026-04-05 — imports resolved, retrigger build
+// pipeline-init: 2026-04-05 — all imports resolved, final retrigger
