@@ -82,6 +82,59 @@ resource "aws_cloudfront_response_headers_policy" "chewbacca_rsp_static01" {
 }
 
 #-----------------------------------------------------------------------------
+# Security Response Headers Policy — applies to default behavior (API routes)
+# Fixes: HSTS, CSP, X-Frame-Options, X-Content-Type-Options,
+#         Referrer-Policy, Permissions-Policy
+#-----------------------------------------------------------------------------
+
+resource "aws_cloudfront_response_headers_policy" "chewbacca_rsp_security01" {
+  name    = "${local.tokyo_prefix}-rsp-security01"
+  comment = "Security headers for all API responses"
+
+  security_headers_config {
+    strict_transport_security {
+      access_control_max_age_sec = 31536000
+      include_subdomains         = true
+      override                   = true
+      preload                    = false
+    }
+
+    content_security_policy {
+      content_security_policy = "default-src 'self'; style-src 'self' 'unsafe-inline'"
+      override                = true
+    }
+
+    frame_options {
+      frame_option = "DENY"
+      override     = true
+    }
+
+    content_type_options {
+      override = true
+    }
+
+    referrer_policy {
+      referrer_policy = "strict-origin-when-cross-origin"
+      override        = true
+    }
+  }
+
+  custom_headers_config {
+    items {
+      header   = "Permissions-Policy"
+      override = true
+      value    = "camera=(), microphone=(), geolocation=()"
+    }
+
+    items {
+      header   = "Server"
+      override = true
+      value    = "Chewbacca"
+    }
+  }
+}
+
+#-----------------------------------------------------------------------------
 # AWS Managed Policies for Honors (Origin-Driven Caching)
 #-----------------------------------------------------------------------------
 

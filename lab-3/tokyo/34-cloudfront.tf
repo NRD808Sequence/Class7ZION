@@ -90,8 +90,9 @@ resource "aws_cloudfront_distribution" "chewbacca_cf01" {
     cached_methods  = ["GET", "HEAD"]
 
     # Use AWS managed policies (API = no caching by default)
-    cache_policy_id          = data.aws_cloudfront_cache_policy.chewbacca_caching_disabled.id
-    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer.id
+    cache_policy_id            = data.aws_cloudfront_cache_policy.chewbacca_caching_disabled.id
+    origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.chewbacca_orp_all_viewer.id
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.chewbacca_rsp_security01.id
   }
 
   #-----------------------------------------------------------------------------

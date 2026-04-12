@@ -177,6 +177,12 @@ def list_notes():
         emit_metric('DBConnectionErrors', 1)
         return {'status': 'error', 'message': str(e)}, 500
 
+@app.after_request
+def set_security_headers(response):
+    response.headers['Server'] = 'Chewbacca'
+    response.headers['Cache-Control'] = 'no-store'
+    return response
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
 APPEOF

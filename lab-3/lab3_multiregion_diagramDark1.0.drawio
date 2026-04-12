@@ -1,0 +1,865 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram id="lab3-multiregion" name="Lab 3 Multi-Region Infrastructure">
+    <mxGraphModel dx="1305" dy="2113" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="5000" pageHeight="8000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontColor=#2AFF00;" value="&lt;font style=&quot;&quot;&gt;Lab 3: Multi-Region Terraform Infrastructure — Chewbacca (Tokyo) + Liberdade (Sao Paulo)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="1800" x="400" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="global_container" parent="1" style="swimlane;startSize=30;fillColor=#FFF8E1;strokeColor=#FF8F00;fontStyle=1;fontSize=14;rounded=1;arcSize=8;container=1;collapsible=0;fontColor=#000000;" value="GLOBAL / EDGE" vertex="1">
+          <mxGeometry height="340" width="1200" x="700" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_group" parent="global_container" style="swimlane;startSize=24;fillColor=#FFF8E1;strokeColor=#FFB300;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="CloudFront" vertex="1">
+          <mxGeometry height="140" width="760" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_dist" parent="cf_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FF8F00;fontSize=11;fontColor=#000000;" value="CloudFront Distribution:&#xa;chewbacca_cf01" vertex="1">
+          <mxGeometry height="50" width="170" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_cache" parent="cf_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FF8F00;fontSize=11;fontColor=#000000;" value="Cache Policy:&#xa;chewbacca_cache_static01" vertex="1">
+          <mxGeometry height="50" width="170" x="195" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_orp" parent="cf_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FF8F00;fontSize=11;fontColor=#000000;" value="Origin Request Policy:&#xa;chewbacka_orp_static01" vertex="1">
+          <mxGeometry height="50" width="175" x="380" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_rsp" parent="cf_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FF8F00;fontSize=11;fontColor=#000000;" value="Response Headers Policy:&#xa;chewbacca_rsp_static01" vertex="1">
+          <mxGeometry height="50" width="175" x="570" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_cache_to_dist" edge="1" parent="cf_group" source="cf_cache" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="cf_dist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_orp_to_dist" edge="1" parent="cf_group" source="cf_orp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="cf_dist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_rsp_to_dist" edge="1" parent="cf_group" source="cf_rsp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="cf_dist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf_group" parent="global_container" style="swimlane;startSize=24;fillColor=#FFF9C4;strokeColor=#F9A825;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Security (WAF)" vertex="1">
+          <mxGeometry height="140" width="380" x="800" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf" parent="cf_waf_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="WAF WebACL:&#xa;chewbacca_cf_waf01" vertex="1">
+          <mxGeometry height="50" width="160" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf_logging" parent="cf_waf_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="WAF Logging Config:&#xa;chewbacca_cf_waf_logging" vertex="1">
+          <mxGeometry height="50" width="175" x="190" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf_to_logging" edge="1" parent="cf_waf_group" source="cf_waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="cf_waf_logging">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_mon_group" parent="global_container" style="swimlane;startSize=24;fillColor=#E0F7FA;strokeColor=#00838F;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Monitoring" vertex="1">
+          <mxGeometry height="100" width="380" x="800" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf_log_group" parent="cf_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="CW Log Group:&#xa;chewbacca_cf_waf_logs" vertex="1">
+          <mxGeometry height="50" width="180" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf_to_cf" edge="1" parent="global_container" source="cf_waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="cf_dist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cf_waf_log_to_cw" edge="1" parent="global_container" source="cf_waf_logging" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="cf_waf_log_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tokyo_container" parent="1" style="swimlane;startSize=35;fillColor=#E3F2FD;strokeColor=#1565C0;fontStyle=1;fontSize=16;rounded=1;arcSize=5;container=1;collapsible=0;swimlaneLine=1;fontColor=#000000;" value="TOKYO (ap-northeast-1)" vertex="1">
+          <mxGeometry height="4350" width="1280" x="10" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpc_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#E8F0FE;strokeColor=#4285F4;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="VPC / Networking" vertex="1">
+          <mxGeometry height="620" width="1240" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpc" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontStyle=1;fontColor=#000000;" value="VPC:&#xa;chewbacca_vpc01" vertex="1">
+          <mxGeometry height="50" width="160" x="500" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_igw" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="IGW:&#xa;chewbacca_igw01" vertex="1">
+          <mxGeometry height="50" width="150" x="720" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_pub_sub01" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Public Subnet:&#xa;chewbacca_public_subnet01" vertex="1">
+          <mxGeometry height="50" width="190" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_pub_sub02" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Public Subnet:&#xa;chewbacca_public_subnet02" vertex="1">
+          <mxGeometry height="50" width="190" x="230" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_priv_sub01" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Private Subnet:&#xa;chewbacca_private_subnet01" vertex="1">
+          <mxGeometry height="50" width="190" x="440" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_priv_sub02" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Private Subnet:&#xa;chewbacca_private_subnet02" vertex="1">
+          <mxGeometry height="50" width="190" x="650" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_nat" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="NAT GW:&#xa;chewbacca_nat01" vertex="1">
+          <mxGeometry height="50" width="150" x="880" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_eip" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="EIP:&#xa;chewbacca_nat_eip01" vertex="1">
+          <mxGeometry height="50" width="150" x="1060" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_pub_rt" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Route Table:&#xa;chewbacca_public_rt01" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_priv_rt" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Route Table:&#xa;chewbacca_private_rt01" vertex="1">
+          <mxGeometry height="50" width="170" x="220" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rt_assoc1" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;pub_sub01 &amp;lt;-&amp;gt; pub_rt" vertex="1">
+          <mxGeometry height="45" width="150" x="20" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rt_assoc2" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;pub_sub02 &amp;lt;-&amp;gt; pub_rt" vertex="1">
+          <mxGeometry height="45" width="150" x="185" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rt_assoc3" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;priv_sub01 &amp;lt;-&amp;gt; priv_rt" vertex="1">
+          <mxGeometry height="45" width="155" x="350" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rt_assoc4" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;priv_sub02 &amp;lt;-&amp;gt; priv_rt" vertex="1">
+          <mxGeometry height="45" width="155" x="520" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_pub_default_route" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="Route:&#xa;chewbacca_public_default_route&#xa;(0.0.0.0/0 -&amp;gt; IGW)" vertex="1">
+          <mxGeometry height="55" width="200" x="20" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_priv_default_route" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="Route:&#xa;chewbacca_private_default_route&#xa;(0.0.0.0/0 -&amp;gt; NAT)" vertex="1">
+          <mxGeometry height="55" width="210" x="240" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_to_sp_route" parent="tk_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="Route:&#xa;shinjuku_to_sp_route01&#xa;(10.76.0.0/16 -&amp;gt; TGW)" vertex="1">
+          <mxGeometry height="55" width="210" x="470" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_igw_to_vpc" edge="1" parent="tk_vpc_group" source="tk_igw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_vpc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_eip_to_nat" edge="1" parent="tk_vpc_group" source="tk_eip" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_nat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_compute_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#FFF3E0;strokeColor=#E65100;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Compute" vertex="1">
+          <mxGeometry height="310" width="600" x="20" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_ec2" parent="tk_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontStyle=1;fontColor=#000000;" value="EC2:&#xa;chewbacca_ec201" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_iam_role" parent="tk_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontColor=#000000;" value="IAM Role:&#xa;chewbacca_ec2_role01" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_instance_profile" parent="tk_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontColor=#000000;" value="Instance Profile:&#xa;chewbacca_instance_profile01" vertex="1">
+          <mxGeometry height="50" width="190" x="210" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_ec2_read_secret" parent="tk_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontColor=#000000;" value="IAM Role Policy:&#xa;chewbacka_ec2_read_secret" vertex="1">
+          <mxGeometry height="50" width="190" x="20" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_iam_attach_cw" parent="tk_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontColor=#000000;" value="Role Policy Attachment:&#xa;CloudWatch" vertex="1">
+          <mxGeometry height="50" width="160" x="230" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_iam_attach_ssm" parent="tk_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontColor=#000000;" value="Role Policy Attachment:&#xa;SSM" vertex="1">
+          <mxGeometry height="50" width="160" x="410" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_ec2_to_role" edge="1" parent="tk_compute_group" source="tk_ec2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_iam_role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_role_to_profile" edge="1" parent="tk_compute_group" source="tk_iam_role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_instance_profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_role_to_policy" edge="1" parent="tk_compute_group" source="tk_iam_role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_ec2_read_secret">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_db_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#FCE4EC;strokeColor=#C62828;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Database (Tokyo Only)" vertex="1">
+          <mxGeometry height="460" width="610" x="650" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rds" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=11;fontStyle=1;fontColor=#000000;" value="RDS:&#xa;chewbacca_rds01" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rds_subnet_group" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="DB Subnet Group:&#xa;chewbacca_rds_subnet_group01" vertex="1">
+          <mxGeometry height="50" width="200" x="200" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_secret" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="Secrets Manager:&#xa;chewbacca_rds_secret" vertex="1">
+          <mxGeometry height="50" width="180" x="20" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_secret_version" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="Secret Version:&#xa;chewbacka_rds_secret_version" vertex="1">
+          <mxGeometry height="50" width="190" x="220" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_ssm_endpoint" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="SSM Param:&#xa;rds_endpoint" vertex="1">
+          <mxGeometry height="50" width="150" x="20" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_ssm_name" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="SSM Param:&#xa;rds_name" vertex="1">
+          <mxGeometry height="50" width="150" x="190" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_ssm_port" parent="tk_db_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="SSM Param:&#xa;rds_port" vertex="1">
+          <mxGeometry height="50" width="150" x="360" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_rds_to_subgrp" edge="1" parent="tk_db_group" source="tk_rds" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_rds_subnet_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_secret_to_ver" edge="1" parent="tk_db_group" source="tk_secret" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_secret_version">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_lb_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#E8F5E9;strokeColor=#2E7D32;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Load Balancing" vertex="1">
+          <mxGeometry height="310" width="1240" x="20" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_alb" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=11;fontStyle=1;fontColor=#000000;" value="ALB:&#xa;chewbacca_alb01" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_http_listener" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener:&#xa;chewbacka_http_listener01&#xa;(HTTP:80)" vertex="1">
+          <mxGeometry height="55" width="180" x="220" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_https_listener" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener:&#xa;chewbacka_https_listener01&#xa;(HTTPS:443)" vertex="1">
+          <mxGeometry height="55" width="185" x="420" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tg" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=11;fontColor=#000000;" value="Target Group:&#xa;chewbacka_tg01" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tg_attach" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="TG Attachment:&#xa;chewbacka_tg_attachment01" vertex="1">
+          <mxGeometry height="50" width="185" x="210" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_listener_rule_block" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener Rule:&#xa;default_block" vertex="1">
+          <mxGeometry height="50" width="155" x="640" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_listener_rule_origin" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener Rule:&#xa;require_origin_header" vertex="1">
+          <mxGeometry height="50" width="170" x="820" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_random_pw" parent="tk_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="random_password:&#xa;chewbacka_origin_header_value01" vertex="1">
+          <mxGeometry height="50" width="200" x="820" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_alb_to_http" edge="1" parent="tk_lb_group" source="tk_alb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_http_listener">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_alb_to_https" edge="1" parent="tk_lb_group" source="tk_alb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_https_listener">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_https_to_tg" edge="1" parent="tk_lb_group" source="tk_https_listener" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_tg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tg_to_attach" edge="1" parent="tk_lb_group" source="tk_tg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_tg_attach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_origin_rule_to_pw" edge="1" parent="tk_lb_group" source="tk_listener_rule_origin" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_random_pw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sec_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#FFF9C4;strokeColor=#F9A825;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Security" vertex="1">
+          <mxGeometry height="370" width="1240" x="20" y="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_alb" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: ALB" vertex="1">
+          <mxGeometry height="45" width="130" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_ec2" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: EC2" vertex="1">
+          <mxGeometry height="45" width="130" x="170" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_rds" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: RDS" vertex="1">
+          <mxGeometry height="45" width="130" x="320" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_rotation" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: rotation_lambda" vertex="1">
+          <mxGeometry height="45" width="150" x="470" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_vpce" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: VPC Endpoints" vertex="1">
+          <mxGeometry height="45" width="155" x="640" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_rule_cf443" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="SG Rule:&#xa;alb_ingress_cf443" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sg_rule_rds_sp" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="SG Rule:&#xa;rds_ingress_from_liberdade" vertex="1">
+          <mxGeometry height="50" width="185" x="200" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_waf" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontStyle=1;fontColor=#000000;" value="WAF WebACL:&#xa;chewbacka_tokyo_waf01" vertex="1">
+          <mxGeometry height="50" width="185" x="20" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_waf_assoc" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="WAF ALB Assoc:&#xa;chewbacka_tokyo_waf_alb_assoc" vertex="1">
+          <mxGeometry height="50" width="210" x="230" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_waf_logging" parent="tk_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="WAF Logging:&#xa;chewbacka_tokyo_waf_logging" vertex="1">
+          <mxGeometry height="50" width="200" x="465" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_waf_to_assoc" edge="1" parent="tk_sec_group" source="tk_waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_waf_assoc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_waf_to_log" edge="1" parent="tk_sec_group" source="tk_waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_waf_logging">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_dns_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="DNS / Certs" vertex="1">
+          <mxGeometry height="350" width="1240" x="20" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_acm_cf" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontColor=#000000;" value="ACM Cert:&#xa;cf_cert (us-east-1)" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_acm_tokyo" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontColor=#000000;" value="ACM Cert:&#xa;tokyo_cert" vertex="1">
+          <mxGeometry height="50" width="160" x="210" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_acm_cf_valid" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="ACM Validation:&#xa;cf_cert" vertex="1">
+          <mxGeometry height="50" width="155" x="390" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_acm_tokyo_valid" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="ACM Validation:&#xa;tokyo_cert" vertex="1">
+          <mxGeometry height="50" width="155" x="565" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_r53_apex" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;apex_to_cf" vertex="1">
+          <mxGeometry height="50" width="140" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_r53_app" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;app_to_cf" vertex="1">
+          <mxGeometry height="50" width="140" x="180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_r53_cf_valid" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;cf_cert_validation" vertex="1">
+          <mxGeometry height="50" width="155" x="340" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_r53_origin" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;origin_tokyo" vertex="1">
+          <mxGeometry height="50" width="145" x="515" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_r53_tokyo_valid" parent="tk_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;tokyo_cert_validation" vertex="1">
+          <mxGeometry height="50" width="160" x="680" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_acm_cf_to_valid" edge="1" parent="tk_dns_group" source="tk_acm_cf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_acm_cf_valid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_acm_tk_to_valid" edge="1" parent="tk_dns_group" source="tk_acm_tokyo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_acm_tokyo_valid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_mon_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#E0F7FA;strokeColor=#00838F;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Monitoring" vertex="1">
+          <mxGeometry height="350" width="1240" x="20" y="2320" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_log01" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="CW Log Group:&#xa;log_group01" vertex="1">
+          <mxGeometry height="50" width="165" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_waf_logs" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="CW Log Group:&#xa;waf_logs" vertex="1">
+          <mxGeometry height="50" width="155" x="205" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_alarm1" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 1" vertex="1">
+          <mxGeometry height="40" width="120" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_alarm2" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 2" vertex="1">
+          <mxGeometry height="40" width="120" x="160" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_alarm3" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 3" vertex="1">
+          <mxGeometry height="40" width="120" x="300" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_alarm4" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 4" vertex="1">
+          <mxGeometry height="40" width="120" x="440" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_cw_alarm5" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 5" vertex="1">
+          <mxGeometry height="40" width="120" x="580" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sns_topic" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="SNS Topic:&#xa;chewbacka_sns_topic01" vertex="1">
+          <mxGeometry height="50" width="180" x="20" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sns_sub" parent="tk_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="SNS Subscription" vertex="1">
+          <mxGeometry height="50" width="150" x="220" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_sns_to_sub" edge="1" parent="tk_mon_group" source="tk_sns_topic" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_sns_sub">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#EFEBE9;strokeColor=#5D4037;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="VPC Endpoints" vertex="1">
+          <mxGeometry height="230" width="1240" x="20" y="2700" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_ec2msg" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;ec2messages" vertex="1">
+          <mxGeometry height="45" width="130" x="15" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_kms" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;kms" vertex="1">
+          <mxGeometry height="45" width="120" x="160" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_logs" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;logs" vertex="1">
+          <mxGeometry height="45" width="120" x="295" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_monitoring" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;monitoring" vertex="1">
+          <mxGeometry height="45" width="125" x="430" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_s3" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;s3_gw" vertex="1">
+          <mxGeometry height="45" width="120" x="570" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_secrets" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;secretsmanager" vertex="1">
+          <mxGeometry height="45" width="135" x="705" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_ssm" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;ssm" vertex="1">
+          <mxGeometry height="45" width="120" x="855" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_vpce_ssmmsg" parent="tk_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;ssmmessages" vertex="1">
+          <mxGeometry height="45" width="130" x="990" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#FFCDD2;strokeColor=#C62828;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Transit Gateway (TGW)" vertex="1">
+          <mxGeometry height="370" width="1240" x="20" y="2960" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontStyle=1;fontColor=#000000;" value="Transit Gateway:&#xa;shinjuku_tgw01" vertex="1">
+          <mxGeometry height="50" width="180" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_rt" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="TGW Route Table:&#xa;shinjuku_rt01" vertex="1">
+          <mxGeometry height="50" width="175" x="230" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_vpc_attach" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="TGW VPC Attachment" vertex="1">
+          <mxGeometry height="50" width="175" x="435" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_peer_accept" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontStyle=1;fontColor=#000000;" value="TGW Peering Accepter" vertex="1">
+          <mxGeometry height="50" width="180" x="640" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_static_route" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="TGW Route:&#xa;shinjuku_to_saopaulo_static" vertex="1">
+          <mxGeometry height="50" width="195" x="20" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_rt_assoc1" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="TGW RT Assoc 1&#xa;(VPC attachment)" vertex="1">
+          <mxGeometry height="50" width="160" x="240" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_rt_assoc2" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="TGW RT Assoc 2&#xa;(peering attachment)" vertex="1">
+          <mxGeometry height="50" width="170" x="420" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_rt_prop" parent="tk_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="TGW RT Propagation" vertex="1">
+          <mxGeometry height="50" width="165" x="610" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_to_rt" edge="1" parent="tk_tgw_group" source="tk_tgw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_tgw_rt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_tgw_to_vpc_att" edge="1" parent="tk_tgw_group" source="tk_tgw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="tk_tgw_vpc_attach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_data_group" parent="tokyo_container" style="swimlane;startSize=26;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;dashed=1;fontColor=#000000;" value="Data Sources" vertex="1">
+          <mxGeometry height="200" width="1240" x="20" y="3360" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_data_prefix" parent="tk_data_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=10;dashed=1;fontColor=#000000;" value="data:&#xa;aws_ec2_managed_prefix_list" vertex="1">
+          <mxGeometry height="50" width="190" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_data_r53" parent="tk_data_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=10;dashed=1;fontColor=#000000;" value="data:&#xa;aws_route53_zone" vertex="1">
+          <mxGeometry height="50" width="160" x="230" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="tk_data_remote_sp" parent="tk_data_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=10;dashed=1;fontStyle=1;fontColor=#000000;" value="data:&#xa;terraform_remote_state.saopaulo" vertex="1">
+          <mxGeometry height="50" width="210" x="410" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_container" parent="1" style="swimlane;startSize=35;fillColor=#E8F5E9;strokeColor=#2E7D32;fontStyle=1;fontSize=16;rounded=1;arcSize=5;container=1;collapsible=0;swimlaneLine=1;fontColor=#000000;" value="SAO PAULO (sa-east-1)" vertex="1">
+          <mxGeometry height="4350" width="1280" x="1340" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpc_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#E8F0FE;strokeColor=#4285F4;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="VPC / Networking" vertex="1">
+          <mxGeometry height="620" width="1240" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpc" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontStyle=1;fontColor=#000000;" value="VPC:&#xa;liberdade_vpc01" vertex="1">
+          <mxGeometry height="50" width="160" x="500" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_igw" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="IGW:&#xa;liberdade_igw01" vertex="1">
+          <mxGeometry height="50" width="150" x="720" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_pub_sub01" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Public Subnet:&#xa;liberdade_public_subnet01" vertex="1">
+          <mxGeometry height="50" width="190" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_pub_sub02" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Public Subnet:&#xa;liberdade_public_subnet02" vertex="1">
+          <mxGeometry height="50" width="190" x="230" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_priv_sub01" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Private Subnet:&#xa;liberdade_private_subnet01" vertex="1">
+          <mxGeometry height="50" width="195" x="440" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_priv_sub02" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Private Subnet:&#xa;liberdade_private_subnet02" vertex="1">
+          <mxGeometry height="50" width="195" x="655" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_nat" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="NAT GW:&#xa;liberdade_nat01" vertex="1">
+          <mxGeometry height="50" width="150" x="880" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_eip" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="EIP:&#xa;liberdade_nat_eip01" vertex="1">
+          <mxGeometry height="50" width="150" x="1060" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_pub_rt" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Route Table:&#xa;liberdade_public_rt01" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_priv_rt" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="Route Table:&#xa;liberdade_private_rt01" vertex="1">
+          <mxGeometry height="50" width="175" x="220" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_rt_assoc1" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;pub_sub01 &amp;lt;-&amp;gt; pub_rt" vertex="1">
+          <mxGeometry height="45" width="150" x="20" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_rt_assoc2" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;pub_sub02 &amp;lt;-&amp;gt; pub_rt" vertex="1">
+          <mxGeometry height="45" width="150" x="185" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_rt_assoc3" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;priv_sub01 &amp;lt;-&amp;gt; priv_rt" vertex="1">
+          <mxGeometry height="45" width="155" x="350" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_rt_assoc4" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="RT Assoc:&#xa;priv_sub02 &amp;lt;-&amp;gt; priv_rt" vertex="1">
+          <mxGeometry height="45" width="155" x="520" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_pub_default_route" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="Route:&#xa;liberdade_public_default_route&#xa;(0.0.0.0/0 -&amp;gt; IGW)" vertex="1">
+          <mxGeometry height="55" width="200" x="20" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_priv_default_route" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="Route:&#xa;liberdade_private_default_route&#xa;(0.0.0.0/0 -&amp;gt; NAT)" vertex="1">
+          <mxGeometry height="55" width="210" x="240" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_to_tk_route" parent="sp_vpc_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=10;fontColor=#000000;" value="Route:&#xa;liberdade_to_tokyo_route01&#xa;(10.75.0.0/16 -&amp;gt; TGW)" vertex="1">
+          <mxGeometry height="55" width="210" x="470" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_igw_to_vpc" edge="1" parent="sp_vpc_group" source="sp_igw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_vpc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_eip_to_nat" edge="1" parent="sp_vpc_group" source="sp_eip" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_nat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_compute_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#FFF3E0;strokeColor=#E65100;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Compute" vertex="1">
+          <mxGeometry height="310" width="600" x="20" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_ec2" parent="sp_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontStyle=1;fontColor=#000000;" value="EC2:&#xa;liberdade_ec201" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_iam_role" parent="sp_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontColor=#000000;" value="IAM Role:&#xa;liberdade_ec2_role01" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_instance_profile" parent="sp_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontColor=#000000;" value="Instance Profile:&#xa;liberdade_instance_profile01" vertex="1">
+          <mxGeometry height="50" width="195" x="210" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_iam_attach_cw" parent="sp_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontColor=#000000;" value="Role Policy Attachment:&#xa;CloudWatch" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_iam_attach_ssm" parent="sp_compute_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontColor=#000000;" value="Role Policy Attachment:&#xa;SSM" vertex="1">
+          <mxGeometry height="50" width="160" x="200" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_ec2_to_role" edge="1" parent="sp_compute_group" source="sp_ec2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_iam_role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_role_to_profile" edge="1" parent="sp_compute_group" source="sp_iam_role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_instance_profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_lb_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#E8F5E9;strokeColor=#2E7D32;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Load Balancing" vertex="1">
+          <mxGeometry height="310" width="1240" x="20" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_alb" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=11;fontStyle=1;fontColor=#000000;" value="ALB:&#xa;liberdade_alb01" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_http_listener" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener:&#xa;liberdade_http_listener01&#xa;(HTTP:80)" vertex="1">
+          <mxGeometry height="55" width="180" x="220" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_https_listener" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener:&#xa;liberdade_https_listener01&#xa;(HTTPS:443)" vertex="1">
+          <mxGeometry height="55" width="185" x="420" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tg" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=11;fontColor=#000000;" value="Target Group:&#xa;liberdade_tg01" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tg_attach" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="TG Attachment:&#xa;liberdade_tg_attachment01" vertex="1">
+          <mxGeometry height="50" width="185" x="210" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_listener_rule_block" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener Rule:&#xa;default_block" vertex="1">
+          <mxGeometry height="50" width="155" x="640" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_listener_rule_origin" parent="sp_lb_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;fontColor=#000000;" value="Listener Rule:&#xa;require_origin_header" vertex="1">
+          <mxGeometry height="50" width="170" x="820" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_alb_to_http" edge="1" parent="sp_lb_group" source="sp_alb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_http_listener">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_alb_to_https" edge="1" parent="sp_lb_group" source="sp_alb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_https_listener">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_https_to_tg" edge="1" parent="sp_lb_group" source="sp_https_listener" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_tg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tg_to_attach" edge="1" parent="sp_lb_group" source="sp_tg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_tg_attach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sec_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#FFF9C4;strokeColor=#F9A825;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Security" vertex="1">
+          <mxGeometry height="340" width="1240" x="20" y="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sg_alb" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: ALB" vertex="1">
+          <mxGeometry height="45" width="130" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sg_ec2" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: EC2" vertex="1">
+          <mxGeometry height="45" width="130" x="170" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sg_vpce" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="SG: VPC Endpoints" vertex="1">
+          <mxGeometry height="45" width="155" x="320" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sg_rule_cf443" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="SG Rule:&#xa;alb_ingress_cf443" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_waf" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontStyle=1;fontColor=#000000;" value="WAF WebACL:&#xa;liberdade_sp_waf01" vertex="1">
+          <mxGeometry height="50" width="180" x="20" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_waf_assoc" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="WAF ALB Assoc:&#xa;liberdade_sp_waf_alb_assoc" vertex="1">
+          <mxGeometry height="50" width="205" x="225" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_waf_logging" parent="sp_sec_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;fontColor=#000000;" value="WAF Logging:&#xa;liberdade_sp_waf_logging" vertex="1">
+          <mxGeometry height="50" width="195" x="455" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_waf_to_assoc" edge="1" parent="sp_sec_group" source="sp_waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_waf_assoc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_waf_to_log" edge="1" parent="sp_sec_group" source="sp_waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_waf_logging">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_dns_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="DNS / Certs" vertex="1">
+          <mxGeometry height="250" width="1240" x="20" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_acm_cert" parent="sp_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontColor=#000000;" value="ACM Cert:&#xa;sp_cert" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_acm_valid" parent="sp_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="ACM Validation:&#xa;sp_cert" vertex="1">
+          <mxGeometry height="50" width="155" x="200" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_r53_origin" parent="sp_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;origin_sp" vertex="1">
+          <mxGeometry height="50" width="145" x="380" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_r53_cert_valid" parent="sp_dns_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=10;fontColor=#000000;" value="R53 Record:&#xa;sp_cert_validation" vertex="1">
+          <mxGeometry height="50" width="160" x="545" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_acm_to_valid" edge="1" parent="sp_dns_group" source="sp_acm_cert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_acm_valid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_mon_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#E0F7FA;strokeColor=#00838F;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Monitoring" vertex="1">
+          <mxGeometry height="310" width="1240" x="20" y="2190" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_log01" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="CW Log Group:&#xa;log_group01" vertex="1">
+          <mxGeometry height="50" width="165" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_waf_logs" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="CW Log Group:&#xa;waf_logs" vertex="1">
+          <mxGeometry height="50" width="155" x="205" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_alarm1" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 1" vertex="1">
+          <mxGeometry height="40" width="120" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_alarm2" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 2" vertex="1">
+          <mxGeometry height="40" width="120" x="160" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_alarm3" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 3" vertex="1">
+          <mxGeometry height="40" width="120" x="300" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_alarm4" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 4" vertex="1">
+          <mxGeometry height="40" width="120" x="440" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_cw_alarm5" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="CW Alarm 5" vertex="1">
+          <mxGeometry height="40" width="120" x="580" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sns_topic" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="SNS Topic:&#xa;liberdade_sns_topic01" vertex="1">
+          <mxGeometry height="50" width="180" x="20" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sns_sub" parent="sp_mon_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=10;fontColor=#000000;" value="SNS Subscription" vertex="1">
+          <mxGeometry height="50" width="150" x="220" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_sns_to_sub" edge="1" parent="sp_mon_group" source="sp_sns_topic" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_sns_sub">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#EFEBE9;strokeColor=#5D4037;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="VPC Endpoints" vertex="1">
+          <mxGeometry height="230" width="1240" x="20" y="2530" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_ec2msg" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;ec2messages" vertex="1">
+          <mxGeometry height="45" width="130" x="15" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_kms" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;kms" vertex="1">
+          <mxGeometry height="45" width="120" x="160" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_logs" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;logs" vertex="1">
+          <mxGeometry height="45" width="120" x="295" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_monitoring" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;monitoring" vertex="1">
+          <mxGeometry height="45" width="125" x="430" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_s3" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;s3_gw" vertex="1">
+          <mxGeometry height="45" width="120" x="570" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_ssm" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;ssm" vertex="1">
+          <mxGeometry height="45" width="120" x="705" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_vpce_ssmmsg" parent="sp_vpce_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=10;fontColor=#000000;" value="VPCE:&#xa;ssmmessages" vertex="1">
+          <mxGeometry height="45" width="130" x="840" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#E8EAF6;strokeColor=#283593;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="S3 (ALB Logs)" vertex="1">
+          <mxGeometry height="250" width="1240" x="20" y="2790" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_bucket" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=11;fontStyle=1;fontColor=#000000;" value="S3 Bucket:&#xa;liberdade_alb_logs" vertex="1">
+          <mxGeometry height="50" width="170" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_lifecycle" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=10;fontColor=#000000;" value="S3 Lifecycle" vertex="1">
+          <mxGeometry height="45" width="120" x="210" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_ownership" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=10;fontColor=#000000;" value="S3 Ownership&#xa;Controls" vertex="1">
+          <mxGeometry height="45" width="125" x="350" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_policy" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=10;fontColor=#000000;" value="S3 Bucket&#xa;Policy" vertex="1">
+          <mxGeometry height="45" width="120" x="495" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_public_block" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=10;fontColor=#000000;" value="S3 Public Access&#xa;Block" vertex="1">
+          <mxGeometry height="45" width="135" x="635" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_encryption" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=10;fontColor=#000000;" value="S3 Server-Side&#xa;Encryption" vertex="1">
+          <mxGeometry height="45" width="135" x="790" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_versioning" parent="sp_s3_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=10;fontColor=#000000;" value="S3 Bucket&#xa;Versioning" vertex="1">
+          <mxGeometry height="45" width="120" x="945" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_s3_lc_to_bucket" edge="1" parent="sp_s3_group" source="sp_s3_lifecycle" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_s3_bucket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#FFCDD2;strokeColor=#C62828;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="Transit Gateway (TGW)" vertex="1">
+          <mxGeometry height="250" width="1240" x="20" y="3070" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw" parent="sp_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontStyle=1;fontColor=#000000;" value="Transit Gateway:&#xa;liberdade_tgw01" vertex="1">
+          <mxGeometry height="50" width="180" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw_peer_attach" parent="sp_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontStyle=1;fontColor=#000000;" value="TGW Peering Attachment" vertex="1">
+          <mxGeometry height="50" width="195" x="230" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw_static_route" parent="sp_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontColor=#000000;" value="TGW Route:&#xa;liberdade_to_tokyo_static" vertex="1">
+          <mxGeometry height="50" width="195" x="455" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw_vpc_attach" parent="sp_tgw_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="TGW VPC Attachment" vertex="1">
+          <mxGeometry height="50" width="175" x="680" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw_to_peer" edge="1" parent="sp_tgw_group" source="sp_tgw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_tgw_peer_attach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_tgw_to_vpc_att" edge="1" parent="sp_tgw_group" source="sp_tgw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;fontColor=#000000;" target="sp_tgw_vpc_attach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_data_group" parent="sp_container" style="swimlane;startSize=26;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontStyle=1;fontSize=12;rounded=1;arcSize=6;container=1;collapsible=0;dashed=1;fontColor=#000000;" value="Data Sources" vertex="1">
+          <mxGeometry height="200" width="1240" x="20" y="3360" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_data_prefix" parent="sp_data_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=10;dashed=1;fontColor=#000000;" value="data:&#xa;aws_ec2_managed_prefix_list" vertex="1">
+          <mxGeometry height="50" width="190" x="20" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_data_r53" parent="sp_data_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=10;dashed=1;fontColor=#000000;" value="data:&#xa;aws_route53_zone" vertex="1">
+          <mxGeometry height="50" width="160" x="230" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sp_data_remote_tk" parent="sp_data_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=10;dashed=1;fontStyle=1;fontColor=#000000;" value="data:&#xa;terraform_remote_state.tokyo" vertex="1">
+          <mxGeometry height="50" width="200" x="410" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="xr_1" edge="1" parent="1" source="sp_tgw_peer_attach" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="tk_tgw" value="TGW Peering REQUEST">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="3575" />
+              <mxPoint x="1320" y="3575" />
+              <mxPoint x="1320" y="3465" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_2" edge="1" parent="1" source="tk_tgw_peer_accept" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF6D00;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" target="sp_tgw_peer_attach" value="TGW Peering ACCEPT">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="3505" />
+              <mxPoint x="1310" y="3590" />
+              <mxPoint x="1520" y="3590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_3" edge="1" parent="1" source="sp_data_remote_tk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;" target="tk_tgw" value="Remote State: tgw_id">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="3860" />
+              <mxPoint x="1330" y="3480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_4" edge="1" parent="1" source="sp_data_remote_tk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="tk_vpc" value="Remote State: vpc_cidr">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1770" y="3920" />
+              <mxPoint x="1340" y="3920" />
+              <mxPoint x="1340" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_5" edge="1" parent="1" source="sp_data_remote_tk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF6D00;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="tk_random_pw" value="Remote State: origin_secret">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1770" y="3800" />
+              <mxPoint x="1300" y="3800" />
+              <mxPoint x="1300" y="1785" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_6" edge="1" parent="1" source="tk_data_remote_sp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="sp_alb" value="Remote State: alb_dns">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="3860" />
+              <mxPoint x="1315" y="3860" />
+              <mxPoint x="1315" y="1700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_7" edge="1" parent="1" source="tk_data_remote_sp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF6D00;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;" target="sp_tgw_peer_attach" value="Remote State: peering_id">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="3890" />
+              <mxPoint x="1325" y="3890" />
+              <mxPoint x="1325" y="3560" />
+              <mxPoint x="1570" y="3560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_8" edge="1" parent="1" source="tk_sg_rule_rds_sp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="sp_vpc" value="Cross-Region SG: 10.76.0.0/16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1305" y="2095" />
+              <mxPoint x="1305" y="545" />
+              <mxPoint x="1830" y="545" />
+              <mxPoint x="1830" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xr_9" edge="1" parent="1" source="cf_dist" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sp_alb" value="CF Failover Origin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="795" y="280" />
+              <mxPoint x="2660" y="280" />
+              <mxPoint x="2660" y="420" />
+              <mxPoint x="1460" y="420" />
+              <mxPoint x="1460" y="1675" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cf_to_tk_alb" edge="1" parent="1" source="cf_dist" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=2;dashed=1;dashPattern=8 4;fontStyle=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="tk_alb" value="CF Primary Origin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="753" y="290" />
+              <mxPoint x="110" y="290" />
+              <mxPoint x="110" y="1675" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend_container" parent="1" style="swimlane;startSize=28;fillColor=#FAFAFA;strokeColor=#424242;fontStyle=1;fontSize=13;rounded=1;arcSize=6;container=1;collapsible=0;fontColor=#000000;" value="LEGEND — Color Coding" vertex="1">
+          <mxGeometry height="460" width="700" x="1900" y="4200" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_vpc" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;fontSize=11;fontColor=#000000;" value="VPC / Networking" vertex="1">
+          <mxGeometry height="35" width="150" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_compute" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontColor=#000000;" value="Compute" vertex="1">
+          <mxGeometry height="35" width="150" x="190" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_db" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="Database (Tokyo)" vertex="1">
+          <mxGeometry height="35" width="150" x="360" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_lb" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=11;fontColor=#000000;" value="Load Balancing" vertex="1">
+          <mxGeometry height="35" width="150" x="20" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sec" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontColor=#000000;" value="Security / WAF" vertex="1">
+          <mxGeometry height="35" width="150" x="190" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_dns" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontColor=#000000;" value="DNS / Certs" vertex="1">
+          <mxGeometry height="35" width="150" x="360" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_mon" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=11;fontColor=#000000;" value="Monitoring" vertex="1">
+          <mxGeometry height="35" width="150" x="20" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_vpce" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFEBE9;strokeColor=#5D4037;fontSize=11;fontColor=#000000;" value="VPC Endpoints" vertex="1">
+          <mxGeometry height="35" width="150" x="190" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tgw" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontColor=#000000;" value="TGW / Cross-Region" vertex="1">
+          <mxGeometry height="35" width="150" x="360" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_s3" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=11;fontColor=#000000;" value="S3 (SP only)" vertex="1">
+          <mxGeometry height="35" width="150" x="20" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_cf" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FF8F00;fontSize=11;fontColor=#000000;" value="CloudFront (Global)" vertex="1">
+          <mxGeometry height="35" width="150" x="190" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_data" parent="legend_container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;fontSize=11;dashed=1;fontColor=#000000;" value="Data Sources" vertex="1">
+          <mxGeometry height="35" width="150" x="360" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_label" parent="legend_container" style="text;html=1;fontSize=12;fontStyle=5;align=left;verticalAlign=middle;fontColor=#000000;" value="Cross-Region Connections" vertex="1">
+          <mxGeometry height="25" width="200" x="20" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_red_line" edge="1" parent="legend_container" style="endArrow=classic;strokeColor=#D50000;strokeWidth=3;dashed=1;dashPattern=8 4;fontColor=#000000;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="20" y="290" as="sourcePoint" />
+            <mxPoint x="160" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_red_label" parent="legend_container" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#000000;fontStyle=1;" value="TGW Peering / Remote State / SG" vertex="1">
+          <mxGeometry height="25" width="240" x="170" y="278" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_orange_line" edge="1" parent="legend_container" style="endArrow=classic;strokeColor=#FF6D00;strokeWidth=3;dashed=1;dashPattern=8 4;fontColor=#000000;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="20" y="320" as="sourcePoint" />
+            <mxPoint x="160" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_orange_label" parent="legend_container" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#000000;fontStyle=1;" value="TGW Accept / Origin Secret" vertex="1">
+          <mxGeometry height="25" width="220" x="170" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_blue_line" edge="1" parent="legend_container" style="endArrow=classic;strokeColor=#1565C0;strokeWidth=2;dashed=1;dashPattern=8 4;fontColor=#000000;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="20" y="350" as="sourcePoint" />
+            <mxPoint x="160" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_blue_label" parent="legend_container" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#000000;fontStyle=1;" value="CloudFront Primary Origin" vertex="1">
+          <mxGeometry height="25" width="220" x="170" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_regions" parent="legend_container" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontStyle=2;fontColor=#000000;" value="Region swim lanes:  TOKYO = Blue border  |  SAO PAULO = Green border  |  GLOBAL = Amber border" vertex="1">
+          <mxGeometry height="25" width="650" x="20" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_domain" parent="legend_container" style="text;html=1;fontSize=9;align=left;verticalAlign=middle;fontStyle=0;fontColor=#000000;" value="Domain: keepuneat.click  |  CloudFront: E2GBKEHK0L045Y  |  TGW: tgw-057b23da16e7b2e2c" vertex="1">
+          <mxGeometry height="25" width="550" x="20" y="415" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
