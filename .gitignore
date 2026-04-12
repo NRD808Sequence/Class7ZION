@@ -61,3 +61,17 @@ venv/
 
 # Claude Code local settings
 .claude/
+
+# Jenkins CLI jar — binary tool, not source
+**/jenkins-cli.jar
+*.jar
+
+# Raw pipeline console logs — may contain AWS account IDs in ARN output
+**/build*_console.txt
+**/console.txt
+
+# Nmap / ZAP / Nikto scan output — raw tool output, not source
+*niktoscan*
+*nmapscan*
+*zapscan*
+*zapreport*
